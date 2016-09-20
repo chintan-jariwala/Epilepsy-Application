@@ -1,5 +1,6 @@
 package ser593.com.epilepsy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -30,7 +31,7 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
     int questionIndex;
     boolean correctAnswer = true; //the correct answer for the question (true:yes, false:no)
     long questionStartTime;
-    List<Answer> answers;
+    ArrayList answers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
         ivLeft = (ImageView)findViewById(R.id.ivLeft);
         ivRight = (ImageView)findViewById(R.id.ivRight);
         ivCenter = (ImageView)findViewById(R.id.ivCenter);
-        answers = new ArrayList<Answer>();
+        answers = new ArrayList();
         questionIndex = 0;
 
         addListenerOnYesButton();
@@ -71,15 +72,15 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
     public void receiveInput(boolean input)
     {
         correctAnswer = compareImages();
-        boolean userAnswer;
+        int userAnswer;
         if (correctAnswer==input)
         {
-            userAnswer = true;
+            userAnswer = 1;
             Toast.makeText(getApplicationContext(), getString(R.string.answer_correct), Toast.LENGTH_SHORT).show();
         }
         else
         {
-            userAnswer = true;
+            userAnswer = 0;
             Toast.makeText(getApplicationContext(), getString(R.string.answer_incorrect), Toast.LENGTH_SHORT).show();
         }
         answers.add(new Answer(questionIndex, userAnswer, System.currentTimeMillis()-questionStartTime));
@@ -89,8 +90,13 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
         else
         {
             Toast.makeText(getApplicationContext(), "Test complete, redirect to result page", Toast.LENGTH_SHORT).show();
-            for(Answer a: answers)
-                Log.v(LOG_TAG, String.format("QuestionIndex: %s, Correct: %s, ElapsedTime: %sms", a.getQuestionIndex(), a.getCorrect(), a.getElapsedTime()));
+            //for(Answer a: answers)
+            //    Log.v(LOG_TAG, String.format("QuestionIndex: %s, Correct: %s, ElapsedTime: %sms", a.getQuestionIndex(), a.getCorrect(), a.getElapsedTime()));
+
+            // pass solution to result page
+            Intent intent = new Intent(this, ResultActivity.class);
+            intent.putParcelableArrayListExtra(getString(R.string.answers_key), answers);
+            startActivity(intent);
         }
     }
 

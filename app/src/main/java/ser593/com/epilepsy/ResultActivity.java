@@ -1,11 +1,13 @@
 package ser593.com.epilepsy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TableLayout;
@@ -33,13 +35,16 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        // TODO: will read actual result from another page later
-        List<Answer> answers = new ArrayList<Answer>();
+        addListenerOnReturnButton();
+
+        /*List<Answer> answers = new ArrayList<Answer>();
         answers.add(new Answer(0, true, 100));
         answers.add(new Answer(1, false, 200));
         answers.add(new Answer(2, true, 300));
         answers.add(new Answer(3, false, 400));
-        answers.add(new Answer(4, true, 500));
+        answers.add(new Answer(4, true, 500));*/
+        Intent i =this.getIntent();
+        ArrayList<Answer> answers = i.getParcelableArrayListExtra(getString(R.string.answers_key));
 
         int numAnswer = answers.size();
         long totalTime = 0;
@@ -70,9 +75,9 @@ public class ResultActivity extends AppCompatActivity {
             t.setText(String.valueOf(ans.getQuestionIndex()));
             tr.addView(t);
 
-            if (ans.getCorrect()) correct++;
+            if (ans.getCorrect() == 1) correct++;
             TextView t1 = new TextView(this);
-            t1.setText(String.valueOf(ans.getCorrect()));
+            t1.setText(String.valueOf(ans.getCorrect() == 1 ? true : false));
             tr.addView(t1);
 
             totalTime += ans.getElapsedTime();
@@ -92,5 +97,16 @@ public class ResultActivity extends AppCompatActivity {
 
         TextView txtAvgTIme = (TextView)findViewById(R.id.txtAvgTime);
         txtAvgTIme.setText(String.format("%1$dms", totalTime/numAnswer));
+    }
+
+    private void addListenerOnReturnButton() {
+        Button btnReturn = (Button) findViewById(R.id.btnReturn);
+        btnReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent(getApplication(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
