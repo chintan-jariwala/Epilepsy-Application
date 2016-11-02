@@ -11,4 +11,5 @@
     <string name="answers_key">answers</string>
     <string name="answer_correct">Correct :D</string>
     <string name="answer_incorrect">Incorrect :(</string>
+    <string name="title_activity_finger_tapping">FingerTappingActivity</string>
 </resources>

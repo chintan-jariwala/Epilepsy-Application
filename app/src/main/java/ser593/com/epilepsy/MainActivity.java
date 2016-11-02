@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnPatternComparision = null;
+    Button btnPatternComparison = null;
     Button btnFingerTapping = null;
 
     @Override
@@ -16,16 +16,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnPatternComparision = (Button) findViewById(R.id.btnPatternComparision);
-        btnPatternComparision.setOnClickListener(this);
-
+        btnPatternComparison = (Button) findViewById(R.id.btnPatternComparison);
+        btnPatternComparison.setOnClickListener(this);
+        btnFingerTapping = (Button) findViewById(R.id.btnFingerTapping);
+        btnFingerTapping.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btnPatternComparision:
+            case R.id.btnPatternComparison:
                 startActivity(new Intent(this,PatternComparisonProcessingActivity.class));
+                break;
+            case R.id.btnFingerTapping:
+                startActivity(new Intent(this,FingerTappingActivity.class));
                 break;
         }
     }
