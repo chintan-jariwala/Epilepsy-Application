@@ -39,7 +39,7 @@
                     android:layout_weight="0.71" />
 
                 <TextView
-                    android:text="RIGHT"
+                    android:text="SIDE"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tvSide"
@@ -65,7 +65,7 @@
                 android:textAlignment="center" />
 
             <TextView
-                android:text="300"
+                android:text="N"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvTimer"
@@ -97,7 +97,7 @@
             </LinearLayout>
 
             <TextView
-                android:text="Go ahead..."
+                android:text="HINT"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvHint"

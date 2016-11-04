@@ -8,6 +8,11 @@
     <string name="pattern_comparison_processing_yes">Button with yes icon</string>
     <string name="pattern_comparison_processing_no">Button with no icon</string>
 
+    <string name="finger_tapping_left">LEFT</string>
+    <string name="finger_tapping_right">RIGHT</string>
+    <string name="finger_tapping_go">Go ahead...</string>
+    <string name="finger_tapping_wait">Wait...</string>
+
     <string name="answers_key">answers</string>
     <string name="answer_correct">Correct :D</string>
     <string name="answer_incorrect">Incorrect :(</string>
