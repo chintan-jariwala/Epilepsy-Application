@@ -45,7 +45,7 @@ public class ResultActivity extends AppCompatActivity {
         answers.add(new Answer(4, true, 500));*/
         Intent i =this.getIntent();
         ArrayList<Answer> answers = i.getParcelableArrayListExtra(getString(R.string.answers_key));
-        String task = i.getStringExtra("task");
+        String task = i.getStringExtra(getString(R.string.task));
 
 
         int numAnswer = answers.size();

@@ -127,7 +127,7 @@ public class FingerTappingActivity extends AppCompatActivity {
                 // pass solution to result page
                 Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
                 intent.putParcelableArrayListExtra(getString(R.string.answers_key), answers);
-                intent.putExtra("task", getString(R.string.task_finger_tapping));
+                intent.putExtra(getString(R.string.task), getString(R.string.task_finger_tapping));
                 startActivity(intent);
             }
             else //else start another round with different hand
