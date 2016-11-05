@@ -55,7 +55,7 @@ public class ResultActivity extends AppCompatActivity {
         // Find Tablelayout
         TableLayout tl = (TableLayout) findViewById(R.id.tlResult);
 
-        if (getString(R.string.task_finger_tapping).equals(task)) //change his around after fixing pcpa
+        if (task.equals(getString(R.string.task_finger_tapping))) //change his around after fixing pcpa
         {
             TextView txtAccuracyLabel = (TextView)findViewById(R.id.txtAccuracyLabel);
             txtAccuracyLabel.setText("");
@@ -89,7 +89,7 @@ public class ResultActivity extends AppCompatActivity {
                 tl.addView(tr);
             }
         }
-        else
+        else if (task.equals(getString(R.string.task_pattern_comparison_processing)))
         {
             // Create header row, format with padding
             TableRow trHeader = new TableRow(this);

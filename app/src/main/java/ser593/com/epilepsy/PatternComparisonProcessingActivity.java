@@ -96,6 +96,7 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
             // pass solution to result page
             Intent intent = new Intent(this, ResultActivity.class);
             intent.putParcelableArrayListExtra(getString(R.string.answers_key), answers);
+            intent.putExtra(getString(R.string.task), getString(R.string.task_pattern_comparison_processing));
             startActivity(intent);
         }
     }
