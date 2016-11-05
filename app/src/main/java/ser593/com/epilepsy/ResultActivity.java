@@ -45,6 +45,8 @@ public class ResultActivity extends AppCompatActivity {
         answers.add(new Answer(4, true, 500));*/
         Intent i =this.getIntent();
         ArrayList<Answer> answers = i.getParcelableArrayListExtra(getString(R.string.answers_key));
+        String task = i.getStringExtra("task");
+
 
         int numAnswer = answers.size();
         long totalTime = 0;
@@ -53,50 +55,88 @@ public class ResultActivity extends AppCompatActivity {
         // Find Tablelayout
         TableLayout tl = (TableLayout) findViewById(R.id.tlResult);
 
-        // Create header row, format with padding
-        TableRow trHeader = new TableRow(this);
-        TextView tHeader1 = new TextView(this);
-        tHeader1.setText(String.format("%1$-20s", "Question Index"));
-        trHeader.addView(tHeader1);
-        TextView tHeader2 = new TextView(this);
-        tHeader2.setText(String.format("%1$-20s", "Correct"));
-        trHeader.addView(tHeader2);
-        TextView tHeader3 = new TextView(this);
-        tHeader3.setText(String.format("%1$-20s", "Elapsed Time"));
-        trHeader.addView(tHeader3);
-        tl.addView(trHeader);
-
-        // Loop through the list and add row to table
-        for(Answer ans: answers)
+        if (getString(R.string.task_finger_tapping).equals(task)) //change his around after fixing pcpa
         {
-            TableRow tr = new TableRow(this);
+            TextView txtAccuracyLabel = (TextView)findViewById(R.id.txtAccuracyLabel);
+            txtAccuracyLabel.setText("");
+            TextView txtAvgLabel = (TextView)findViewById(R.id.txtAvgLabel);
+            txtAvgLabel.setText("");
 
-            TextView t = new TextView(this);
-            t.setText(String.valueOf(ans.getQuestionIndex()));
-            tr.addView(t);
+            // Create header row, format with padding
+            TableRow trHeader = new TableRow(this);
+            TextView tHeader1 = new TextView(this);
+            tHeader1.setText(String.format("%1$-20s", "Side"));
+            trHeader.addView(tHeader1);
+            TextView tHeader2 = new TextView(this);
+            tHeader2.setText(String.format("%1$-20s", "Number of Taps"));
+            trHeader.addView(tHeader2);
+            tl.addView(trHeader);
 
-            if (ans.getCorrect() == 1) correct++;
-            TextView t1 = new TextView(this);
-            t1.setText(String.valueOf(ans.getCorrect() == 1 ? true : false));
-            tr.addView(t1);
+            // Loop through the list and add row to table
+            for(Answer ans: answers)
+            {
+                Log.v("looping", String.valueOf(ans.getSide()) + ", " + String.valueOf(ans.getTapCount()));
+                TableRow tr = new TableRow(this);
 
-            totalTime += ans.getElapsedTime();
-            TextView t2 = new TextView(this);
-            t2.setText(String.valueOf(ans.getElapsedTime()));
-            tr.addView(t2);
+                TextView t = new TextView(this);
+                t.setText(String.valueOf(ans.getSide()));
+                tr.addView(t);
 
-            tl.addView(tr);
+                TextView t1 = new TextView(this);
+                t1.setText(String.valueOf(ans.getTapCount()));
+                tr.addView(t1);
+
+                tl.addView(tr);
+            }
+        }
+        else
+        {
+            // Create header row, format with padding
+            TableRow trHeader = new TableRow(this);
+            TextView tHeader1 = new TextView(this);
+            tHeader1.setText(String.format("%1$-20s", "Question Index"));
+            trHeader.addView(tHeader1);
+            TextView tHeader2 = new TextView(this);
+            tHeader2.setText(String.format("%1$-20s", "Correct"));
+            trHeader.addView(tHeader2);
+            TextView tHeader3 = new TextView(this);
+            tHeader3.setText(String.format("%1$-20s", "Elapsed Time"));
+            trHeader.addView(tHeader3);
+            tl.addView(trHeader);
+
+            // Loop through the list and add row to table
+            for(Answer ans: answers)
+            {
+                TableRow tr = new TableRow(this);
+
+                TextView t = new TextView(this);
+                t.setText(String.valueOf(ans.getQuestionIndex()));
+                tr.addView(t);
+
+                if (ans.getCorrect() == 1) correct++;
+                TextView t1 = new TextView(this);
+                t1.setText(String.valueOf(ans.getCorrect() == 1 ? true : false));
+                tr.addView(t1);
+
+                totalTime += ans.getElapsedTime();
+                TextView t2 = new TextView(this);
+                t2.setText(String.valueOf(ans.getElapsedTime()));
+                tr.addView(t2);
+
+                tl.addView(tr);
+            }
+
+            // print out stats
+            TextView txtAccuracy = (TextView)findViewById(R.id.txtAccuracy);
+            txtAccuracy.setText(String.format("%1$d/%2$d", correct, numAnswer));
+
+            TextView txtAccuracyPercentage = (TextView)findViewById(R.id.txtAccuracyPercentage);
+            txtAccuracyPercentage.setText(String.format("%.2f%%", ((double)correct)/numAnswer*100));
+
+            TextView txtAvgTIme = (TextView)findViewById(R.id.txtAvgTime);
+            txtAvgTIme.setText(String.format("%1$dms", totalTime/numAnswer));
         }
 
-        // print out stats
-        TextView txtAccuracy = (TextView)findViewById(R.id.txtAccuracy);
-        txtAccuracy.setText(String.format("%1$d/%2$d", correct, numAnswer));
-
-        TextView txtAccuracyPercentage = (TextView)findViewById(R.id.txtAccuracyPercentage);
-        txtAccuracyPercentage.setText(String.format("%.2f%%", ((double)correct)/numAnswer*100));
-
-        TextView txtAvgTIme = (TextView)findViewById(R.id.txtAvgTime);
-        txtAvgTIme.setText(String.format("%1$dms", totalTime/numAnswer));
     }
 
     private void addListenerOnReturnButton() {

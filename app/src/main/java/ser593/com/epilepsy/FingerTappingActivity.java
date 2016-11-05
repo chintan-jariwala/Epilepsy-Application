@@ -13,6 +13,7 @@ import android.util.Log;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -22,12 +23,12 @@ public class FingerTappingActivity extends AppCompatActivity {
     boolean currentTapSide; //false-left, true-right
     boolean start = false;
     int count;
-    int time = 5;
-    int recordCount = 0; //temporary
+    long time = 5;
     TextView tvSide;
     TextView tvHint;
     TextView tvCount;
     TextView tvTimer;
+    ArrayList answers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class FingerTappingActivity extends AppCompatActivity {
         tvHint = (TextView)findViewById(R.id.tvHint);
         tvCount = (TextView)findViewById(R.id.tvCount);
         tvTimer = (TextView) findViewById(R.id.tvTimer);
+        answers = new ArrayList();
 
         addListenerOnLeftButton();
         addListenerOnRightButton(); //double check the bool value
@@ -46,7 +48,7 @@ public class FingerTappingActivity extends AppCompatActivity {
         currentTestSide = rand.nextInt(2);
         tvSide.setText(currentTestSide == 0 ? getString(R.string.finger_tapping_left) : getString(R.string.finger_tapping_right));
         tvHint.setText(getString(R.string.finger_tapping_go));
-        tvTimer.setText(Integer.toString(time));
+        tvTimer.setText(Long.toString(time));
         count = 0;
         start = false;
     }
@@ -108,7 +110,6 @@ public class FingerTappingActivity extends AppCompatActivity {
         @Override
         public void onTick(long millisUntilFinished) {
             long millis = millisUntilFinished;
-            //Log.v(LOG_TAG, String.format("%d", TimeUnit.MILLISECONDS.toMillis(millis)));
             tvTimer.setText(String.format("%d", TimeUnit.MILLISECONDS.toSeconds(millis)));
         }
 
@@ -117,12 +118,17 @@ public class FingerTappingActivity extends AppCompatActivity {
             tvTimer.setText(Integer.toString(0));
 
             //add record to answer
-            recordCount++;
+            String side = currentTestSide == 0 ? getString(R.string.finger_tapping_left) : getString(R.string.finger_tapping_right);
+            answers.add(new Answer(time, side, count));
 
             //if answer has 2 records: go to result page
-            if (recordCount == 2)
+            if (answers.size() == 2)
             {
-                Toast.makeText(getApplicationContext(), "DONE! Go to Result", Toast.LENGTH_SHORT).show();
+                // pass solution to result page
+                Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+                intent.putParcelableArrayListExtra(getString(R.string.answers_key), answers);
+                intent.putExtra("task", getString(R.string.task_finger_tapping));
+                startActivity(intent);
             }
             else //else start another round with different hand
             {
@@ -135,7 +141,7 @@ public class FingerTappingActivity extends AppCompatActivity {
                         currentTestSide = currentTestSide == 0 ? 1 : 0;
                         tvSide.setText(currentTestSide == 0 ? getString(R.string.finger_tapping_left) : getString(R.string.finger_tapping_right));
                         tvHint.setText(getString(R.string.finger_tapping_go));
-                        tvTimer.setText(Integer.toString(time));
+                        tvTimer.setText(Long.toString(time));
                         count = 0;
                         start = false;
                     }

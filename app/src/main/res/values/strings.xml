@@ -2,6 +2,10 @@
     <string name="app_name">Epilepsy</string>
 
     <!-- Image Descriptions -->
+    <string name="task">task</string>
+    <string name="task_finger_tapping">Finger Tapping</string>
+    <string name="task_pattern_comparison_processing">Pattern Comparison Processing</string>
+
     <string name="pattern_comparison_processing_left">Image to be shown on the left</string>
     <string name="pattern_comparison_processing_center">Image to be shown on the right</string>
     <string name="pattern_comparison_processing_right">Image to be shown in the center, should only be star or blank</string>
