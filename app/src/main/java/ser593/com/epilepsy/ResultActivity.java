@@ -43,10 +43,10 @@ public class ResultActivity extends AppCompatActivity {
         addListenerOnReturnButton();
 
         Intent intent =this.getIntent();
-        //Log.v("ResultJSON", intent.getStringExtra(getString(R.string.task_result)));
 
         //String jsonStr = "{\"task\":\"Finger Tapping\",\"timer_length\":10,\"answer\":[{\"side\":\"left\",\"tap_count\":15},{\"side\":\"right\",\"tap_count\":21}]}";
-        String jsonStr = intent.getStringExtra(getString(R.string.task_result));
+        String jsonStr = "{\"task\":\"Pattern Comparison Processing\",\"answer\":[{\"question_index\":1,\"correct\":true,\"elapsed_time\":15},{\"question_index\":2,\"correct\":false,\"elapsed_time\":25},{\"question_index\":3,\"correct\":true,\"elapsed_time\":35},{\"question_index\":4,\"correct\":true,\"elapsed_time\":45},{\"question_index\":5,\"correct\":false,\"elapsed_time\":55}]}";
+        //String jsonStr = intent.getStringExtra(getString(R.string.task_result));
         try {
             JSONObject jsonObj = new JSONObject(jsonStr);
             String task = jsonObj.getString(getString(R.string.task));
@@ -91,7 +91,7 @@ public class ResultActivity extends AppCompatActivity {
             }
             else if (task.equals(getString(R.string.task_pattern_comparison_processing)))
             {
-                /*int numAnswer = record.size();
+                int numAnswer = jsonObj.getJSONArray("answer").length();
                 long totalTime = 0;
                 int correct = 0;
 
@@ -109,22 +109,23 @@ public class ResultActivity extends AppCompatActivity {
                 tl.addView(trHeader);
 
                 // Loop through the list and add row to table
-                for(Answer ans: record)
+                JSONArray answers = jsonObj.getJSONArray(getString(R.string.task_answer));
+                for(int i = 0; i < numAnswer; i++)//for(Answer ans: record)
                 {
                     TableRow tr = new TableRow(this);
 
                     TextView t = new TextView(this);
-                    t.setText(String.valueOf(ans.getQuestionIndex()));
+                    t.setText(answers.getJSONObject(i).getString("question_index"));
                     tr.addView(t);
 
-                    if (ans.getCorrect() == 1) correct++;
+                    if (answers.getJSONObject(i).getBoolean("correct") == true) correct++;
                     TextView t1 = new TextView(this);
-                    t1.setText(String.valueOf(ans.getCorrect() == 1 ? true : false));
+                    t1.setText(String.valueOf(answers.getJSONObject(i).getBoolean("correct")));
                     tr.addView(t1);
 
-                    totalTime += ans.getElapsedTime();
+                    totalTime += answers.getJSONObject(i).getInt("elapsed_time");
                     TextView t2 = new TextView(this);
-                    t2.setText(String.valueOf(ans.getElapsedTime()));
+                    t2.setText(Integer.toString(answers.getJSONObject(i).getInt("elapsed_time")));
                     tr.addView(t2);
 
                     tl.addView(tr);
@@ -138,7 +139,7 @@ public class ResultActivity extends AppCompatActivity {
                 txtAccuracyPercentage.setText(String.format("%.2f%%", ((double)correct)/numAnswer*100));
 
                 TextView txtAvgTIme = (TextView)findViewById(R.id.txtAvgTime);
-                txtAvgTIme.setText(String.format("%1$dms", totalTime/numAnswer));*/
+                txtAvgTIme.setText(String.format("%1$dms", totalTime/numAnswer));
             }
         }
         catch (JSONException e)
