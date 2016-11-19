@@ -45,8 +45,9 @@ public class ResultActivity extends AppCompatActivity {
         Intent intent =this.getIntent();
 
         //String jsonStr = "{\"task\":\"Finger Tapping\",\"timer_length\":10,\"answer\":[{\"side\":\"left\",\"tap_count\":15},{\"side\":\"right\",\"tap_count\":21}]}";
-        String jsonStr = "{\"task\":\"Pattern Comparison Processing\",\"answer\":[{\"question_index\":1,\"correct\":true,\"elapsed_time\":15},{\"question_index\":2,\"correct\":false,\"elapsed_time\":25},{\"question_index\":3,\"correct\":true,\"elapsed_time\":35},{\"question_index\":4,\"correct\":true,\"elapsed_time\":45},{\"question_index\":5,\"correct\":false,\"elapsed_time\":55}]}";
-        //String jsonStr = intent.getStringExtra(getString(R.string.task_result));
+        //String jsonStr = "{\"task\":\"Pattern Comparison Processing\",\"answer\":[{\"question_index\":1,\"correct\":true,\"elapsed_time\":15},{\"question_index\":2,\"correct\":false,\"elapsed_time\":25},{\"question_index\":3,\"correct\":true,\"elapsed_time\":35},{\"question_index\":4,\"correct\":true,\"elapsed_time\":45},{\"question_index\":5,\"correct\":false,\"elapsed_time\":55}]}";
+        String jsonStr = intent.getStringExtra(getString(R.string.task_result));
+        Log.v("ResultJSON", jsonStr);
         try {
             JSONObject jsonObj = new JSONObject(jsonStr);
             String task = jsonObj.getString(getString(R.string.task));
@@ -91,7 +92,7 @@ public class ResultActivity extends AppCompatActivity {
             }
             else if (task.equals(getString(R.string.task_pattern_comparison_processing)))
             {
-                int numAnswer = jsonObj.getJSONArray("answer").length();
+                int numAnswer = jsonObj.getJSONArray(getString(R.string.task_answer)).length();
                 long totalTime = 0;
                 int correct = 0;
 

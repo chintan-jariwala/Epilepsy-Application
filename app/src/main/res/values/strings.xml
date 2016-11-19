@@ -12,6 +12,9 @@
     <string name="pattern_comparison_processing_right">Image to be shown in the center, should only be star or blank</string>
     <string name="pattern_comparison_processing_yes">Button with yes icon</string>
     <string name="pattern_comparison_processing_no">Button with no icon</string>
+    <string name="pattern_comparison_processing_json_question_index">question_index</string>
+    <string name="pattern_comparison_processing_json_correct">correct</string>
+    <string name="pattern_comparison_processing_json_elapsed_time">elapsed_time</string>
 
     <string name="finger_tapping_left">LEFT</string>
     <string name="finger_tapping_right">RIGHT</string>

@@ -44,8 +44,8 @@ public class FingerTappingActivity extends AppCompatActivity {
         answers = new JSONArray();
 
         try {
-            record.put("task", getString(R.string.task_finger_tapping));
-            record.put("timer_length", time);
+            record.put(getString(R.string.task), getString(R.string.task_finger_tapping));
+            record.put(getString(R.string.finger_tapping_json_timer_length), time);
         }catch(JSONException e)
         {
             Log.e(LOG_TAG, "Json parsing error: " + e.getMessage());
