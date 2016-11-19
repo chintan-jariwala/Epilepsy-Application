@@ -33,6 +33,7 @@ import java.util.Random;
  *  */
 
 public class ResultActivity extends AppCompatActivity {
+    String LOG_TAG = ResultActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,17 +42,11 @@ public class ResultActivity extends AppCompatActivity {
 
         addListenerOnReturnButton();
 
-        /*List<Answer> answers = new ArrayList<Answer>();
-        answers.add(new Answer(0, true, 100));
-        answers.add(new Answer(1, false, 200));
-        answers.add(new Answer(2, true, 300));
-        answers.add(new Answer(3, false, 400));
-        answers.add(new Answer(4, true, 500));*/
         Intent intent =this.getIntent();
-        //ArrayList<Answer> answers = i.getParcelableArrayListExtra(getString(R.string.answers_key));
-        //String task = intent.getStringExtra(getString(R.string.task));
+        //Log.v("ResultJSON", intent.getStringExtra(getString(R.string.task_result)));
 
-        String jsonStr = "{\"task\":\"Finger Tapping\",\"timer_length\":10,\"answer\":[{\"side\":\"left\",\"tap_count\":15},{\"side\":\"right\",\"tap_count\":21}]}";
+        //String jsonStr = "{\"task\":\"Finger Tapping\",\"timer_length\":10,\"answer\":[{\"side\":\"left\",\"tap_count\":15},{\"side\":\"right\",\"tap_count\":21}]}";
+        String jsonStr = intent.getStringExtra(getString(R.string.task_result));
         try {
             JSONObject jsonObj = new JSONObject(jsonStr);
             String task = jsonObj.getString(getString(R.string.task));
@@ -77,18 +72,18 @@ public class ResultActivity extends AppCompatActivity {
                 tl.addView(trHeader);
 
                 // Loop through the list and add row to table
-                JSONArray answers = jsonObj.getJSONArray("answer");
+                JSONArray answers = jsonObj.getJSONArray(getString(R.string.task_answer));
                 for(int i = 0; i < answers.length(); i++)
                 {
-                    Log.v("looping", answers.getJSONObject(i).getString("side") + ", " + answers.getJSONObject(i).getString("tap_count"));
+                    //Log.v("looping", answers.getJSONObject(i).getString(getString(R.string.finger_tapping_json_side)) + ", " + answers.getJSONObject(i).getString(getString(R.string.finger_tapping_json_tap_count)));
                     TableRow tr = new TableRow(this);
 
                     TextView t = new TextView(this);
-                    t.setText(answers.getJSONObject(i).getString("side"));
+                    t.setText(answers.getJSONObject(i).getString(getString(R.string.finger_tapping_json_side)));
                     tr.addView(t);
 
                     TextView t1 = new TextView(this);
-                    t1.setText(answers.getJSONObject(i).getString("tap_count"));
+                    t1.setText(answers.getJSONObject(i).getString(getString(R.string.finger_tapping_json_tap_count)));
                     tr.addView(t1);
 
                     tl.addView(tr);
@@ -96,7 +91,7 @@ public class ResultActivity extends AppCompatActivity {
             }
             else if (task.equals(getString(R.string.task_pattern_comparison_processing)))
             {
-                /*int numAnswer = answers.size();
+                /*int numAnswer = record.size();
                 long totalTime = 0;
                 int correct = 0;
 
@@ -114,7 +109,7 @@ public class ResultActivity extends AppCompatActivity {
                 tl.addView(trHeader);
 
                 // Loop through the list and add row to table
-                for(Answer ans: answers)
+                for(Answer ans: record)
                 {
                     TableRow tr = new TableRow(this);
 
@@ -148,14 +143,8 @@ public class ResultActivity extends AppCompatActivity {
         }
         catch (JSONException e)
         {
-
+            Log.e(LOG_TAG, "Json parsing error: " + e.getMessage());
         }
-
-
-
-
-
-
     }
 
     private void addListenerOnReturnButton() {

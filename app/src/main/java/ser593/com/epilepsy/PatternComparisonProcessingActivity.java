@@ -90,7 +90,7 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
         else
         {
             Toast.makeText(getApplicationContext(), "Test complete, redirect to result page", Toast.LENGTH_SHORT).show();
-            //for(Answer a: answers)
+            //for(Answer a: record)
             //    Log.v(LOG_TAG, String.format("QuestionIndex: %s, Correct: %s, ElapsedTime: %sms", a.getQuestionIndex(), a.getCorrect(), a.getElapsedTime()));
 
             // pass solution to result page
