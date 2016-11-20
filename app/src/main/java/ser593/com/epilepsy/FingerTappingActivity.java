@@ -5,15 +5,15 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.util.Log;
 
-import org.w3c.dom.Text;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -28,7 +28,8 @@ public class FingerTappingActivity extends AppCompatActivity {
     TextView tvHint;
     TextView tvCount;
     TextView tvTimer;
-    ArrayList answers;
+    JSONObject record;
+    JSONArray answers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,16 @@ public class FingerTappingActivity extends AppCompatActivity {
         tvHint = (TextView)findViewById(R.id.tvHint);
         tvCount = (TextView)findViewById(R.id.tvCount);
         tvTimer = (TextView) findViewById(R.id.tvTimer);
-        answers = new ArrayList();
+        record = new JSONObject();
+        answers = new JSONArray();
+
+        try {
+            record.put(getString(R.string.task), getString(R.string.task_finger_tapping));
+            record.put(getString(R.string.finger_tapping_json_timer_length), time);
+        }catch(JSONException e)
+        {
+            Log.e(LOG_TAG, "Json parsing error: " + e.getMessage());
+        }
 
         addListenerOnLeftButton();
         addListenerOnRightButton(); //double check the bool value
@@ -119,33 +129,40 @@ public class FingerTappingActivity extends AppCompatActivity {
 
             //add record to answer
             String side = currentTestSide == 0 ? getString(R.string.finger_tapping_left) : getString(R.string.finger_tapping_right);
-            answers.add(new Answer(time, side, count));
+            try {
+                JSONObject ans = new JSONObject();
+                ans.put(getString(R.string.finger_tapping_json_side), side);
+                ans.put(getString(R.string.finger_tapping_json_tap_count), count);
+                answers.put(ans); //add to JSONArray
 
-            //if answer has 2 records: go to result page
-            if (answers.size() == 2)
-            {
-                // pass solution to result page
-                Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
-                intent.putParcelableArrayListExtra(getString(R.string.answers_key), answers);
-                intent.putExtra(getString(R.string.task), getString(R.string.task_finger_tapping));
-                startActivity(intent);
+                //if answer has 2 records: go to result page
+                if (answers.length() == 2) {
+                    // pass solution to result page
+                    record.put(getString(R.string.task_answer), answers);
+                    Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+                    intent.putExtra(getString(R.string.task_result), record.toString());
+                    startActivity(intent);
+                } else //else start another round with different hand
+                {
+                    tvHint.setText(getString(R.string.finger_tapping_wait));
+                    // pause for 2 seconds before showing the images for comparison
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            currentTestSide = currentTestSide == 0 ? 1 : 0;
+                            tvSide.setText(currentTestSide == 0 ? getString(R.string.finger_tapping_left) : getString(R.string.finger_tapping_right));
+                            tvHint.setText(getString(R.string.finger_tapping_go));
+                            tvTimer.setText(Long.toString(time));
+                            count = 0;
+                            start = false;
+                        }
+                    }, 2000);
+                }
             }
-            else //else start another round with different hand
+            catch (JSONException e)
             {
-                tvHint.setText(getString(R.string.finger_tapping_wait));
-                // pause for 2 seconds before showing the images for comparison
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        currentTestSide = currentTestSide == 0 ? 1 : 0;
-                        tvSide.setText(currentTestSide == 0 ? getString(R.string.finger_tapping_left) : getString(R.string.finger_tapping_right));
-                        tvHint.setText(getString(R.string.finger_tapping_go));
-                        tvTimer.setText(Long.toString(time));
-                        count = 0;
-                        start = false;
-                    }
-                }, 2000);
+                Log.e(LOG_TAG, "Json parsing error: " + e.getMessage());
             }
         }
     }

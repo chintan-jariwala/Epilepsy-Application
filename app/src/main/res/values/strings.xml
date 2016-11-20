@@ -1,21 +1,29 @@
 <resources>
     <string name="app_name">Epilepsy</string>
 
-    <!-- Image Descriptions -->
     <string name="task">task</string>
     <string name="task_finger_tapping">Finger Tapping</string>
     <string name="task_pattern_comparison_processing">Pattern Comparison Processing</string>
+    <string name="task_answer">answer</string>
+    <string name="task_result">task_result</string>
 
     <string name="pattern_comparison_processing_left">Image to be shown on the left</string>
     <string name="pattern_comparison_processing_center">Image to be shown on the right</string>
     <string name="pattern_comparison_processing_right">Image to be shown in the center, should only be star or blank</string>
     <string name="pattern_comparison_processing_yes">Button with yes icon</string>
     <string name="pattern_comparison_processing_no">Button with no icon</string>
+    <string name="pattern_comparison_processing_json_question_index">question_index</string>
+    <string name="pattern_comparison_processing_json_correct">correct</string>
+    <string name="pattern_comparison_processing_json_elapsed_time">elapsed_time</string>
 
     <string name="finger_tapping_left">LEFT</string>
     <string name="finger_tapping_right">RIGHT</string>
     <string name="finger_tapping_go">Go ahead...</string>
     <string name="finger_tapping_wait">Wait...</string>
+    <string name="finger_tapping_json_timer_length">timer_length</string>
+    <string name="finger_tapping_json_answer">answer</string>
+    <string name="finger_tapping_json_side">side</string>
+    <string name="finger_tapping_json_tap_count">tap_count</string>
 
     <string name="answers_key">answers</string>
     <string name="answer_correct">Correct :D</string>
