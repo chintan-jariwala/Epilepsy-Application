@@ -1,4 +1,4 @@
-package ser593.com.epilepsy;
+package ser593.com.epilepsy.UserTasks;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +17,9 @@ import org.json.JSONObject;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+
+import ser593.com.epilepsy.R;
+import ser593.com.epilepsy.Results.ResultActivity;
 
 /**
  * References:
@@ -124,6 +127,7 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ResultActivity.class);
             intent.putExtra(getString(R.string.task_result), record.toString());
             startActivity(intent);
+            finish();
         }
     }
 

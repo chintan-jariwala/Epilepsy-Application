@@ -1,31 +1,21 @@
-package ser593.com.epilepsy;
+package ser593.com.epilepsy.Results;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Random;
+import ser593.com.epilepsy.Main.MainActivity;
+import ser593.com.epilepsy.R;
 
 /**
  * Result Activity
@@ -119,7 +109,7 @@ public class ResultActivity extends AppCompatActivity {
                     t.setText(answers.getJSONObject(i).getString("question_index"));
                     tr.addView(t);
 
-                    if (answers.getJSONObject(i).getBoolean("correct") == true) correct++;
+                    if (answers.getJSONObject(i).getBoolean("correct")) correct++;
                     TextView t1 = new TextView(this);
                     t1.setText(String.valueOf(answers.getJSONObject(i).getBoolean("correct")));
                     tr.addView(t1);
@@ -156,6 +146,7 @@ public class ResultActivity extends AppCompatActivity {
             public void onClick(View arg0) {
                 Intent intent = new Intent(getApplication(), MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

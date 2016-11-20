@@ -13,23 +13,31 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" >
-            <intent-filter >
+
+        <activity android:name=".Main.MainActivity">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".PatternComparisonProcessingActivity"></activity>
-        <activity android:name=".ResultActivity"></activity>
+
         <activity
-            android:name=".FingerTappingActivity"
+            android:name=".UserTasks.PatternComparisonProcessingActivity"
+            android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".Results.ResultActivity"
+            android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".UserTasks.FingerTappingActivity"
             android:label="@string/title_activity_finger_tapping"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

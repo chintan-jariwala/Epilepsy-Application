@@ -1,4 +1,4 @@
-package ser593.com.epilepsy;
+package ser593.com.epilepsy.UserTasks;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,9 @@ import org.json.JSONObject;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import ser593.com.epilepsy.R;
+import ser593.com.epilepsy.Results.ResultActivity;
 
 public class FingerTappingActivity extends AppCompatActivity {
     String LOG_TAG = FingerTappingActivity.class.getSimpleName();
@@ -142,6 +145,7 @@ public class FingerTappingActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
                     intent.putExtra(getString(R.string.task_result), record.toString());
                     startActivity(intent);
+                    finish();
                 } else //else start another round with different hand
                 {
                     tvHint.setText(getString(R.string.finger_tapping_wait));
