@@ -6,7 +6,8 @@ import android.os.Bundle;
 import ser593.com.epilepsy.R;
 import ser593.com.epilepsy.Results.ResultActivity;
 
-public class Flanker extends AppCompatActivity {
+public class FlankerActivity extends AppCompatActivity {
+    String LOG_TAG = PatternComparisonProcessingActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
