@@ -27,7 +27,7 @@
             android:layout_gravity="center"
             android:adjustViewBounds="false"
             android:scaleType="fitCenter"
-            android:contentDescription="@string/pattern_comparison_processing_center" />
+            android:contentDescription="@string/flanker_left" />
 
         <ImageView
             android:layout_width="50dp"
@@ -36,7 +36,7 @@
             android:layout_gravity="center"
             android:adjustViewBounds="false"
             android:scaleType="fitCenter"
-            android:contentDescription="@string/pattern_comparison_processing_center" />
+            android:contentDescription="@string/flanker_left" />
 
         <ImageView
             android:layout_width="50dp"
@@ -46,7 +46,7 @@
             android:src="@drawable/ic_star"
             android:adjustViewBounds="false"
             android:scaleType="fitCenter"
-            android:contentDescription="@string/pattern_comparison_processing_center" />
+            android:contentDescription="@string/flanker_target" />
 
         <ImageView
             android:layout_width="50dp"
@@ -55,7 +55,7 @@
             android:layout_gravity="center"
             android:adjustViewBounds="false"
             android:scaleType="fitCenter"
-            android:contentDescription="@string/pattern_comparison_processing_center" />
+            android:contentDescription="@string/flanker_right" />
 
         <ImageView
             android:layout_width="50dp"
@@ -64,7 +64,7 @@
             android:layout_gravity="center"
             android:adjustViewBounds="false"
             android:scaleType="fitCenter"
-            android:contentDescription="@string/pattern_comparison_processing_center" />
+            android:contentDescription="@string/flanker_right" />
     </LinearLayout>
 
     <LinearLayout
@@ -82,27 +82,34 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/ibYes"
+            android:id="@+id/ibLeft"
             android:src="@drawable/ic_leftarrow"
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"
             android:background="#00ffffff"
-            android:contentDescription="@string/pattern_comparison_processing_yes" />
+            android:contentDescription="@string/flanker_answer_left" />
 
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvHolder" />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/ivHid"
+            android:layout_gravity="center"
+            android:src="@drawable/flanker_leftarrow"
+            android:adjustViewBounds="false"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/flanker_left_arrow"
+            android:visibility="invisible" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/ibNo"
+            android:id="@+id/ibRight"
             android:adjustViewBounds="true"
             android:src="@drawable/ic_rightarrow"
             android:scaleType="centerCrop"
             android:background="#00ffffff"
-            android:contentDescription="@string/pattern_comparison_processing_no"/>
+            android:contentDescription="@string/flanker_answer_right"/>
+
     </LinearLayout>
 
 </android.support.percent.PercentRelativeLayout>
