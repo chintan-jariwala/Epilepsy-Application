@@ -54,6 +54,15 @@ public class FlankerActivity extends AppCompatActivity {
         answers = new JSONArray();
         questionIndex = 0;
 
+        try
+        {
+            record.put(getString(R.string.task), getString(R.string.task_flanker));
+        }
+        catch (JSONException e)
+        {
+            Log.e(LOG_TAG, "Json parsing error: " + e.getMessage());
+        }
+
         addListenerOnLeftButton();
         addListenerOnRightButton();
         showQuestion();

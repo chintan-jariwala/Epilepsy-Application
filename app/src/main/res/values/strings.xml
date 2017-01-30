@@ -4,6 +4,7 @@
     <string name="task">task</string>
     <string name="task_finger_tapping">Finger Tapping</string>
     <string name="task_pattern_comparison_processing">Pattern Comparison Processing</string>
+    <string name="task_flanker">Flanker</string>
     <string name="task_answer">answer</string>
     <string name="task_result">task_result</string>
 
