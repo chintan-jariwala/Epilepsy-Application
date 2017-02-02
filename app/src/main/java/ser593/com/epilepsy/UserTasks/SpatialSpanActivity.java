@@ -128,7 +128,7 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
         Animator anim[] = null;
         set = new AnimatorSet();
         anim = new Animator[numbers.length];
-        Snackbar.make(parent, Arrays.toString(currentPattern),Snackbar.LENGTH_LONG).show();
+//        Snackbar.make(parent, Arrays.toString(currentPattern),Snackbar.LENGTH_LONG).show();
         for (int i = 0; i < numbers.length; i++) {
             Log.d(TAG, "lightThemUp: " + i + "th execution" );
             anim[i] = AnimatorInflater.loadAnimator(this,R.animator.flip);
