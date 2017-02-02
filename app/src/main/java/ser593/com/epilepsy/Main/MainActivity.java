@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import ser593.com.epilepsy.R;
 import ser593.com.epilepsy.UserTasks.FingerTappingActivity;
+import ser593.com.epilepsy.UserTasks.FlankerActivity;
 import ser593.com.epilepsy.UserTasks.PatternComparisonProcessingActivity;
 import ser593.com.epilepsy.UserTasks.SpatialSpanActivity;
 import ser593.com.epilepsy.painReport.PromisActivity;
@@ -20,6 +21,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     Button btnFingerTapping = null;
     Button btnPromis = null;
     Button btnSpacialSpan = null;
+    Button btnFlanker = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btnPromis.setOnClickListener(this);
         btnSpacialSpan = (Button) findViewById(R.id.btnSpacialSpan);
         btnSpacialSpan.setOnClickListener(this);
-
+        btnFlanker = (Button) findViewById(R.id.btnFlanker);
+        btnFlanker.setOnClickListener(this);
     }
 
     @Override
@@ -52,6 +55,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btnSpacialSpan:
                 startActivity(new Intent(this, SpatialSpanActivity.class));
                 break;
+            case R.id.btnFlanker:
+                startActivity(new Intent(this, FlankerActivity.class));
         }
     }
 }

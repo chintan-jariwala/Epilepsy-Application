@@ -55,4 +55,14 @@
         android:id="@+id/btnSpacialSpan"
         android:layout_below="@+id/btnFingerTapping"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Flanker Test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:id="@+id/btnFlanker"
+        android:layout_below="@+id/btnSpacialSpan"
+        android:layout_alignLeft="@+id/btnSpacialSpan"
+        android:layout_alignStart="@+id/btnSpacialSpan" />
 </RelativeLayout>
