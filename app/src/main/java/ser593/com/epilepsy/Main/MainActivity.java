@@ -1,5 +1,6 @@
 package ser593.com.epilepsy.Main;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +14,7 @@ import ser593.com.epilepsy.UserTasks.PatternComparisonProcessingActivity;
 import ser593.com.epilepsy.UserTasks.SpatialSpanActivity;
 import ser593.com.epilepsy.painReport.PromisActivity;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends Activity implements View.OnClickListener {
 
     Button btnPatternComparison = null;
     Button btnFingerTapping = null;

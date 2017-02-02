@@ -35,7 +35,7 @@ import org.json.JSONObject;
 import ser593.com.epilepsy.R;
 import ser593.com.epilepsy.helper.jsHandler;
 
-public class PromisActivity extends AppCompatActivity {
+public class PromisActivity extends Activity {
 
     private Bundle webViewBundle;
     private static int DEFAULT_SAVE_STATE_TIME=4; //in hours

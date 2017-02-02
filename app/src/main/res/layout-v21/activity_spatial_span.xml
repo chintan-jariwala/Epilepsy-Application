@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ser593.com.epilepsy.UserTasks.SpatialSpanActivity"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    >
 
     <GridLayout
         android:layout_width="wrap_content"

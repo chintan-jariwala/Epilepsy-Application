@@ -1,19 +1,27 @@
 package ser593.com.epilepsy.UserTasks;
 
-import android.graphics.Color;
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.os.Handler;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.yarolegovich.lovelydialog.LovelyProgressDialog;
+import com.yarolegovich.lovelydialog.LovelyStandardDialog;
+
+import java.util.Arrays;
 import java.util.Random;
 
 import ser593.com.epilepsy.R;
 
-public class SpatialSpanActivity extends AppCompatActivity {
+public class SpatialSpanActivity extends AppCompatActivity implements View.OnClickListener{
 
     private static final String TAG = SpatialSpanActivity.class.getSimpleName();
     TextView tvScore = null;
@@ -21,9 +29,11 @@ public class SpatialSpanActivity extends AppCompatActivity {
     TextView tvDifficulty = null;
     Button btnStartSS = null;
     Button[] btnGrid = null;
-
+    int currentPattern[] = null;
+    private static int currentNumber = 0;
+    LinearLayout parent = null;
     //To implement delays after a button light
-    Handler handler = null;
+    LovelyProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +50,35 @@ public class SpatialSpanActivity extends AppCompatActivity {
                 //driver Function which will drive the module
                 try {
                     spacialSpanDriver();
+                    btnStartSS.setEnabled(false);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        new LovelyStandardDialog(this)
+                .setTopColorRes(R.color.indigo)
+                .setButtonsColorRes(R.color.darkDeepOrange)
+                .setTitle("Are you sure?")
+                .setMessage("Your progress will be lost")
+                .setPositiveButton("Yes", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                })
+                .show();
     }
 
     public int[] randomGenerator(int limit) {
@@ -62,16 +96,23 @@ public class SpatialSpanActivity extends AppCompatActivity {
         switch (difficulty) {
             case 0:
                 //lowest difficulty
-                lightThemUp(randomGenerator(3));
+                currentPattern = randomGenerator(3);
+                lightThemUp(currentPattern);
                 break;
             case 1:
                 //Average difficulty
+                currentPattern = randomGenerator(4);
+                lightThemUp(currentPattern);
                 break;
             case 2:
                 //Above average difficulty
+                currentPattern = randomGenerator(5);
+                lightThemUp(currentPattern);
                 break;
             case 3:
                 //Highest difficulty
+                currentPattern = randomGenerator(6);
+                lightThemUp(currentPattern);
                 break;
         }
     }
@@ -83,28 +124,23 @@ public class SpatialSpanActivity extends AppCompatActivity {
             Log.d(TAG, "lightThemUp: Numbers: - " + i);
             //Log.d(TAG, "lightThemUp: Numbers: - " + i);
         }
-
+        AnimatorSet set = null;
+        Animator anim[] = null;
+        set = new AnimatorSet();
+        anim = new Animator[numbers.length];
+        Snackbar.make(parent, Arrays.toString(currentPattern),Snackbar.LENGTH_LONG).show();
         for (int i = 0; i < numbers.length; i++) {
-            synchronized (this){
-                lightTheButton(i,Color.BLUE);
-                lightTheButton(i,Color.GRAY);
-
-
-            }
-
+            Log.d(TAG, "lightThemUp: " + i + "th execution" );
+            anim[i] = AnimatorInflater.loadAnimator(this,R.animator.flip);
+            anim[i].setTarget(btnGrid[numbers[i]]);
         }
+        set.playSequentially(anim);
+        set.start();
     }
 
-    private synchronized void lightTheButton(final int i, final int blue) {
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Log.d(TAG, "button Id: " + i );
-                btnGrid[i].setBackgroundColor(blue);
-            }
-        },2000);
-    }
-
+//    private void lightTheButton(Button b) {
+//
+//    }
 
     private void initialize() {
         tvScore = (TextView) findViewById(R.id.tvScore);
@@ -141,6 +177,75 @@ public class SpatialSpanActivity extends AppCompatActivity {
         btnGrid[23] = (Button) findViewById(R.id.btn23);
         btnGrid[24] = (Button) findViewById(R.id.btn24);
 
-        handler = new Handler();
+        for(Button b: btnGrid){
+            b.setOnClickListener(this);
+        }
+        parent = (LinearLayout) findViewById(R.id.activity_spatial_span);
+        progressDialog = new LovelyProgressDialog(this)
+                .setTopColorRes(R.color.teal);
+
+
+
+        //set default values
+    }
+
+    @Override
+    public void onClick(View v) {
+        Log.d(TAG, "onClick: " + v.getId());
+
+        if (currentNumber<currentPattern.length && v.getId() == btnGrid[currentPattern[currentNumber]].getId()){
+            Log.d(TAG, "onClick: "+ currentPattern[currentNumber] + " was clicked");
+            currentNumber++;
+            if(currentPattern.length == currentNumber){
+                progressDialog.setTitle("Great, Lets solve one more").show();
+                tvDifficulty.setText(((Integer.parseInt(tvDifficulty.getText().toString()))+1)+"");
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Do something after 5s = 5000ms
+                        progressDialog.dismiss();
+                        try {
+                            spacialSpanDriver();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, 2000);
+
+            }
+        }else{
+            currentNumber = 0;
+            if(Integer.parseInt(tvDifficulty.getText().toString()) != 0)
+                tvDifficulty.setText(((Integer.parseInt(tvDifficulty.getText().toString()))-1)+"");
+
+            if(Integer.parseInt(tvLives.getText().toString()) != 0)
+                tvLives.setText((Integer.parseInt(tvLives.getText().toString()))-1+"");
+            else
+                finish();
+            new LovelyStandardDialog(this)
+                    .setTopColorRes(R.color.indigo)
+                    .setButtonsColorRes(R.color.darkDeepOrange)
+                    .setTitle("Sorry")
+                    .setMessage("You lost.")
+                    .setPositiveButton("Try Again", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            try {
+                                spacialSpanDriver();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    })
+                    .setNegativeButton("Exit", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            finish();
+                        }
+                    })
+                    .show();
+        }
+
     }
 }
