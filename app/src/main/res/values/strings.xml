@@ -4,6 +4,7 @@
     <string name="task">task</string>
     <string name="task_finger_tapping">Finger Tapping</string>
     <string name="task_pattern_comparison_processing">Pattern Comparison Processing</string>
+    <string name="task_flanker">Flanker</string>
     <string name="task_answer">answer</string>
     <string name="task_result">task_result</string>
 
@@ -25,8 +26,19 @@
     <string name="finger_tapping_json_side">side</string>
     <string name="finger_tapping_json_tap_count">tap_count</string>
 
+    <string name="flanker_left">Image to be shown on the left</string>
+    <string name="flanker_right">Image to be shown on the right</string>
+    <string name="flanker_target">Image to be shown in the center(target)</string>
+    <string name="flanker_left_arrow">Hidden image with left arrow icon (for comparison)</string>
+    <string name="flanker_answer_left">Button with left arrow icon</string>
+    <string name="flanker_answer_right">Button with right arrow icon</string>
+    <string name="flanker_json_question_index">question_index</string>
+    <string name="flanker_json_correct">correct</string>
+    <string name="flanker_json_elapsed_time">elapsed_time</string>
+
     <string name="answers_key">answers</string>
     <string name="answer_correct">Correct :D</string>
     <string name="answer_incorrect">Incorrect :(</string>
     <string name="title_activity_finger_tapping">FingerTappingActivity</string>
+    <string name="title_activity_flanker">FlankerActivity</string>
 </resources>

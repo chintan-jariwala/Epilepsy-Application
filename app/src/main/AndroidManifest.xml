@@ -36,8 +36,11 @@
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".painReport.PromisActivity"
-            android:theme="@android:style/Theme.NoTitleBar" />
+            android:name=".UserTasks.FlankerActivity"
+            android:label="@string/title_activity_flanker"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity android:name=".UserTasks.SpatialSpanActivity"
             android:screenOrientation="landscape"></activity>
     </application>

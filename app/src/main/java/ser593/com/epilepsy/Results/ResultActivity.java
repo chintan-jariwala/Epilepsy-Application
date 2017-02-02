@@ -80,7 +80,7 @@ public class ResultActivity extends AppCompatActivity {
                     tl.addView(tr);
                 }
             }
-            else if (task.equals(getString(R.string.task_pattern_comparison_processing)))
+            else if (task.equals(getString(R.string.task_pattern_comparison_processing)) || task.equals(getString(R.string.task_flanker))) //pattern comparison and flanker has similar record format
             {
                 int numAnswer = jsonObj.getJSONArray(getString(R.string.task_answer)).length();
                 long totalTime = 0;
