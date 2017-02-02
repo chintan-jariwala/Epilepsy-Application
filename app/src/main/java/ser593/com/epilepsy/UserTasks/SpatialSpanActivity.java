@@ -96,22 +96,22 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
         switch (difficulty) {
             case 0:
                 //lowest difficulty
-                currentPattern = randomGenerator(3);
+                currentPattern = randomGenerator(2);
                 lightThemUp(currentPattern);
                 break;
             case 1:
                 //Average difficulty
-                currentPattern = randomGenerator(4);
+                currentPattern = randomGenerator(3);
                 lightThemUp(currentPattern);
                 break;
             case 2:
                 //Above average difficulty
-                currentPattern = randomGenerator(5);
+                currentPattern = randomGenerator(4);
                 lightThemUp(currentPattern);
                 break;
             case 3:
                 //Highest difficulty
-                currentPattern = randomGenerator(6);
+                currentPattern = randomGenerator(5);
                 lightThemUp(currentPattern);
                 break;
         }
@@ -183,9 +183,6 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
         parent = (LinearLayout) findViewById(R.id.activity_spatial_span);
         progressDialog = new LovelyProgressDialog(this)
                 .setTopColorRes(R.color.teal);
-
-
-
         //set default values
     }
 
@@ -197,8 +194,10 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
             Log.d(TAG, "onClick: "+ currentPattern[currentNumber] + " was clicked");
             currentNumber++;
             if(currentPattern.length == currentNumber){
+                currentNumber = 0;
                 progressDialog.setTitle("Great, Lets solve one more").show();
                 tvDifficulty.setText(((Integer.parseInt(tvDifficulty.getText().toString()))+1)+"");
+                tvScore.setText(((Integer.parseInt(tvScore.getText().toString()))+1)+"");
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -219,32 +218,46 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
             if(Integer.parseInt(tvDifficulty.getText().toString()) != 0)
                 tvDifficulty.setText(((Integer.parseInt(tvDifficulty.getText().toString()))-1)+"");
 
-            if(Integer.parseInt(tvLives.getText().toString()) != 0)
+            if(Integer.parseInt(tvLives.getText().toString()) != 0){
                 tvLives.setText((Integer.parseInt(tvLives.getText().toString()))-1+"");
-            else
-                finish();
-            new LovelyStandardDialog(this)
-                    .setTopColorRes(R.color.indigo)
-                    .setButtonsColorRes(R.color.darkDeepOrange)
-                    .setTitle("Sorry")
-                    .setMessage("You lost.")
-                    .setPositiveButton("Try Again", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            try {
-                                spacialSpanDriver();
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
+                new LovelyStandardDialog(this)
+                        .setTopColorRes(R.color.indigo)
+                        .setButtonsColorRes(R.color.darkDeepOrange)
+                        .setTitle("Sorry")
+                        .setMessage("You lost.")
+                        .setPositiveButton("Try Again", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                try {
+                                    spacialSpanDriver();
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
                             }
-                        }
-                    })
-                    .setNegativeButton("Exit", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            finish();
-                        }
-                    })
-                    .show();
+                        })
+                        .setNegativeButton("Exit", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                finish();
+                            }
+                        })
+                        .show();
+            }
+
+            else{
+                new LovelyStandardDialog(this)
+                        .setTopColorRes(R.color.indigo)
+                        .setButtonsColorRes(R.color.darkDeepOrange)
+                        .setTitle("Sorry")
+                        .setMessage("You are out of lives")
+                        .setPositiveButton("Ok", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                finish();
+                            }
+                        })
+                        .show();
+            }
         }
 
     }
