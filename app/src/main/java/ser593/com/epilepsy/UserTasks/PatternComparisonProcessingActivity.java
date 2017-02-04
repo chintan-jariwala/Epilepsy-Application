@@ -45,6 +45,8 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pattern_comparison_processing);
 
+        getSupportActionBar().hide();
+
         ivLeft = (ImageView)findViewById(R.id.ivLeft);
         ivRight = (ImageView)findViewById(R.id.ivRight);
         ivCenter = (ImageView)findViewById(R.id.ivCenter);

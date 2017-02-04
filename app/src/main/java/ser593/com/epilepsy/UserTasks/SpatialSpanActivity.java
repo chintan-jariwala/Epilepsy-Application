@@ -40,6 +40,8 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spatial_span);
 
+        getSupportActionBar().hide();
+
         //Initialize the default values for the activity
         initialize();
 

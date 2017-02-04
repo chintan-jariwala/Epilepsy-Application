@@ -30,6 +30,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.yarolegovich.lovelydialog.LovelyStandardDialog;
+
 import org.json.JSONObject;
 
 import ser593.com.epilepsy.R;
@@ -173,34 +175,25 @@ public class PromisActivity extends Activity {
         webView.loadUrl(URL);    }
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                this);
 
-        // set title
-        alertDialogBuilder.setTitle("Are you sure you want to go back ?");
-
-        // set dialog message
-        alertDialogBuilder
-                .setMessage("All the progress will be lost")
-                .setCancelable(false)
-                .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
-                        PromisActivity.super.onBackPressed();
+        new LovelyStandardDialog(this)
+                .setTopColorRes(R.color.indigo)
+                .setButtonsColorRes(R.color.darkDeepOrange)
+                .setTitle("Are you sure?")
+                .setMessage("Your progress will be lost")
+                .setPositiveButton("Yes", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
                     }
                 })
-                .setNegativeButton("No",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
-                        // if this button is clicked, just close
-                        // the dialog box and do nothing
-                        dialog.cancel();
+                .setNegativeButton("No", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
                     }
-                });
-
-        // create alert dialog
-        AlertDialog alertDialog = alertDialogBuilder.create();
-
-        // show it
-        alertDialog.show();
+                })
+                .show();
     }
 
     @Override

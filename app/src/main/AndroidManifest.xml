@@ -34,15 +34,15 @@
             android:name=".UserTasks.FingerTappingActivity"
             android:label="@string/title_activity_finger_tapping"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".painReport.PromisActivity"
-            android:theme="@android:style/Theme.NoTitleBar" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".UserTasks.FlankerActivity"
             android:label="@string/title_activity_flanker"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme">
         </activity>
         <activity android:name=".UserTasks.SpatialSpanActivity"
             android:screenOrientation="landscape"></activity>

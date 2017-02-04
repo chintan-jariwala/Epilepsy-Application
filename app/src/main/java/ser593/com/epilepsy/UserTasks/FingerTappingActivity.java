@@ -39,6 +39,8 @@ public class FingerTappingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finger_tapping);
 
+        getSupportActionBar().hide();
+
         tvSide = (TextView)findViewById(R.id.tvSide);
         tvHint = (TextView)findViewById(R.id.tvHint);
         tvCount = (TextView)findViewById(R.id.tvCount);

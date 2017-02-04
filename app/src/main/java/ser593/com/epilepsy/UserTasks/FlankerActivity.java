@@ -43,6 +43,8 @@ public class FlankerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flanker);
 
+        getSupportActionBar().hide();
+
         ivTarget = (ImageView)findViewById(R.id.ivTarget);
         iv1 = (ImageView)findViewById(R.id.iv1);
         iv2 = (ImageView)findViewById(R.id.iv2);
