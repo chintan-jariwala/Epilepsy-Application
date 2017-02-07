@@ -1,0 +1,17 @@
+{
+    "surveys": [
+        {
+            "surveyInstanceID": 12345,
+            "surveyTitle" : "Weekly Survey",
+            "nextDueAt": "2015-02-26T21:34:08.000Z",
+            "okayToStart": true
+        },
+        {
+            "surveyInstanceID": 45678,
+            "surveyTitle" : "Daily Survey",
+            "nextDueAt": "2015-02-26T21:34:08.000Z",
+            "okayToStart": true
+        }
+    ],
+    "message": "Success"
+}

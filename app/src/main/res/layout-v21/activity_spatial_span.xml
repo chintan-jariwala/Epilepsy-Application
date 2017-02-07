@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_spatial_span"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ser593.com.epilepsy.UserTasks.SpatialSpanActivity"
+    android:orientation="horizontal"
+    >
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:columnCount="5"
+        >
+
+        <Button
+            android:layout_column="1"
+            android:id="@+id/btn1"
+            android:background="#FF1744"
+            android:layout_margin="1dp"/>
+        <Button
+            android:layout_column="2"
+            android:id="@+id/btn2"
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            />
+        <Button
+            android:layout_column="3"
+            android:id="@+id/btn3"
+            android:background="#FF1744"
+            android:layout_margin="1dp"/>
+        <Button
+            android:layout_column="4"
+            android:id="@+id/btn4"
+            android:background="#FF1744"
+            android:layout_margin="1dp"/>
+        <Button
+            android:layout_column="0"
+            android:id="@+id/btn0"
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            />
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="1"
+            android:id="@+id/btn6" />
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="2"
+            android:id="@+id/btn7" />
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="3"
+            android:id="@+id/btn8" />
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="4"
+            android:id="@+id/btn9" />
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:id="@+id/btn5" />
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="1"
+            android:id="@+id/btn11" />
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="2"
+            android:id="@+id/btn12" />
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="3"
+            android:id="@+id/btn13" />
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="4"
+            android:id="@+id/btn14" />
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:id="@+id/btn10" />
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="1"
+            android:id="@+id/btn16" />
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="2"
+            android:id="@+id/btn17" />
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="3"
+            android:id="@+id/btn18" />
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="4"
+            android:id="@+id/btn19" />
+
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="1"
+            android:id="@+id/btn21" />
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="2"
+            android:id="@+id/btn22" />
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="3"
+            android:id="@+id/btn23" />
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="4"
+            android:id="@+id/btn24" />
+
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:id="@+id/btn20" />
+
+        <Button
+            android:background="#FF1744"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:id="@+id/btn15"
+            android:layout_row="3" />
+
+    </GridLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="5dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lives Left :"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+
+                android:fontFamily="sans-serif"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvLivesCount"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+                android:text="0"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Difficulty :"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+
+                android:fontFamily="sans-serif"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDifficulty"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+                android:text="0"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Score :"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+
+                android:fontFamily="sans-serif"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvScore"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+                android:text="0"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/btnStartSS"
+                android:text="Start"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

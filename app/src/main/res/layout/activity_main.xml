@@ -20,20 +20,39 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
+        android:text="Promis Survey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnPromis"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <Button
         android:id="@+id/btnPatternComparison"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/textView"
-        android:layout_toStartOf="@+id/textView"
-        android:text="Pattern Comparision" />
+        android:text="Pattern Comparision"
+        android:layout_below="@+id/btnPromis"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp" />
 
     <Button
         android:id="@+id/btnFingerTapping"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/btnPatternComparison"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_toRightOf="@+id/textView"
-        android:text="Finger Tapping" />
+        android:text="Finger Tapping"
+        android:layout_marginTop="27dp"
+        android:layout_below="@+id/btnPatternComparison"
+        android:layout_alignRight="@+id/btnPromis"
+        android:layout_alignEnd="@+id/btnPromis" />
+
+    <Button
+        android:text="Spacial Span"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:id="@+id/btnSpacialSpan"
+        android:layout_below="@+id/btnFingerTapping"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

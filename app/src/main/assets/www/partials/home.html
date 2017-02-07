@@ -1,0 +1,102 @@
+<nav class="navbar navbar-default navbar-static-top headerTop">
+    <a class="navbar-brand brand-text text-center fillWidth">
+        <div class="headerColor">{{title}}
+            <button type="button" class="btn btn-primary pull-right btn-xs debugButton" data-toggle="modal" data-target="#debug">D</button>
+        </div>
+    </a>
+</nav>
+
+<!-- Modal -->
+<div class="modal fade" id="debug" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false" style="z-index:10000">
+  <div class="modal-dialog modal-md">
+        <div class="modal-content">
+        	<div class="modal-header headerColor">
+        		<h4 class="modal-title">Debug Information</h4>
+      		</div>
+            <div class="modal-body text-center form-horizontal">
+              Please capture the following information
+              <p>
+                <pre>{{debugInformation}}</pre>
+              </p>
+  				  </div>
+            <div class="modal-footer">
+	        		<button type="button" class="btn btn-primary redBtn" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary redBtn" ng-click="clearAll()">Reset</button>
+      		</div>
+        </div>
+    </div>
+</div>
+
+<div style="background: url('images/bear.svg'); background-repeat: no-repeat; height: 300px;">
+	<!-- <div style="width: 20%;margin-left: 40%;"> -->
+	<!-- <div>
+		<img class="img-responsive" src="images/bear.svg" style="  max-width: 250px; margin: 0 auto; max-height: 250px; padding: 0;"/>
+	</div> -->
+	<p class="text-center">
+		To configure PIN and server settings, please click on Settings button.
+	</p>
+	<div>
+    <div>
+  		<p class="text-center" id="surveyCommonMessage">{{surveyCommonMessage}}</p>
+
+        <div  id="troubleshoot">
+        <p class="text-center">
+            <strong>Please try the following steps to troubleshoot</strong>
+            <ol>
+                <li ng-repeat="option in troubleshootOptions">
+                    {{option}}
+                </li>
+            </ol>
+        </p>
+    </div>
+
+      <div class="col-sm-12 text-center customBtn">
+  			<p>{{surveyDueMessageOne}}</p>
+    			<button type="button" id="startFirstSurvey" class="btn btn-primary disabled redBtn sathe" style="width: 298px" ng-click="getFirstSurvey()" ng-show="isSurveyDue">
+            <span class="">{{button1text}}</span>
+          </button>
+          <!-- <button type="button"  class="glyphicon glyphicon-question-sign btn btn-primary redBtn sathe" data-toggle="collapse" data-target="#FirstActivityDescription" ng-show="isSurveyDue"></button>
+
+            <div id="FirstActivityDescription" class="collapse">
+            {{FirstActivityDescription}}
+            </div> -->
+
+  		</div>
+  		<div class="col-sm-12 text-center customBtn" ng-show="areMultipleSurveysDue && isSurveyDue" style="margin-top:3%">
+  			<p>{{surveyDueMessageTwo}}</p>
+
+    			<button type="button" id="startSecondSurvey" class="btn btn-primary disabled redBtn sathe" style="width: 298px" ng-click="getSecondSurvey()">
+            <span class="">{{button2text}}</span>
+          </button>
+
+            <!-- <button type="button" class="glyphicon glyphicon-question-sign btn btn-primary redBtn sathe" data-toggle="collapse" data-target="#SecondActivityDescription">
+            </button>
+
+              <div id="SecondActivityDescription" class="collapse">
+                  {{SecondActivityDescription}}
+              </div> -->
+  		</div>
+
+      <div class="col-sm-12 text-center customBtn" ng-show="areMultipleSurveysDue && isSurveyDue && isThirdSurveyDue" style="margin-top:3%">
+  			<p>{{surveyDueMessageThree}}</p>
+      			<button type="button" id="startThirdSurvey" style="width: 298px" class="btn btn-primary disabled redBtn sathe" ng-click="getThirdSurvey()">
+              <span class="">{{button3text}}</span>
+              </button>
+              <!-- <button class="glyphicon glyphicon-question-sign  btn btn-primary redBtn sathe" data-toggle="collapse" data-target="#ThirdActivityDescription">
+            </button>
+              <div id="ThirdActivityDescription" class="collapse" >
+                  {{ThirdActivityDescription}}
+              </div> -->
+  		</div>
+    </div>
+		<div class="col-sm-12 text-center customBtn" style="margin-top:3%">
+			<button type="button" class="btn btn-primary redBtn" style="width: 298px" ng-click="changePage('/settings')">Settings</button>
+		</div>
+    <!-- <div class="col-sm-12 text-center customBtn">
+			<button type="button" class="btn btn-primary redBtn" style="width: 298px" ng-click="changePage('/badges')">Badges</button>
+		</div> -->
+    <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-lg-offset-3 col-md-offset-3 col-sm-offset-3 customBtn">
+			<button type="button" class="btn btn-primary btn-block redBtn" ng-click="changePage('/coinStore')">Coin Store</button>
+		</div> -->
+	</div>
+</div>
