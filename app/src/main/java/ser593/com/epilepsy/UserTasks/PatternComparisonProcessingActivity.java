@@ -33,6 +33,7 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
     ImageView ivRight;
     ImageView ivCenter;
 
+    final int pauseTime = 5000;
     final int numQuestions = 5; //total number of test before showing result
     int questionIndex;
     boolean correctAnswer = true; //the correct answer for the question (true:yes, false:no)
@@ -157,7 +158,7 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
                 questionStartTime = System.currentTimeMillis();
                 questionIndex++;
             }
-        }, 2000);
+        }, pauseTime);
     }
 
     private boolean compareImages()

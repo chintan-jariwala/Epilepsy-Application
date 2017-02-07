@@ -31,6 +31,7 @@ public class FlankerActivity extends AppCompatActivity {
     ImageView iv4;
     ImageView ivHid;
 
+    final int pauseTime = 5000;
     final int numQuestions = 5; //total number of test before showing result
     int questionIndex;
     boolean correctAnswer = true; //the correct answer for the question (true:left, false:right)
@@ -162,7 +163,7 @@ public class FlankerActivity extends AppCompatActivity {
                 questionStartTime = System.currentTimeMillis();
                 questionIndex++;
             }
-        }, 2000);
+        }, pauseTime);
     }
 
     private boolean getCorrectAnswer()
