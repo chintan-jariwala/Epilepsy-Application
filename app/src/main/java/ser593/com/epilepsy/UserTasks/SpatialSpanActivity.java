@@ -12,11 +12,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yarolegovich.lovelydialog.LovelyProgressDialog;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
-import java.util.Arrays;
 import java.util.Random;
 
 import ser593.com.epilepsy.R;
@@ -191,76 +191,81 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         Log.d(TAG, "onClick: " + v.getId());
-
-        if (currentNumber<currentPattern.length && v.getId() == btnGrid[currentPattern[currentNumber]].getId()){
-            Log.d(TAG, "onClick: "+ currentPattern[currentNumber] + " was clicked");
-            currentNumber++;
-            if(currentPattern.length == currentNumber){
-                currentNumber = 0;
-                progressDialog.setTitle("Great, Lets solve one more").show();
-                tvDifficulty.setText(((Integer.parseInt(tvDifficulty.getText().toString()))+1)+"");
-                tvScore.setText(((Integer.parseInt(tvScore.getText().toString()))+1)+"");
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Do something after 5s = 5000ms
-                        progressDialog.dismiss();
-                        try {
-                            spacialSpanDriver();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+        if(currentPattern != null){
+            if (currentNumber<currentPattern.length && v.getId() == btnGrid[currentPattern[currentNumber]].getId()){
+                Log.d(TAG, "onClick: "+ currentPattern[currentNumber] + " was clicked");
+                currentNumber++;
+                if(currentPattern.length == currentNumber){
+                    currentNumber = 0;
+                    progressDialog.setTitle("Great, Lets solve one more").show();
+                    tvDifficulty.setText(((Integer.parseInt(tvDifficulty.getText().toString()))+1)+"");
+                    tvScore.setText(((Integer.parseInt(tvScore.getText().toString()))+1)+"");
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Do something after 5s = 5000ms
+                            progressDialog.dismiss();
+                            try {
+                                spacialSpanDriver();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                         }
-                    }
-                }, 2000);
+                    }, 2000);
 
+                }
+            }else{
+                currentNumber = 0;
+                if(Integer.parseInt(tvDifficulty.getText().toString()) != 0)
+                    tvDifficulty.setText(((Integer.parseInt(tvDifficulty.getText().toString()))-1)+"");
+
+                if(Integer.parseInt(tvLives.getText().toString()) != 0){
+                    tvLives.setText((Integer.parseInt(tvLives.getText().toString()))-1+"");
+                    new LovelyStandardDialog(this)
+                            .setTopColorRes(R.color.indigo)
+                            .setButtonsColorRes(R.color.darkDeepOrange)
+                            .setTitle("Sorry")
+                            .setMessage("You lost.")
+                            .setPositiveButton("Try Again", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    try {
+                                        spacialSpanDriver();
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            })
+                            .setNegativeButton("Exit", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    finish();
+                                }
+                            })
+                            .show();
+                }
+
+                else{
+                    new LovelyStandardDialog(this)
+                            .setTopColorRes(R.color.indigo)
+                            .setButtonsColorRes(R.color.darkDeepOrange)
+                            .setTitle("Sorry")
+                            .setMessage("You are out of lives")
+                            .setPositiveButton("Ok", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    finish();
+                                }
+                            })
+                            .show();
+                }
             }
         }else{
-            currentNumber = 0;
-            if(Integer.parseInt(tvDifficulty.getText().toString()) != 0)
-                tvDifficulty.setText(((Integer.parseInt(tvDifficulty.getText().toString()))-1)+"");
-
-            if(Integer.parseInt(tvLives.getText().toString()) != 0){
-                tvLives.setText((Integer.parseInt(tvLives.getText().toString()))-1+"");
-                new LovelyStandardDialog(this)
-                        .setTopColorRes(R.color.indigo)
-                        .setButtonsColorRes(R.color.darkDeepOrange)
-                        .setTitle("Sorry")
-                        .setMessage("You lost.")
-                        .setPositiveButton("Try Again", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                try {
-                                    spacialSpanDriver();
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        })
-                        .setNegativeButton("Exit", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                finish();
-                            }
-                        })
-                        .show();
-            }
-
-            else{
-                new LovelyStandardDialog(this)
-                        .setTopColorRes(R.color.indigo)
-                        .setButtonsColorRes(R.color.darkDeepOrange)
-                        .setTitle("Sorry")
-                        .setMessage("You are out of lives")
-                        .setPositiveButton("Ok", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                finish();
-                            }
-                        })
-                        .show();
-            }
+            //Toast.makeText(this,"Please Click Start First",Toast.LENGTH_LONG).show();
+            Snackbar.make(parent,"Please click the start button to begin",Snackbar.LENGTH_LONG).show();
         }
+
 
     }
 }
