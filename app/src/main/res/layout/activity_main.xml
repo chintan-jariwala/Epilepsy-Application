@@ -3,66 +3,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/lightGray"
+    android:layout_gravity="center"
     tools:context="ser593.com.epilepsy.Main.MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp"
-        android:text="Welcome"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <!--<TextView-->
+        <!--android:id="@+id/textView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:text="Welcome"-->
+        <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--/>-->
 
     <Button
         android:text="Promis Survey"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/btnPromis"
-        android:layout_marginTop="28dp"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="35dp"
+        android:layout_centerHorizontal="true"
+        style="@style/customButton"
+        android:layout_height="wrap_content"
+        android:layout_width="200dp" />
 
     <Button
         android:id="@+id/btnPatternComparison"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Pattern Comparision"
         android:layout_below="@+id/btnPromis"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp" />
+        style="@style/customButton"
+        android:layout_marginTop="30dp" />
 
     <Button
         android:id="@+id/btnFingerTapping"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Finger Tapping"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/btnPatternComparison"
         android:layout_alignRight="@+id/btnPromis"
-        android:layout_alignEnd="@+id/btnPromis" />
+        android:layout_alignEnd="@+id/btnPromis"
+        style="@style/customButton"/>
 
     <Button
         android:text="Spacial Span"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="30dp"
         android:id="@+id/btnSpacialSpan"
         android:layout_below="@+id/btnFingerTapping"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        style="@style/customButton"/>
 
     <Button
         android:text="Flanker Test"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="30dp"
         android:id="@+id/btnFlanker"
         android:layout_below="@+id/btnSpacialSpan"
         android:layout_alignLeft="@+id/btnSpacialSpan"
-        android:layout_alignStart="@+id/btnSpacialSpan" />
+        android:layout_alignStart="@+id/btnSpacialSpan"
+        style="@style/customButton"/>
 </RelativeLayout>

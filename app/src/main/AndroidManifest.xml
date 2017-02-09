@@ -42,10 +42,11 @@
             android:name=".UserTasks.FlankerActivity"
             android:label="@string/title_activity_flanker"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme">
-        </activity>
-        <activity android:name=".UserTasks.SpatialSpanActivity"
-            android:screenOrientation="landscape"></activity>
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".UserTasks.SpatialSpanActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".UserTasks.ActivityDescription"></activity>
     </application>
 
 </manifest>

@@ -10,6 +10,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.yarolegovich.lovelydialog.LovelyStandardDialog;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -160,6 +162,28 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
                 questionIndex++;
             }
         }, 2000);
+    }
+
+    public void onBackPressed() {
+        //super.onBackPressed();
+        new LovelyStandardDialog(this)
+                .setTopColorRes(R.color.indigo)
+                .setButtonsColorRes(R.color.darkDeepOrange)
+                .setTitle("Are you sure?")
+                .setMessage("Your progress will be lost")
+                .setPositiveButton("Yes", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                })
+                .show();
     }
 
     private boolean compareImages()
