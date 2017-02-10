@@ -21,22 +21,29 @@
         android:textStyle="normal|bold"
         android:textSize="18sp" />
 
-    <TextView
-        android:text='"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." '
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:id="@+id/tvActivityDesc"
-        android:layout_below="@+id/tvDescTitle"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:textSize="18sp" />
-
-    <TextView
-        android:text="Details"
+        <TextView
+        android:text="Demo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvActivityDesc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/tvDemoTitle"
+        android:textStyle="normal|bold"
+        android:textSize="18sp" />
+
+    <VideoView
+        android:layout_width="wrap_content"
+        android:id="@+id/vvDemo"
+        android:layout_below="@+id/tvDemoTitle"
+        android:layout_height="200sp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Instruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vvDemo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:id="@+id/tvDetailsTitle"
@@ -44,7 +51,7 @@
         android:textSize="18sp" />
 
     <TextView
-        android:text="TextView"
+        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum is simply dummy text of the printing and typesetting industry."
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvDetailsTitle"
@@ -52,7 +59,6 @@
         android:layout_marginTop="15dp"
         android:layout_margin="10dp"
         android:id="@+id/tvDetailsDesc"
-        tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
         android:textSize="18sp" />
 
         <LinearLayout
@@ -79,6 +85,16 @@
                     />
 
         </LinearLayout>
+
+        <TextView
+            android:text='"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." '
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvActivityDesc"
+            android:textSize="18sp"
+            android:layout_below="@+id/tvDescTitle"
+            android:layout_alignLeft="@+id/tvDetailsDesc"
+            android:layout_alignStart="@+id/tvDetailsDesc" />
     </RelativeLayout>
 
 </ScrollView>

@@ -6,8 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
+import android.net.Uri;
 
 import ser593.com.epilepsy.R;
 import ser593.com.epilepsy.pojo.ActivityDetails;
@@ -27,6 +30,18 @@ public class ActivityDescription extends AppCompatActivity implements View.OnCli
         getSupportActionBar().setCustomView(R.layout.actionbar);
         initialize();
         populateInformation();
+
+        String path = "android.resource://" + getPackageName() + "/" + R.raw.test_video;
+        Toast.makeText(getApplicationContext(), path, Toast.LENGTH_SHORT).show();
+        VideoView videoView = (VideoView) findViewById(R.id.vvDemo);
+        MediaController mediaController = new MediaController(this);
+        //mediaController.setMediaPlayer(videoView);
+        videoView.setVideoURI(Uri.parse(path));
+        //videoView.setMediaController(mediaController);
+        //videoView.requestFocus();
+        videoView.start();
+        //mediaController.show();
+
     }
 
     private void populateInformation() {
