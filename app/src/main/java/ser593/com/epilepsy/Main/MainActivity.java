@@ -63,9 +63,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnPatternComparison:
                 activityDetails.setTitle("Pattern Comparison");
                 activityDetails.setBreif("The pattern comparison task measures the player's ability to identify whether two images are the same or not.");
-                activityDetails.setDetails("1. The star in the center indicates the beginning of a question.\n" +
-                        "2. After a brief pause, two images will be shown on the screen.\n" +
-                        "3. The player will identify whether the images are the same. It will be very obvious if the two images are different.\n" +
+                activityDetails.setDetails("1. The star in the center indicates the beginning of a question.\n\n" +
+                        "2. After a brief pause, two images will be shown on the screen.\n\n" +
+                        "3. The player will identify whether the images are the same. It will be very obvious if the two images are different.\n\n" +
                         "4. If the images are the same, tap on the green yes button; if the images are different, tap on the red no button.");
                 b.putParcelable("Class",activityDetails);
                 i.putExtras(b);
@@ -74,8 +74,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnFingerTapping:
                 activityDetails.setTitle("Finger Tapping");
                 activityDetails.setBreif("The finger tapping task measures the player's finger moving ability.");
-                activityDetails.setDetails("1. When enter the screen, the screen indicates the player to start with right or left hand.\n" +
-                        "2. Hover your hand over with index finger and middle finger line up to the two tap buttons.\n" +
+                activityDetails.setDetails("1. When enter the screen, the screen indicates the player to start with right or left hand.\n\n" +
+                        "2. Hover your hand over with index finger and middle finger line up to the two tap buttons.\n\n" +
                         "3. Alternating between the two fingers and tap on the buttons while the timer is counting down.");
                 b.putParcelable("Class",activityDetails);
                 i.putExtras(b);
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnSpacialSpan:
                 activityDetails.setTitle("Spatial Span");
                 activityDetails.setBreif("The spatial span task measures the player's short term memory by repeating a sequence.");
-                activityDetails.setDetails("1. Depending on current level of difficulty, the screen will show a sequence by lighting up 3-5 buttons.\n" +
+                activityDetails.setDetails("1. Depending on current level of difficulty, the screen will show a sequence by lighting up 3-5 buttons.\n\n" +
                         "2. Repeat the sequence by tapping the buttons in the same order.");
                 b.putParcelable("Class",activityDetails);
                 i.putExtras(b);
@@ -96,8 +96,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnFlanker:
                 activityDetails.setTitle("Flanker");
                 activityDetails.setBreif("The flanker task measures the player's ability to identify certain target with distractions.");
-                activityDetails.setDetails("1. The star in the center indicates the beginning of a question.\n" +
-                        "2. After a brief pause, a series of arrows will be shown on the screen.\n" +
+                activityDetails.setDetails("1. The star in the center indicates the beginning of a question.\n\n" +
+                        "2. After a brief pause, a series of arrows will be shown on the screen.\n\n" +
                         "3. Identify the direction of the center arrow and tap on the button that's point the same direction.");
                 b.putParcelable("Class",activityDetails);
                 i.putExtras(b);

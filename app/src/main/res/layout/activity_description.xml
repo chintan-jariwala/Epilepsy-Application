@@ -9,17 +9,19 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/chalkboard">
     <TextView
         android:text="Description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:id="@+id/tvDescTitle"
         android:textStyle="normal|bold"
-        android:textSize="18sp" />
+        android:textSize="30dp"
+        android:textColor="@color/white" />
 
         <TextView
         android:text="Demo"
@@ -30,14 +32,17 @@
         android:layout_marginTop="20dp"
         android:id="@+id/tvDemoTitle"
         android:textStyle="normal|bold"
-        android:textSize="18sp" />
+        android:textSize="30dp"
+            android:textColor="@color/white" />
 
     <VideoView
         android:layout_width="wrap_content"
         android:id="@+id/vvDemo"
         android:layout_below="@+id/tvDemoTitle"
         android:layout_height="200sp"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp" />
 
     <TextView
         android:text="Instruction"
@@ -48,25 +53,16 @@
         android:layout_marginTop="20dp"
         android:id="@+id/tvDetailsTitle"
         android:textStyle="normal|bold"
-        android:textSize="18sp" />
-
-    <TextView
-        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum is simply dummy text of the printing and typesetting industry."
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvDetailsTitle"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:layout_margin="10dp"
-        android:id="@+id/tvDetailsDesc"
-        android:textSize="18sp" />
+        android:textSize="30dp"
+        android:textColor="@color/white" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_below="@+id/tvDetailsDesc"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginBottom="80dp">
                 <Button
                     android:text="Back"
                     android:layout_width="150dp"
@@ -91,10 +87,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvActivityDesc"
-            android:textSize="18sp"
+            android:textSize="20dp"
             android:layout_below="@+id/tvDescTitle"
-            android:layout_alignLeft="@+id/tvDetailsDesc"
-            android:layout_alignStart="@+id/tvDetailsDesc" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum is simply dummy text of the printing and typesetting industry."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDetailsDesc"
+            android:textSize="20dp"
+            android:layout_below="@+id/tvDetailsTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:textColor="@color/white" />
     </RelativeLayout>
 
 </ScrollView>
