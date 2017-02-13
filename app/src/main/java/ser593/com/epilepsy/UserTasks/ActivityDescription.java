@@ -90,7 +90,7 @@ public class ActivityDescription extends AppCompatActivity implements View.OnCli
                     case "Spatial Span":
                         startActivity(new Intent(this,SpatialSpanActivity.class));
                         break;
-                    case "Flanker Test":
+                    case "Flanker":
                         startActivity(new Intent(this,FlankerActivity.class));
                         break;
 
