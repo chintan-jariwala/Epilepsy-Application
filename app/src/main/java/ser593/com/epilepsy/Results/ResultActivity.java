@@ -17,10 +17,6 @@ import org.json.JSONObject;
 import ser593.com.epilepsy.Main.MainActivity;
 import ser593.com.epilepsy.R;
 
-/**
- * Result Activity
- *  Show Result and simple stats
- *  */
 
 public class ResultActivity extends AppCompatActivity {
     String LOG_TAG = ResultActivity.class.getSimpleName();

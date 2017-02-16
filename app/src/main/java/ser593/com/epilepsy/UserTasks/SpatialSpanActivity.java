@@ -17,6 +17,10 @@ import android.widget.Toast;
 import com.yarolegovich.lovelydialog.LovelyProgressDialog;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Random;
 
 import ser593.com.epilepsy.R;
@@ -34,6 +38,9 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
     LinearLayout parent = null;
     //To implement delays after a button light
     LovelyProgressDialog progressDialog;
+
+    private JSONObject recoJsonObject = null;
+    private JSONArray answerJsonArray = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,7 +137,7 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
         Animator anim[] = null;
         set = new AnimatorSet();
         anim = new Animator[numbers.length];
-//        Snackbar.make(parent, Arrays.toString(currentPattern),Snackbar.LENGTH_LONG).show();
+//      Snackbar.make(parent, Arrays.toString(currentPattern),Snackbar.LENGTH_LONG).show();
         for (int i = 0; i < numbers.length; i++) {
             Log.d(TAG, "lightThemUp: " + i + "th execution" );
             anim[i] = AnimatorInflater.loadAnimator(this,R.animator.flip);
@@ -145,6 +152,7 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
 //    }
 
     private void initialize() {
+
         tvScore = (TextView) findViewById(R.id.tvScore);
         tvLives = (TextView) findViewById(R.id.tvLivesCount);
         tvDifficulty = (TextView) findViewById(R.id.tvDifficulty);
@@ -186,6 +194,17 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
         progressDialog = new LovelyProgressDialog(this)
                 .setTopColorRes(R.color.teal);
         //set default values
+        answerJsonArray = new JSONArray();
+        recoJsonObject = new JSONObject();
+
+        try
+        {
+            recoJsonObject.put(getString(R.string.task), getString(R.string.spatial_span));
+        }
+        catch (JSONException e)
+        {
+            Log.e(TAG, "Json parsing error: " + e.getMessage());
+        }
     }
 
     @Override
@@ -222,31 +241,21 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
 
                 if(Integer.parseInt(tvLives.getText().toString()) != 0){
                     tvLives.setText((Integer.parseInt(tvLives.getText().toString()))-1+"");
-                    new LovelyStandardDialog(this)
-                            .setTopColorRes(R.color.indigo)
-                            .setButtonsColorRes(R.color.darkDeepOrange)
-                            .setTitle("Sorry")
-                            .setMessage("You lost.")
-                            .setPositiveButton("Try Again", new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    try {
-                                        spacialSpanDriver();
-                                    } catch (InterruptedException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            })
-                            .setNegativeButton("Exit", new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    finish();
-                                }
-                            })
-                            .show();
-                }
-
-                else{
+                    progressDialog.setTitle("Wrong answer, Let's try again").show();
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Do something after 5s = 5000ms
+                            progressDialog.dismiss();
+                            try {
+                                spacialSpanDriver();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }, 2000);
+                }else{
                     new LovelyStandardDialog(this)
                             .setTopColorRes(R.color.indigo)
                             .setButtonsColorRes(R.color.darkDeepOrange)
@@ -262,7 +271,6 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
                 }
             }
         }else{
-            //Toast.makeText(this,"Please Click Start First",Toast.LENGTH_LONG).show();
             Snackbar.make(parent,"Please click the start button to begin",Snackbar.LENGTH_LONG).show();
         }
 

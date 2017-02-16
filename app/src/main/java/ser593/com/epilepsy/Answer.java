@@ -8,6 +8,7 @@ import android.os.Parcelable;
  *
  * Used to store each answer's info
  */
+
 public class Answer implements Parcelable{
     private int questionIndex;
     private int correct;

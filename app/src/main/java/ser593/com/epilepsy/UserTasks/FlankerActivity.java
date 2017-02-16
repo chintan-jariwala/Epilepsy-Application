@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.yarolegovich.lovelydialog.LovelyProgressDialog;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import org.json.JSONArray;
@@ -41,6 +42,8 @@ public class FlankerActivity extends AppCompatActivity {
     JSONObject record;
     JSONArray answers;
 
+    LovelyProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +57,8 @@ public class FlankerActivity extends AppCompatActivity {
         iv3 = (ImageView)findViewById(R.id.iv3);
         iv4 = (ImageView)findViewById(R.id.iv4);
         ivHid = (ImageView)findViewById(R.id.ivHid);
-
+        progressDialog = new LovelyProgressDialog(this)
+                .setTopColorRes(R.color.teal);
         record = new JSONObject();
         answers = new JSONArray();
         questionIndex = 0;
@@ -122,12 +126,29 @@ public class FlankerActivity extends AppCompatActivity {
         if (correctAnswer==input)
         {
             userAnswer = true;
-            Toast.makeText(getApplicationContext(), getString(R.string.answer_correct), Toast.LENGTH_SHORT).show();
+            progressDialog.setTitle("Correct answer, Let's solve one more").show();
+            //Toast.makeText(getApplicationContext(), getString(R.string.answer_correct), Toast.LENGTH_SHORT).show();
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    progressDialog.dismiss();
+                }
+            }, 2000);
         }
         else
         {
             userAnswer = false;
-            Toast.makeText(getApplicationContext(), getString(R.string.answer_incorrect), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), getString(R.string.answer_incorrect), Toast.LENGTH_SHORT).show();
+            progressDialog.setTitle("Wrong answer, Let's try again").show();
+
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    progressDialog.dismiss();
+                }
+            }, 2000);
         }
         try {
             JSONObject ans = new JSONObject();
