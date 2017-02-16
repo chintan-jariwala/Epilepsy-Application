@@ -40,6 +40,9 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
     int currentPattern[] = null;
     private static int currentNumber = 0;
     LinearLayout parent = null;
+    AnimatorSet set;
+    Animator[] anim;
+
     //To implement delays after a button light
     LovelyProgressDialog progressDialog;
 
@@ -156,8 +159,9 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
             Log.d(TAG, "lightThemUp: Numbers: - " + i);
             //Log.d(TAG, "lightThemUp: Numbers: - " + i);
         }
-        AnimatorSet set = null;
-        Animator anim[] = null;
+
+        set = null;
+        anim = null;
         set = new AnimatorSet();
         anim = new Animator[numbers.length];
 //      Snackbar.make(parent, Arrays.toString(currentPattern),Snackbar.LENGTH_LONG).show();
@@ -168,8 +172,41 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
         }
         set.playSequentially(anim);
         set.start();
+        disableAllButtons();
+        anim[anim.length - 1].addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                enableAllButtons();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
     }
 
+    private void disableAllButtons(){
+        for(Button b:btnGrid){
+            b.setEnabled(false);
+        }
+    }
+
+    private void enableAllButtons(){
+        for(Button b:btnGrid){
+            b.setEnabled(true);
+        }
+    }
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
