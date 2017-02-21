@@ -41,5 +41,5 @@
     <string name="answer_incorrect">Incorrect :(</string>
     <string name="title_activity_finger_tapping">FingerTappingActivity</string>
     <string name="title_activity_flanker">FlankerActivity</string>
-    <string name="spatial_span">Spatial Span Task</string>
+    <string name="spatial_span">Spatial Span</string>
 </resources>

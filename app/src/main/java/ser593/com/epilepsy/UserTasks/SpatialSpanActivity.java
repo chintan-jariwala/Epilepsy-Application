@@ -3,6 +3,7 @@ package ser593.com.epilepsy.UserTasks;
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.hardware.SensorManager;
 import android.os.Handler;
@@ -10,6 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.OrientationEventListener;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +29,7 @@ import org.json.JSONObject;
 import java.util.Random;
 
 import ser593.com.epilepsy.R;
+import ser593.com.epilepsy.Results.ResultActivity;
 
 public class SpatialSpanActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -42,7 +45,7 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
     LinearLayout parent = null;
     AnimatorSet set;
     Animator[] anim;
-
+    private static int pattern_id = 0;
     //To implement delays after a button light
     LovelyProgressDialog progressDialog;
 
@@ -60,24 +63,24 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
         //Initialize the default values for the activity
         initialize();
 
-        mOrientationEventListener = new OrientationEventListener(this, SensorManager.SENSOR_DELAY_NORMAL) {
-            @Override
-            public void onOrientationChanged(int orientation) {
-                if(orientation >= 240 && orientation <= 280 ){
-                    progressDialog.dismiss();
-                }else{
-                    progressDialog.setTitle("Change the Phone orientation to Lanscape").show();
-                }
-
-            }
-        };
-        if (mOrientationEventListener.canDetectOrientation() == true) {
-            Log.v(TAG, "Can detect orientation");
-            mOrientationEventListener.enable();
-        } else {
-            Log.v(TAG, "Cannot detect orientation");
-            mOrientationEventListener.disable();
-        }
+//        mOrientationEventListener = new OrientationEventListener(this, SensorManager.SENSOR_DELAY_NORMAL) {
+//            @Override
+//            public void onOrientationChanged(int orientation) {
+//                if(orientation >= 240 && orientation <= 280 ){
+//                    progressDialog.dismiss();
+//                }else{
+//                    progressDialog.setTitle("Change the Phone orientation to Lanscape").show();
+//                }
+//
+//            }
+//        };
+//        if (mOrientationEventListener.canDetectOrientation() == true) {
+//            Log.v(TAG, "Can detect orientation");
+//            mOrientationEventListener.enable();
+//        } else {
+//            Log.v(TAG, "Cannot detect orientation");
+//            mOrientationEventListener.disable();
+//        }
         //putting listener on the start button
         btnStartSS.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +95,7 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
             }
         });
     }
+
 
     @Override
     public void onBackPressed() {
@@ -167,11 +171,13 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
 //      Snackbar.make(parent, Arrays.toString(currentPattern),Snackbar.LENGTH_LONG).show();
         for (int i = 0; i < numbers.length; i++) {
             Log.d(TAG, "lightThemUp: " + i + "th execution" );
+            Log.d(TAG, "lightThemUp: " + anim[i] );
             anim[i] = AnimatorInflater.loadAnimator(this,R.animator.flip);
             anim[i].setTarget(btnGrid[numbers[i]]);
         }
         set.playSequentially(anim);
         set.start();
+        pattern_id++;
         disableAllButtons();
         anim[anim.length - 1].addListener(new Animator.AnimatorListener() {
             @Override
@@ -257,6 +263,7 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
 
         for(Button b: btnGrid){
             b.setOnClickListener(this);
+//            b.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_selector));
         }
         parent = (LinearLayout) findViewById(R.id.activity_spatial_span);
         progressDialog = new LovelyProgressDialog(this)
@@ -279,44 +286,88 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mOrientationEventListener.disable();
+        //mOrientationEventListener.disable();
     }
 
     @Override
     public void onClick(View v) {
         Log.d(TAG, "onClick: " + v.getId());
         if(currentPattern != null){
+            JSONObject ans = new JSONObject();
             if (currentNumber<currentPattern.length && v.getId() == btnGrid[currentPattern[currentNumber]].getId()){
                 Log.d(TAG, "onClick: "+ currentPattern[currentNumber] + " was clicked");
                 currentNumber++;
                 if(currentPattern.length == currentNumber){
-                    currentNumber = 0;
-                    progressDialog.setTitle("Great, Lets solve one more").show();
-                    tvDifficulty.setText(((Integer.parseInt(tvDifficulty.getText().toString()))+1)+"");
-                    tvScore.setText(((Integer.parseInt(tvScore.getText().toString()))+1)+"");
-                    final Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            // Do something after 5s = 5000ms
-                            progressDialog.dismiss();
-                            try {
-                                spacialSpanDriver();
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
+                    int score = Integer.parseInt(tvScore.getText().toString());
+                    if(score >= 4){
+                        Log.d(TAG, "onClick: activity completed");
+                        progressDialog.setTitle("Awesome, You are done").show();
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                // Do something after 5s = 5000ms
+                                progressDialog.dismiss();
+                                try{
+                                    recoJsonObject.put(getString(R.string.task_answer), answerJsonArray);
+                                }catch (JSONException e)
+                                {
+                                    Log.e(TAG, "Json parsing error: " + e.getMessage());
+                                }
+                                // pass solution to result page
+                                Intent intent = new Intent(SpatialSpanActivity.this, ResultActivity.class);
+                                intent.putExtra(getString(R.string.task_result), recoJsonObject.toString());
+                                startActivity(intent);
+                                finish();
                             }
+                        }, 2000);
+                    }else{
+                        try {
+                            ans.put("pattern_id",pattern_id);
+                            ans.put("difficulty",tvDifficulty.getText().toString());
+                            ans.put("user_answer",true);
+                            answerJsonArray.put(ans);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                    }, 2000);
+
+                        currentNumber = 0;
+                        progressDialog.setTitle("Great, Lets solve one more").show();
+                        tvDifficulty.setText(((Integer.parseInt(tvDifficulty.getText().toString()))+1)+"");
+                        tvScore.setText(((Integer.parseInt(tvScore.getText().toString()))+1)+"");
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                // Do something after 5s = 5000ms
+                                progressDialog.dismiss();
+                                try {
+                                    spacialSpanDriver();
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }, 2000);
+                    }
 
                 }
             }else{
                 currentNumber = 0;
                 if(Integer.parseInt(tvDifficulty.getText().toString()) != 0)
-                    tvDifficulty.setText(((Integer.parseInt(tvDifficulty.getText().toString()))-1)+"");
 
+                try {
+                    ans.put("pattern_id",pattern_id);
+                    ans.put("difficulty",tvDifficulty.getText().toString());
+                    ans.put("user_answer",false);
+                    answerJsonArray.put(ans);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                tvDifficulty.setText(((Integer.parseInt(tvDifficulty.getText().toString()))-1)+"");
                 if(Integer.parseInt(tvLives.getText().toString()) != 0){
                     tvLives.setText((Integer.parseInt(tvLives.getText().toString()))-1+"");
                     progressDialog.setTitle("Wrong answer, Let's try again").show();
+
                     final Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
@@ -339,6 +390,16 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
                             .setPositiveButton("Ok", new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
+                                    try{
+                                        recoJsonObject.put(getString(R.string.task_answer), answerJsonArray);
+                                    }catch (JSONException e)
+                                    {
+                                        Log.e(TAG, "Json parsing error: " + e.getMessage());
+                                    }
+                                    // pass solution to result page
+                                    Intent intent = new Intent(SpatialSpanActivity.this, ResultActivity.class);
+                                    intent.putExtra(getString(R.string.task_result), recoJsonObject.toString());
+                                    startActivity(intent);
                                     finish();
                                 }
                             })
