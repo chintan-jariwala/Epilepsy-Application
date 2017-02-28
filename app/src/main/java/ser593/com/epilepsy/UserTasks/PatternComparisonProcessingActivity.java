@@ -223,7 +223,19 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             String temp = intent.getStringExtra("notification_event");
-            Toast.makeText(getApplicationContext(), temp, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "Please be aware that responding to the notification will invalid the test result.", Toast.LENGTH_SHORT).show();
+            new LovelyStandardDialog(context)
+                .setTopColorRes(R.color.indigo)
+                .setButtonsColorRes(R.color.darkDeepOrange)
+                .setTitle("Warning")
+                .setMessage("Responding to the notification will make the test result invalid.")
+                .setNeutralButton("OK", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                })
+                .show();
         }
     }
 }
