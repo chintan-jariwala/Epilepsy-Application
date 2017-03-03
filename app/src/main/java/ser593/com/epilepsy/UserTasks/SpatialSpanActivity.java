@@ -3,11 +3,14 @@ package ser593.com.epilepsy.UserTasks;
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
+import android.content.res.Configuration;
+import android.hardware.SensorManager;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.OrientationEventListener;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -27,6 +30,7 @@ import ser593.com.epilepsy.R;
 
 public class SpatialSpanActivity extends AppCompatActivity implements View.OnClickListener{
 
+
     private static final String TAG = SpatialSpanActivity.class.getSimpleName();
     TextView tvScore = null;
     TextView tvLives = null;
@@ -36,11 +40,15 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
     int currentPattern[] = null;
     private static int currentNumber = 0;
     LinearLayout parent = null;
+    AnimatorSet set;
+    Animator[] anim;
+
     //To implement delays after a button light
     LovelyProgressDialog progressDialog;
 
     private JSONObject recoJsonObject = null;
     private JSONArray answerJsonArray = null;
+    private OrientationEventListener mOrientationEventListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +60,24 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
         //Initialize the default values for the activity
         initialize();
 
+        mOrientationEventListener = new OrientationEventListener(this, SensorManager.SENSOR_DELAY_NORMAL) {
+            @Override
+            public void onOrientationChanged(int orientation) {
+                if(orientation >= 240 && orientation <= 280 ){
+                    progressDialog.dismiss();
+                }else{
+                    progressDialog.setTitle("Change the Phone orientation to Lanscape").show();
+                }
+
+            }
+        };
+        if (mOrientationEventListener.canDetectOrientation() == true) {
+            Log.v(TAG, "Can detect orientation");
+            mOrientationEventListener.enable();
+        } else {
+            Log.v(TAG, "Cannot detect orientation");
+            mOrientationEventListener.disable();
+        }
         //putting listener on the start button
         btnStartSS.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,8 +159,9 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
             Log.d(TAG, "lightThemUp: Numbers: - " + i);
             //Log.d(TAG, "lightThemUp: Numbers: - " + i);
         }
-        AnimatorSet set = null;
-        Animator anim[] = null;
+
+        set = null;
+        anim = null;
         set = new AnimatorSet();
         anim = new Animator[numbers.length];
 //      Snackbar.make(parent, Arrays.toString(currentPattern),Snackbar.LENGTH_LONG).show();
@@ -145,11 +172,52 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
         }
         set.playSequentially(anim);
         set.start();
+        disableAllButtons();
+        anim[anim.length - 1].addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                enableAllButtons();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
     }
 
-//    private void lightTheButton(Button b) {
-//
-//    }
+    private void disableAllButtons(){
+        for(Button b:btnGrid){
+            b.setEnabled(false);
+        }
+    }
+
+    private void enableAllButtons(){
+        for(Button b:btnGrid){
+            b.setEnabled(true);
+        }
+    }
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     private void initialize() {
 
@@ -205,6 +273,13 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
         {
             Log.e(TAG, "Json parsing error: " + e.getMessage());
         }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mOrientationEventListener.disable();
     }
 
     @Override
