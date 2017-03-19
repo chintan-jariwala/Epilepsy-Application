@@ -1,6 +1,9 @@
 package ser593.com.epilepsy.UserTasks;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -30,6 +33,8 @@ import ser593.com.epilepsy.Results.ResultActivity;
 
 public class PatternComparisonProcessingActivity extends AppCompatActivity {
     String LOG_TAG = PatternComparisonProcessingActivity.class.getSimpleName();
+    private NotificationReceiver nReceiver;
+
     final List<List<Integer>> imageCollection = getImageCollection();
     ImageView ivLeft;
     ImageView ivRight;
@@ -69,6 +74,13 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
         addListenerOnYesButton();
         addListenerOnNoButton();
         showQuestion();
+
+        // create notification listener
+        nReceiver = new NotificationReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("ser593.com.epilepsy.NOTIFICATION_LISTENER");
+        registerReceiver(nReceiver,filter);
+        Log.i(LOG_TAG,"Notification Listener Created");
     }
 
     private void addListenerOnYesButton() {
@@ -204,5 +216,26 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
                 Arrays.asList(R.drawable.patterncomparison_present1, R.drawable.patterncomparison_present2)
         );
         return imageCollection;
+    }
+
+    class NotificationReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String temp = intent.getStringExtra("notification_event");
+            //Toast.makeText(getApplicationContext(), "Please be aware that responding to the notification will invalid the test result.", Toast.LENGTH_SHORT).show();
+            new LovelyStandardDialog(context)
+                .setTopColorRes(R.color.indigo)
+                .setButtonsColorRes(R.color.darkDeepOrange)
+                .setTitle("Warning")
+                .setMessage("Responding to the notification will make the test result invalid.")
+                .setNeutralButton("OK", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                })
+                .show();
+        }
     }
 }

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightGray"
+    android:background="@drawable/ocean_background"
     android:layout_gravity="center"
     tools:context="ser593.com.epilepsy.Main.MainActivity">
 
@@ -20,53 +20,58 @@
         <!--/>-->
 
     <Button
-        android:text="Promis Survey"
-        android:id="@+id/btnPromis"
-        android:layout_marginTop="35dp"
-        android:layout_centerHorizontal="true"
-        style="@style/customButton"
-        android:layout_height="wrap_content"
-        android:layout_width="200dp" />
-
-    <Button
-        android:id="@+id/btnPatternComparison"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Pattern Comparision"
-        android:layout_below="@+id/btnPromis"
-        android:layout_centerHorizontal="true"
-        style="@style/customButton"
-        android:layout_marginTop="30dp" />
-
-    <Button
         android:id="@+id/btnFingerTapping"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Finger Tapping"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/btnPatternComparison"
-        android:layout_alignRight="@+id/btnPromis"
-        android:layout_alignEnd="@+id/btnPromis"
-        style="@style/customButton"/>
-
-    <Button
-        android:text="Spatial Span"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:id="@+id/btnSpacialSpan"
-        android:layout_below="@+id/btnFingerTapping"
-        android:layout_centerHorizontal="true"
-        style="@style/customButton"/>
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="Finger\nTapping"
+        style="@style/customButton"
+        android:background="@drawable/bubble_blue"
+        android:layout_alignTop="@+id/btnPatternComparison"
+        android:layout_toRightOf="@+id/btnPatternComparison"
+        android:layout_toEndOf="@+id/btnPatternComparison" />
 
     <Button
         android:text="Flanker"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:id="@+id/btnFlanker"
-        android:layout_below="@+id/btnSpacialSpan"
-        android:layout_alignLeft="@+id/btnSpacialSpan"
-        android:layout_alignStart="@+id/btnSpacialSpan"
-        style="@style/customButton"/>
+        style="@style/customButton"
+        android:background="@drawable/bubble_blue"
+        android:layout_alignTop="@+id/btnSpacialSpan"
+        android:layout_toRightOf="@+id/btnSpacialSpan"
+        android:layout_toEndOf="@+id/btnSpacialSpan" />
+
+    <Button
+        android:text="Spatial\nSpan"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/btnSpacialSpan"
+        style="@style/customButton"
+        android:background="@drawable/bubble_blue"
+        android:layout_below="@+id/btnPatternComparison"
+        android:layout_alignLeft="@+id/btnPatternComparison"
+        android:layout_alignStart="@+id/btnPatternComparison" />
+
+    <Button
+        android:id="@+id/btnPatternComparison"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="Pattern\nComparison"
+        style="@style/customButton"
+        android:background="@drawable/bubble_blue"
+        android:layout_marginLeft="44dp"
+        android:layout_marginStart="44dp"
+        android:layout_below="@+id/btnPromis"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="PROMIS\nSurvey"
+        android:id="@+id/btnPromis"
+        style="@style/customButton"
+        android:layout_height="150dp"
+        android:layout_width="150dp"
+        android:background="@drawable/bubble_pink"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

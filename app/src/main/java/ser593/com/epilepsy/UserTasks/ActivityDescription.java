@@ -93,7 +93,6 @@ public class ActivityDescription extends AppCompatActivity implements View.OnCli
                     case "Flanker":
                         startActivity(new Intent(this,FlankerActivity.class));
                         break;
-
                 }
                 break;
             default:
