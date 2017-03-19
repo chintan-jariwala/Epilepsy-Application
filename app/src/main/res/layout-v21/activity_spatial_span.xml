@@ -6,145 +6,195 @@
     android:layout_height="match_parent"
     tools:context="ser593.com.epilepsy.UserTasks.SpatialSpanActivity"
     android:orientation="horizontal"
+    android:layout_margin="10dp"
     >
 
     <GridLayout
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:columnCount="5"
+        android:background="#000000"
         >
 
         <Button
             android:layout_column="1"
             android:id="@+id/btn1"
-            android:background="#FF1744"
-            android:layout_margin="1dp"/>
+            android:background="@drawable/button_selector"
+            android:layout_margin="1dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
         <Button
             android:layout_column="2"
             android:id="@+id/btn2"
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
-            />
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
         <Button
             android:layout_column="3"
             android:id="@+id/btn3"
-            android:background="#FF1744"
-            android:layout_margin="1dp"/>
+            android:background="@drawable/button_selector"
+            android:layout_margin="1dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
         <Button
             android:layout_column="4"
             android:id="@+id/btn4"
-            android:background="#FF1744"
-            android:layout_margin="1dp"/>
+            android:background="@drawable/button_selector"
+            android:layout_margin="1dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
         <Button
             android:layout_column="0"
             android:id="@+id/btn0"
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
-            />
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="1"
-            android:id="@+id/btn6" />
+            android:id="@+id/btn6"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="2"
-            android:id="@+id/btn7" />
+            android:id="@+id/btn7"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="3"
-            android:id="@+id/btn8" />
+            android:id="@+id/btn8"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="4"
-            android:id="@+id/btn9" />
+            android:id="@+id/btn9"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="0"
-            android:id="@+id/btn5" />
+            android:id="@+id/btn5"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="1"
-            android:id="@+id/btn11" />
+            android:id="@+id/btn11"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="2"
-            android:id="@+id/btn12" />
+            android:id="@+id/btn12"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="3"
-            android:id="@+id/btn13" />
+            android:id="@+id/btn13"
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="4"
-            android:id="@+id/btn14" />
+            android:id="@+id/btn14"
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="0"
-            android:id="@+id/btn10" />
+            android:id="@+id/btn10"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="1"
-            android:id="@+id/btn16" />
+            android:id="@+id/btn16"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="2"
-            android:id="@+id/btn17" />
+            android:id="@+id/btn17"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="3"
-            android:id="@+id/btn18" />
+            android:id="@+id/btn18"
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="4"
-            android:id="@+id/btn19" />
+            android:id="@+id/btn19"
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
 
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="1"
-            android:id="@+id/btn21" />
+            android:id="@+id/btn21"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="2"
-            android:id="@+id/btn22" />
+            android:id="@+id/btn22"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="3"
-            android:id="@+id/btn23" />
+            android:id="@+id/btn23"
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="4"
-            android:id="@+id/btn24" />
+            android:id="@+id/btn24"
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
 
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="0"
-            android:id="@+id/btn20" />
+            android:id="@+id/btn20"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
 
         <Button
-            android:background="#FF1744"
+            android:background="@drawable/button_selector"
             android:layout_margin="1dp"
             android:layout_column="0"
             android:id="@+id/btn15"
-            android:layout_row="3" />
+            android:layout_row="3"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
 
     </GridLayout>
 
