@@ -221,22 +221,7 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
             b.setEnabled(true);
         }
     }
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
 
-
-    private void disableAllButtons(){
-        for(Button b:btnGrid){
-            b.setEnabled(false);
-        }
-    }
-
-    private void enableAllButtons(){
-        for(Button b:btnGrid){
-            b.setEnabled(true);
-        }
-    }
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
