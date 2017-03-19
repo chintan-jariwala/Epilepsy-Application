@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.content.Intent;
+
 import android.content.res.Configuration;
 import android.hardware.SensorManager;
 import android.os.Handler;
@@ -12,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+
 import android.view.OrientationEventListener;
 import android.view.View;
 import android.widget.Button;
@@ -46,6 +48,7 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
     AnimatorSet set;
     Animator[] anim;
     private static int pattern_id = 0;
+
     //To implement delays after a button light
     LovelyProgressDialog progressDialog;
 
@@ -62,6 +65,7 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
 
         //Initialize the default values for the activity
         initialize();
+
 
 //        mOrientationEventListener = new OrientationEventListener(this, SensorManager.SENSOR_DELAY_NORMAL) {
 //            @Override
@@ -81,6 +85,7 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
 //            Log.v(TAG, "Cannot detect orientation");
 //            mOrientationEventListener.disable();
 //        }
+
         //putting listener on the start button
         btnStartSS.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,7 +182,9 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
         }
         set.playSequentially(anim);
         set.start();
+
         pattern_id++;
+
         disableAllButtons();
         anim[anim.length - 1].addListener(new Animator.AnimatorListener() {
             @Override
@@ -200,6 +207,7 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
 
             }
         });
+
     }
 
     private void disableAllButtons(){
@@ -216,6 +224,23 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+
+
+    private void disableAllButtons(){
+        for(Button b:btnGrid){
+            b.setEnabled(false);
+        }
+    }
+
+    private void enableAllButtons(){
+        for(Button b:btnGrid){
+            b.setEnabled(true);
+        }
+    }
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
 
         // Checks the orientation of the screen
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
@@ -287,6 +312,7 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
     protected void onDestroy() {
         super.onDestroy();
         //mOrientationEventListener.disable();
+
     }
 
     @Override
