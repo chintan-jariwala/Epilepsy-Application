@@ -16,6 +16,7 @@ function processTrial (trial) {
     console.log("logging all percent");
     console.log(allPercent);
     return Object.assign(trial, {
+        name:trial.Name,
         start: moment(trial.IRBStart).format('YYYY-MM-DD'),
         end: moment(trial.IRBEnd).format('YYYY-MM-DD'),
         recruitedPercent: allPercent.recruitedPercent,
