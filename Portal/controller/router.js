@@ -11,6 +11,7 @@ const trialPresenter = require('./handler/trial');
 const patientPresenter = require('./handler/patient');
 const patientCSV = require('./handler/patient-csv');
 const trialCSV = require('./handler/trial-csv');
+const epilepsyPresenter = require('./handler/patientepilepsy');
 const surveyPresenter = require('./handler/survey');
 const minimumNameLength = 3;
 const minimumIrbLength = 4;
@@ -55,6 +56,21 @@ module.exports = [
         },
         config: {
             auth: false
+        }
+    },
+    {
+        method: 'GET',
+        path: '/patient/tasks/{pin}',
+        handler: epilepsyPresenter,
+        config: {
+            validate: {
+                params: {
+                    pin: Joi
+                        .number()
+                        .integer()
+                        .positive()
+                }
+            }
         }
     },
     {

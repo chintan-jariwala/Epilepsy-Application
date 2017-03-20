@@ -99,6 +99,8 @@ function trialView (request, reply) {
         ])
         .then(([currentTrial, stages, patients, compliance]) => {
             const rules = [];
+            console.log("Epilepsy test log:"+JSON.stringify(currentTrial));
+
             if (!currentTrial) {
                 throw new Error('trial does not exist');
             }
@@ -133,8 +135,11 @@ function trialView (request, reply) {
             });
 
             const endDate = processRules(ruleValues, Date.now());
-
-            return reply.view('trial', {
+            console.log("This is Trial Name :"+currentTrial.Name);
+            if(currentTrial.Name == "Epilepsy")
+            {
+               
+            return reply.view('epilepsytrial', {
                 title: 'Pain Reporting Portal',
                 trial: processTrial(currentTrial),
                 stages,
@@ -151,6 +156,29 @@ function trialView (request, reply) {
                     ]
                 })
             });
+            }
+            else
+            {
+                
+             return reply.view('trial', {
+                title: 'Pain Reporting Portal',
+                trial: processTrial(currentTrial),
+                stages,
+                endDate,
+                patients: patientArray,
+                complianceCount,
+                patientCount,
+                graphData: JSON.stringify({
+                    datasets: complianceCount,
+                    labels: [
+                        'Compliant',
+                        'Semicompliant',
+                        'Noncompliant'
+                    ]
+                })
+            });    
+            }
+            
         })
         .catch((err) => {
             console.log("ERRORCUSTOM - ", err);
