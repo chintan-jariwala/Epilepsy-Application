@@ -138,7 +138,7 @@ function trialView (request, reply) {
             console.log("This is Trial Name :"+currentTrial.Name);
             if(currentTrial.Name == "Epilepsy")
             {
-               
+
             return reply.view('epilepsytrial', {
                 title: 'Pain Reporting Portal',
                 trial: processTrial(currentTrial),
@@ -159,7 +159,7 @@ function trialView (request, reply) {
             }
             else
             {
-                
+
              return reply.view('trial', {
                 title: 'Pain Reporting Portal',
                 trial: processTrial(currentTrial),
@@ -176,9 +176,9 @@ function trialView (request, reply) {
                         'Noncompliant'
                     ]
                 })
-            });    
+            });
             }
-            
+
         })
         .catch((err) => {
             console.log("ERRORCUSTOM - ", err);
