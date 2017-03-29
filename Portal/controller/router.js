@@ -13,6 +13,9 @@ const patientCSV = require('./handler/patient-csv');
 const trialCSV = require('./handler/trial-csv');
 const epilepsyPresenter = require('./handler/patientepilepsy');
 const surveyPresenter = require('./handler/survey');
+
+const patternComparisonPresenter = require('./handler/pattern-comparison-handler');
+
 const minimumNameLength = 3;
 const minimumIrbLength = 4;
 
@@ -179,6 +182,11 @@ module.exports = [
                 }
             }
         }
+    },
+    {
+        method: 'GET',
+        path: '/patient/{user*2}',
+        handler: patternComparisonPresenter
     },
     {
         method: 'DELETE',

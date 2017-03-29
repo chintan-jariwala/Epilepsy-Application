@@ -1,0 +1,64 @@
+<div class="container-fluid">
+    <br />
+    <!--breadcrumb row-->
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Trail</a></li>
+                <li><a href="#">Patient</a></li>
+                <li class="active">Pattern Comparison</li>
+            </ol>
+        </div>
+    </div>
+
+    <!--Aggregate Chart Row-->
+    <div class="row">
+        <div class="col-md-12">
+            <h3>display the aggregate chart here</h3>
+        </div>
+    </div>
+
+    <br />
+    <!-- Attempt Details Row -->
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- attempt collapsible list-->
+            <div class="col-md-6">
+                {{#each attempts}}
+                    <div class="card card-default">
+                        <div class="card-header" role="tab" id="headingOne{{@index}}">
+                            <h5 class="card-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne{{@index}}" aria-expanded="false" aria-controls="collapseOne{{@index}}">
+                                    Attempt: {{createdAt}}
+
+                                    <span class="pull-right">
+                                        Accuracy - {{accuracy}} | Avg. Time - {{averageTime}}
+                                    </span>
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapseOne{{@index}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne{{@index}}">
+                            <div class="panel-body">
+                                <div class="well well-sm">
+
+                                </div>
+
+                                TODO -- question presentation
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+
+            </div>
+
+            <!-- selected attempt graph of time taken for each question-->
+            <div class="col-md-6">
+                time graph for each question attempt-wise
+            </div>
+
+        </div>
+    </div>
+
+</div>
