@@ -11,7 +11,7 @@
  */
 function patternComparisonView(request, reply){
 
-    const userParts = request.params.user.split('/');
+    const userParts = request.params.pin.split('/');
     console.log(userParts);
 
     const patientPin = encodeURIComponent(userParts[0]);

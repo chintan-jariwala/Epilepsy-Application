@@ -26,30 +26,46 @@
 
             <!-- attempt collapsible list-->
             <div class="col-md-6">
-                {{#each attempts}}
-                    <div class="card card-default">
-                        <div class="card-header" role="tab" id="headingOne{{@index}}">
-                            <h5 class="card-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne{{@index}}" aria-expanded="false" aria-controls="collapseOne{{@index}}">
-                                    Attempt: {{createdAt}}
+                <div id="accordion" role="tablist" aria-multiselectable="true">
+                    {{#each attempts}}
 
-                                    <span class="pull-right">
-                                        Accuracy - {{accuracy}} | Avg. Time - {{averageTime}}
-                                    </span>
-                                </a>
-                            </h5>
-                        </div>
-                        <div id="collapseOne{{@index}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne{{@index}}">
-                            <div class="panel-body">
-                                <div class="well well-sm">
+                        <div class="card">
+                            <div class="card-header" role="tab" id="heading{{@index}}">
+                                <h5 class="mb-0">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{@index}}" aria-expanded="true" aria-controls="collapse{{@index}}">
+                                        Attempt: {{createdAt}}
+                                    </a>
+                                </h5>
+                            </div>
 
-                                </div>
+                            <div id="collapse{{@index}}" class="collapse hide" role="tabpanel" aria-labelledby="heading{{@index}}">
+                                {{#each questions}}
+                                    <!-- TODO - step wise interaction module for questions -->
 
-                                TODO -- question presentation
+                                    <div class="card">
+                                        <div class="card-header">
+                                            Question: {{questionOrder}} / {{isCorrect}}
+
+                                            {{#if isCorrect}}
+                                                <label class="label label-success pull-right"> Correct </label>
+                                            {{else}}
+                                                <label class="label label-danger pull-right"> InCorrect </label>
+                                            {{/if}}
+                                        </div>
+                                        <div class="card-block">
+                                            <p class="card-text">
+                                                Display the image
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    {{timeTaken}} | {{questionOrder}} <br />
+                                {{/each}}
                             </div>
                         </div>
-                    </div>
-                {{/each}}
+
+                    {{/each}}
+                </div>
 
             </div>
 
@@ -60,5 +76,4 @@
 
         </div>
     </div>
-
 </div>

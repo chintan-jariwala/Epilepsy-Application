@@ -185,7 +185,7 @@ module.exports = [
     },
     {
         method: 'GET',
-        path: '/patient/{user*2}',
+        path: '/patient/{pin*2}',
         handler: patternComparisonPresenter
     },
     {
