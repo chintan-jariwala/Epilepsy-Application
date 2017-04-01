@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ocean_background"
+    android:layout_gravity="center"
+    tools:context="ser593.com.epilepsy.Main.MainActivity">
+
+    <!--<TextView-->
+        <!--android:id="@+id/textView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:text="Welcome"-->
+        <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--/>-->
+
+    <Button
+        android:id="@+id/btnFingerTapping"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="Finger\nTapping"
+        style="@style/customButton"
+        android:background="@drawable/bubble_blue"
+        android:layout_alignTop="@+id/btnPatternComparison"
+        android:layout_toRightOf="@+id/btnPatternComparison"
+        android:layout_toEndOf="@+id/btnPatternComparison" />
+
+    <Button
+        android:text="Flanker"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/btnFlanker"
+        style="@style/customButton"
+        android:background="@drawable/bubble_blue"
+        android:layout_alignTop="@+id/btnSpacialSpan"
+        android:layout_toRightOf="@+id/btnSpacialSpan"
+        android:layout_toEndOf="@+id/btnSpacialSpan" />
+
+    <Button
+        android:text="Spatial\nSpan"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/btnSpacialSpan"
+        style="@style/customButton"
+        android:background="@drawable/bubble_blue"
+        android:layout_below="@+id/btnPatternComparison"
+        android:layout_alignLeft="@+id/btnPatternComparison"
+        android:layout_alignStart="@+id/btnPatternComparison" />
+
+    <Button
+        android:id="@+id/btnPatternComparison"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="Pattern\nComparison"
+        style="@style/customButton"
+        android:background="@drawable/bubble_blue"
+        android:layout_marginLeft="44dp"
+        android:layout_marginStart="44dp"
+        android:layout_below="@+id/btnPromis"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="PROMIS\nSurvey"
+        android:id="@+id/btnPromis"
+        style="@style/customButton"
+        android:layout_height="150dp"
+        android:layout_width="150dp"
+        android:background="@drawable/bubble_pink"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

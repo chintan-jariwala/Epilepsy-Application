@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_out.xml",
+        "source": "/home/chintan/.android/build-cache/f7078d31fde31746b69bdd4ad99b1561b2a19811/output/res/anim-v21/design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_in.xml",
+        "source": "/home/chintan/.android/build-cache/f7078d31fde31746b69bdd4ad99b1561b2a19811/output/res/anim-v21/design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/anim-v21/design_appbar_state_list_animator.xml",
+        "source": "/home/chintan/.android/build-cache/f7078d31fde31746b69bdd4ad99b1561b2a19811/output/res/anim-v21/design_appbar_state_list_animator.xml"
+    }
+]

@@ -1,0 +1,290 @@
+[
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/item_footer_confirm.xml",
+        "source": "/home/chintan/.android/build-cache/f6c2fb84d5a4f11d2b78e86750f49dd79561fd01/output/res/layout/item_footer_confirm.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/activity_result.xml",
+        "source": "/media/chintan/Primary/Epilepsy/Application/app/src/main/res/layout/activity_result.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/notification_template_lines.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/notification_template_lines.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/activity_pattern_comparison_processing.xml",
+        "source": "/media/chintan/Primary/Epilepsy/Application/app/src/main/res/layout/activity_pattern_comparison_processing.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/dialog_choice.xml",
+        "source": "/home/chintan/.android/build-cache/f6c2fb84d5a4f11d2b78e86750f49dd79561fd01/output/res/layout/dialog_choice.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_screen_simple.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/dialog_progress.xml",
+        "source": "/home/chintan/.android/build-cache/f6c2fb84d5a4f11d2b78e86750f49dd79561fd01/output/res/layout/dialog_progress.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_button_bar_material.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/notification_media_action.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/notification_media_action.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/design_menu_item_action_area.xml",
+        "source": "/home/chintan/.android/build-cache/f7078d31fde31746b69bdd4ad99b1561b2a19811/output/res/layout/design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/notification_media_cancel_action.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/notification_template_media.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/select_dialog_item_material.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/design_text_input_password_icon.xml",
+        "source": "/home/chintan/.android/build-cache/f7078d31fde31746b69bdd4ad99b1561b2a19811/output/res/layout/design_text_input_password_icon.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/notification_template_big_media_narrow.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/design_navigation_item_separator.xml",
+        "source": "/home/chintan/.android/build-cache/f7078d31fde31746b69bdd4ad99b1561b2a19811/output/res/layout/design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/design_navigation_menu_item.xml",
+        "source": "/home/chintan/.android/build-cache/f7078d31fde31746b69bdd4ad99b1561b2a19811/output/res/layout/design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/dialog_info.xml",
+        "source": "/home/chintan/.android/build-cache/f6c2fb84d5a4f11d2b78e86750f49dd79561fd01/output/res/layout/dialog_info.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/design_bottom_sheet_dialog.xml",
+        "source": "/home/chintan/.android/build-cache/f7078d31fde31746b69bdd4ad99b1561b2a19811/output/res/layout/design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/activity_flanker.xml",
+        "source": "/media/chintan/Primary/Epilepsy/Application/app/src/main/res/layout/activity_flanker.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
+        "source": "/home/chintan/.android/build-cache/f7078d31fde31746b69bdd4ad99b1561b2a19811/output/res/layout/design_layout_snackbar.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/design_navigation_item.xml",
+        "source": "/home/chintan/.android/build-cache/f7078d31fde31746b69bdd4ad99b1561b2a19811/output/res/layout/design_navigation_item.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/item_simple_text.xml",
+        "source": "/home/chintan/.android/build-cache/f6c2fb84d5a4f11d2b78e86750f49dd79561fd01/output/res/layout/item_simple_text.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/view_title_and_message.xml",
+        "source": "/home/chintan/.android/build-cache/f6c2fb84d5a4f11d2b78e86750f49dd79561fd01/output/res/layout/view_title_and_message.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/design_navigation_item_subheader.xml",
+        "source": "/home/chintan/.android/build-cache/f7078d31fde31746b69bdd4ad99b1561b2a19811/output/res/layout/design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/item_simple_text_multichoice.xml",
+        "source": "/home/chintan/.android/build-cache/f6c2fb84d5a4f11d2b78e86750f49dd79561fd01/output/res/layout/item_simple_text_multichoice.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/dialog_text_input.xml",
+        "source": "/home/chintan/.android/build-cache/f6c2fb84d5a4f11d2b78e86750f49dd79561fd01/output/res/layout/dialog_text_input.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/dialog_custom.xml",
+        "source": "/home/chintan/.android/build-cache/f6c2fb84d5a4f11d2b78e86750f49dd79561fd01/output/res/layout/dialog_custom.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/activity_promis.xml",
+        "source": "/media/chintan/Primary/Epilepsy/Application/app/src/main/res/layout/activity_promis.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_screen_content_include.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/select_dialog_multichoice_material.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/view_color_area.xml",
+        "source": "/home/chintan/.android/build-cache/f6c2fb84d5a4f11d2b78e86750f49dd79561fd01/output/res/layout/view_color_area.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/dialog_standard.xml",
+        "source": "/home/chintan/.android/build-cache/f6c2fb84d5a4f11d2b78e86750f49dd79561fd01/output/res/layout/dialog_standard.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
+        "source": "/home/chintan/.android/build-cache/f7078d31fde31746b69bdd4ad99b1561b2a19811/output/res/layout/design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/activity_finger_tapping.xml",
+        "source": "/media/chintan/Primary/Epilepsy/Application/app/src/main/res/layout/activity_finger_tapping.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/design_layout_tab_text.xml",
+        "source": "/home/chintan/.android/build-cache/f7078d31fde31746b69bdd4ad99b1561b2a19811/output/res/layout/design_layout_tab_text.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_header_item_layout.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/activity_spatial_span.xml",
+        "source": "/media/chintan/Primary/Epilepsy/Application/app/src/main/res/layout/activity_spatial_span.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
+        "source": "/home/chintan/.android/build-cache/f7078d31fde31746b69bdd4ad99b1561b2a19811/output/res/layout/design_navigation_menu.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/notification_template_big_media.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/notification_template_big_media.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/design_navigation_item_header.xml",
+        "source": "/home/chintan/.android/build-cache/f7078d31fde31746b69bdd4ad99b1561b2a19811/output/res/layout/design_navigation_item_header.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/content_finger_tapping.xml",
+        "source": "/media/chintan/Primary/Epilepsy/Application/app/src/main/res/layout/content_finger_tapping.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/actionbar.xml",
+        "source": "/media/chintan/Primary/Epilepsy/Application/app/src/main/res/layout/actionbar.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/design_layout_tab_icon.xml",
+        "source": "/home/chintan/.android/build-cache/f7078d31fde31746b69bdd4ad99b1561b2a19811/output/res/layout/design_layout_tab_icon.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
+        "source": "/media/chintan/Primary/Epilepsy/Application/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/activity_description.xml",
+        "source": "/media/chintan/Primary/Epilepsy/Application/app/src/main/res/layout/activity_description.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_search_view.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/media/chintan/Primary/Epilepsy/Application/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
+        "source": "/home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/res/layout/abc_list_menu_item_layout.xml"
+    }
+]

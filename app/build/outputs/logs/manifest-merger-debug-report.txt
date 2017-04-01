@@ -1,0 +1,156 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:2:1-61:12
+	package
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:3:5-34
+		INJECTED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml
+		INJECTED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml
+		INJECTED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml
+		INJECTED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:4:5-67
+	android:name
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:4:22-64
+application
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:6:5-59:19
+MERGED from [com.android.support:percent:24.2.1] /home/chintan/.android/build-cache/9bfeec56d2f1f067a9331c190035e1c6ebd80422/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:24.2.1] /home/chintan/.android/build-cache/f7078d31fde31746b69bdd4ad99b1561b2a19811/output/AndroidManifest.xml:22:5-20
+MERGED from [com.yarolegovich:lovely-dialog:1.0.4] /home/chintan/.android/build-cache/f6c2fb84d5a4f11d2b78e86750f49dd79561fd01/output/AndroidManifest.xml:11:5-52
+MERGED from [com.android.support:appcompat-v7:24.2.1] /home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:24.2.1] /home/chintan/.android/build-cache/9a43273df013b1e0e4ac62d9200085a782d0a1dd/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:24.2.1] /home/chintan/.android/build-cache/f9bef171d9d027c8a1cdf24e3d2d213608d6769b/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:24.2.1] /home/chintan/.android/build-cache/f4110c103abd8d847235a7bb0d498e4faa22f0bd/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:24.2.1] /home/chintan/.android/build-cache/ff5aa5a921ef3b9d3f304312775b53614083577b/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:24.2.1] /home/chintan/.android/build-cache/041f6d0aeb28176d3f26b474a6ea072933f55695/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:24.2.1] /home/chintan/.android/build-cache/8a05f3fe4e88a896a02f5a714b64a5f9b8e6326f/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:24.2.1] /home/chintan/.android/build-cache/f0978e74d34ebcbef851711023b7aca43a94d233/output/AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-compat:24.2.1] /home/chintan/.android/build-cache/946210308c9e4439772c8e483c14d302eb9b8dd6/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.volley:volley:1.0.0] /home/chintan/.android/build-cache/66186592514d046d8286882c529b7a6b34d43caa/output/AndroidManifest.xml:9:5-20
+	android:label
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:9:9-41
+	android:supportsRtl
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:10:9-35
+	android:allowBackup
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:7:9-35
+	android:icon
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:8:9-43
+	android:theme
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:11:9-40
+activity#ser593.com.epilepsy.SplashActivity
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:12:9-20:20
+	android:theme
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:14:13-47
+	android:name
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:13:13-43
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:15:13-19:29
+action#android.intent.action.MAIN
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:16:17-69
+	android:name
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:16:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:18:17-77
+	android:name
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:18:27-74
+activity#ser593.com.epilepsy.Main.MainActivity
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:21:9-27:20
+	android:name
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:21:19-52
+intent-filter#android.intent.action.MAIN+android.intent.category.DEFAULT
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:22:13-26:29
+category#android.intent.category.DEFAULT
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:25:17-76
+	android:name
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:25:27-73
+activity#ser593.com.epilepsy.UserTasks.PatternComparisonProcessingActivity
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:28:9-30:53
+	android:screenOrientation
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:30:13-50
+	android:name
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:29:13-74
+activity#ser593.com.epilepsy.Results.ResultActivity
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:31:9-33:53
+	android:screenOrientation
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:33:13-50
+	android:name
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:32:13-51
+activity#ser593.com.epilepsy.UserTasks.FingerTappingActivity
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:34:9-38:47
+	android:screenOrientation
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:37:13-50
+	android:label
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:36:13-66
+	android:theme
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:38:13-44
+	android:name
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:35:13-60
+activity#ser593.com.epilepsy.painReport.PromisActivity
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:39:9-41:47
+	android:theme
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:41:13-44
+	android:name
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:40:13-54
+activity#ser593.com.epilepsy.UserTasks.FlankerActivity
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:42:9-46:47
+	android:screenOrientation
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:45:13-50
+	android:label
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:44:13-59
+	android:theme
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:46:13-44
+	android:name
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:43:13-54
+activity#ser593.com.epilepsy.UserTasks.SpatialSpanActivity
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:47:9-49:53
+	android:screenOrientation
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:49:13-50
+	android:name
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:48:13-58
+activity#ser593.com.epilepsy.UserTasks.ActivityDescription
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:50:9-76
+	android:name
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:50:19-64
+service#ser593.com.epilepsy.helper.NLService
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:52:9-58:19
+	android:label
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:53:13-45
+	android:permission
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:54:13-87
+	android:name
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:52:18-50
+intent-filter#android.service.notification.NotificationListenerService
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:55:13-57:29
+action#android.service.notification.NotificationListenerService
+ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:56:17-99
+	android:name
+		ADDED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml:56:25-96
+uses-sdk
+INJECTED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:percent:24.2.1] /home/chintan/.android/build-cache/9bfeec56d2f1f067a9331c190035e1c6ebd80422/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:design:24.2.1] /home/chintan/.android/build-cache/f7078d31fde31746b69bdd4ad99b1561b2a19811/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:24.2.1] /home/chintan/.android/build-cache/a42f66e9bef70321b820d7e3387071fc54b77508/output/AndroidManifest.xml:20:5-43
+MERGED from [com.yarolegovich:lovely-dialog:1.0.4] /home/chintan/.android/build-cache/f6c2fb84d5a4f11d2b78e86750f49dd79561fd01/output/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:24.2.1] /home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:24.2.1] /home/chintan/.android/build-cache/9a43273df013b1e0e4ac62d9200085a782d0a1dd/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:24.2.1] /home/chintan/.android/build-cache/f9bef171d9d027c8a1cdf24e3d2d213608d6769b/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:24.2.1] /home/chintan/.android/build-cache/f4110c103abd8d847235a7bb0d498e4faa22f0bd/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:24.2.1] /home/chintan/.android/build-cache/ff5aa5a921ef3b9d3f304312775b53614083577b/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:24.2.1] /home/chintan/.android/build-cache/041f6d0aeb28176d3f26b474a6ea072933f55695/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:24.2.1] /home/chintan/.android/build-cache/8a05f3fe4e88a896a02f5a714b64a5f9b8e6326f/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:24.2.1] /home/chintan/.android/build-cache/f0978e74d34ebcbef851711023b7aca43a94d233/output/AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-compat:24.2.1] /home/chintan/.android/build-cache/946210308c9e4439772c8e483c14d302eb9b8dd6/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.volley:volley:1.0.0] /home/chintan/.android/build-cache/66186592514d046d8286882c529b7a6b34d43caa/output/AndroidManifest.xml:7:5-43
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:24.2.1] /home/chintan/.android/build-cache/0267d4820122de2187e76f1e8c6c9d5572104de5/output/AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml
+		INJECTED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml
+		INJECTED from /media/chintan/Primary/Epilepsy/Application/app/src/main/AndroidManifest.xml
