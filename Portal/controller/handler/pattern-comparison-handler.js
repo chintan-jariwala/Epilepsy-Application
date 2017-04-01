@@ -39,26 +39,7 @@ function patternComparisonView(request, reply){
                         questionOrder: 2,
                         isCorrect: 1,
                         question: ''
-                    },
-                    {
-                        timeTaken: 2909,
-                        questionOrder: 3,
-                        isCorrect: 0,
-                        question: ''
-                    },
-                    {
-                        timeTaken: 2018,
-                        questionOrder: 4,
-                        isCorrect: 0,
-                        question: ''
-                    },
-                    {
-                        timeTaken: 1200,
-                        questionOrder: 5,
-                        isCorrect: 1,
-                        question: ''
                     }
-
                 ]
             },
             {

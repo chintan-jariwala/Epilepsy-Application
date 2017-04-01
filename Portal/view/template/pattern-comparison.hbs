@@ -15,7 +15,12 @@
     <!--Aggregate Chart Row-->
     <div class="row">
         <div class="col-md-12">
-            <h3>display the aggregate chart here</h3>
+            <h3>Aggregate Chart</h3>
+
+            <div>
+                <canvas id="aggregatePatternComparisonChart"></canvas>
+            </div>
+
         </div>
     </div>
 
@@ -27,26 +32,26 @@
             <!-- attempt collapsible list-->
             <div class="col-md-6">
                 <div id="accordion" role="tablist" aria-multiselectable="true">
-                    {{#each attempts}}
+                    {{#each attempts as |attemptValue attemptKey|}}
 
-                        <div class="card">
-                            <div class="card-header" role="tab" id="heading{{@index}}">
+                        <div class="card card-default">
+                            <div class="card-header" role="tab" id="heading{{attemptKey}}">
                                 <h5 class="mb-0">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{@index}}" aria-expanded="true" aria-controls="collapse{{@index}}">
-                                        Attempt: {{createdAt}}
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{attemptKey}}" aria-expanded="true" aria-controls="collapse{{attemptKey}}">
+                                        Attempt: {{attemptValue.createdAt}}
                                     </a>
                                 </h5>
                             </div>
+                            <div id="collapse{{attemptKey}}" class="collapse hide" role="tabpanel" aria-labelledby="heading{{attemptKey}}">
+                                TODO
 
-                            <div id="collapse{{@index}}" class="collapse hide" role="tabpanel" aria-labelledby="heading{{@index}}">
-                                {{#each questions}}
-                                    <!-- TODO - step wise interaction module for questions -->
+                                {{#each attemptValue.questions as |questionValue questionKey|}}
 
-                                    <div class="card">
+                                    <div class="card" id="questionBlock{{attemptKey}}{{questionKey}}">
                                         <div class="card-header">
-                                            Question: {{questionOrder}} / {{isCorrect}}
+                                            Question: {{questionValue.questionOrder}}
 
-                                            {{#if isCorrect}}
+                                            {{#if questionValue.isCorrect}}
                                                 <label class="label label-success pull-right"> Correct </label>
                                             {{else}}
                                                 <label class="label label-danger pull-right"> InCorrect </label>
@@ -54,16 +59,17 @@
                                         </div>
                                         <div class="card-block">
                                             <p class="card-text">
-                                                Display the image
+                                                Display the image <br />
+                                                {{questionValue.timeTaken}} | {{questionValue.questionOrder}} <br />
                                             </p>
                                         </div>
                                     </div>
 
-                                    {{timeTaken}} | {{questionOrder}} <br />
                                 {{/each}}
+
+
                             </div>
                         </div>
-
                     {{/each}}
                 </div>
 
