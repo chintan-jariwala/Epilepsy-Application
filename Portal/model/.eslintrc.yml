@@ -1,3 +1,0 @@
-rules:
-    global-require: warn
-    max-statements: warn
