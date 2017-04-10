@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-24.2.1_fa1722f4b2d57663b0058cf40b60da03d49f9bba/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_9f2c374d8b4552292b5a688bfc133dc47ea5c9d2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_9fd598e9666374f95d66693b9cfcb67d6430b484/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-24.2.1_2a8bb5d4928350524ff57e90481fbd6895364597/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_184f0f9501fb6846020ebff21085a88e988b8984/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/exploded-aar/com.yarolegovich/lovely-dialog/1.0.4/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="736afb22391a31d5fb14d282179c06c5649c46fe">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.yarolegovich-lovely-dialog-1.0.4_74794a714d7bf793044d030c049d6e5c189a81db/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/exploded-aar/com.android.volley/volley/1.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.volley-volley-1.0.0_d596abe6118601c4fe55745047b561ec7b060398/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.2.1_8a5120b419ea74acdd2a55adb21b6b835401fd46/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.2.1_3360b4a95df95d3f3c0e65b541bd60c2b8b96687/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.2.1_e5b28f35a9431550624657a9f350027eadd111a8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_afd4cd488c10ba4bff5514dce626404b1f0b11a3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.2.1_0f45c4070ba06a9f98d070e13342c5c353c6ffc1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.1_9c786b95d51e6c281efc9052a15f14b7e281b13e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-24.2.1_312f7e51ff788e16192ad14939c8aa879409cbac/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_97487fc01e6b15616cae51be27d886816cf7017b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="c759f32efbc911e5c6772d3f9d0c50d1c5062440">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_235aaa0ff40d3f539d891aa79905e1487c4a1ab8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="5dc60b4f3adf968e2784d8fa58087d0fbaf445f1">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_51f544d56674fcde125f653b3310be9195681f58/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_b4909c6d611d2ccc5484b43a5df3b8085243104e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_2df7ec9f158d728c86593eefcd59c11a320b2f22/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_94c133ebc43dd91d337b5d2bf0bdd21f0480b269/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/exploded-aar/com.android.support/percent/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="c394e9a7e1552a4499c7d7d25e7eccd6a533b6df">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-percent-24.2.1_ed57232f1c49801f8ccde61313f6bf2fecd6afa6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-24.2.1_622b512ab13e4b11a07349b679511e7c14cc2b0d/classes.dex" />
+    </item>
+
+</items>
