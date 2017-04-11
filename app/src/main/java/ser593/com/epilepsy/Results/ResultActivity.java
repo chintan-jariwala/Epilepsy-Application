@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.util.DisplayMetrics;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,11 +31,21 @@ public class ResultActivity extends AppCompatActivity {
 
         Intent intent =this.getIntent();
 
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+        int width = displayMetrics.widthPixels;
+
         //String jsonStr = "{\"task\":\"Finger Tapping\",\"timer_length\":10,\"answer\":[{\"side\":\"left\",\"tap_count\":15},{\"side\":\"right\",\"tap_count\":21}]}";
         //String jsonStr = "{\"task\":\"Pattern Comparison Processing\",\"answer\":[{\"question_index\":1,\"correct\":true,\"elapsed_time\":15},{\"question_index\":2,\"correct\":false,\"elapsed_time\":25},{\"question_index\":3,\"correct\":true,\"elapsed_time\":35},{\"question_index\":4,\"correct\":true,\"elapsed_time\":45},{\"question_index\":5,\"correct\":false,\"elapsed_time\":55}]}";
         String jsonStr = intent.getStringExtra(getString(R.string.task_result));
         Log.d("ResultJSON", jsonStr);
         try {
+            //create json obj for api
+            JSONObject jsonForApi = new JSONObject();
+            jsonForApi.put("activityInstanceID", "3001"); //TODO: need to find out what this is
+            jsonForApi.put("timeStamp", System.currentTimeMillis());
+
             JSONObject jsonObj = new JSONObject(jsonStr);
             String task = jsonObj.getString(getString(R.string.task));
 
@@ -43,6 +54,9 @@ public class ResultActivity extends AppCompatActivity {
 
             if (task.equals(getString(R.string.task_finger_tapping))) //change his around after fixing pcpa
             {
+                JSONArray answers = jsonObj.getJSONArray(getString(R.string.task_answer));
+                JSONArray answersArr = new JSONArray();
+
                 TextView txtAccuracyLabel = (TextView)findViewById(R.id.txtAccuracyLabel);
                 txtAccuracyLabel.setText("");
                 TextView txtAvgLabel = (TextView)findViewById(R.id.txtAvgLabel);
@@ -59,9 +73,15 @@ public class ResultActivity extends AppCompatActivity {
                 tl.addView(trHeader);
 
                 // Loop through the list and add row to table
-                JSONArray answers = jsonObj.getJSONArray(getString(R.string.task_answer));
+
                 for(int i = 0; i < answers.length(); i++)
                 {
+                    //add to answersArr
+                    JSONObject ans = new JSONObject();
+                    ans.put("operatingHand", answers.getJSONObject(i).getString(getString(R.string.finger_tapping_json_side)));
+                    ans.put("tapNumber", answers.getJSONObject(i).getString(getString(R.string.finger_tapping_json_tap_count)));
+                    answersArr.put(ans);
+
                     //Log.v("looping", answers.getJSONObject(i).getString(getString(R.string.finger_tapping_json_side)) + ", " + answers.getJSONObject(i).getString(getString(R.string.finger_tapping_json_tap_count)));
                     TableRow tr = new TableRow(this);
 
@@ -75,6 +95,19 @@ public class ResultActivity extends AppCompatActivity {
 
                     tl.addView(tr);
                 }
+
+                //continue building json obj for api
+                JSONObject activityResults = new JSONObject();
+                activityResults.put("activityBlockId", "FINGERTAPPING");
+                activityResults.put("timeToTap", jsonObj.getString("timer_length"));
+                activityResults.put("screenWidth", width);
+                activityResults.put("screenHeight", height);
+                activityResults.put("timeTakenToComplete", jsonObj.get("elapseTime"));
+                activityResults.put("answers", answersArr);
+                jsonForApi.put("activityResults", activityResults);
+
+                Log.e(LOG_TAG, jsonForApi.toString());
+                //TODO: push to API
             }
             else if (task.equals(getString(R.string.task_pattern_comparison_processing)) || task.equals(getString(R.string.task_flanker))) //pattern comparison and flanker has similar record format
             {
@@ -177,6 +210,8 @@ public class ResultActivity extends AppCompatActivity {
 //                TextView txtAvgTIme = (TextView)findViewById(R.id.txtAvgTime);
 //                txtAvgTIme.setText(String.format("%1$dms", totalTime/numAnswer));
             }
+
+            //TODO: make api calls
         }
         catch (JSONException e)
         {

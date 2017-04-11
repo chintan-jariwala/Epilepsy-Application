@@ -29,6 +29,8 @@ public class FingerTappingActivity extends AppCompatActivity {
     boolean start = false;
     int count;
     long time = 5;
+    long startTime;
+    long endTime;
     TextView tvSide;
     TextView tvHint;
     TextView tvCount;
@@ -68,6 +70,7 @@ public class FingerTappingActivity extends AppCompatActivity {
         tvTimer.setText(Long.toString(time));
         count = 0;
         start = false;
+        startTime = System.currentTimeMillis();
     }
 
     private void addListenerOnLeftButton() {
@@ -166,6 +169,8 @@ public class FingerTappingActivity extends AppCompatActivity {
 
                 //if answer has 2 records: go to result page
                 if (answers.length() == 2) {
+                    endTime = System.currentTimeMillis();
+                    record.put("elapseTime", endTime-startTime);
                     // pass solution to result page
                     record.put(getString(R.string.task_answer), answers);
                     Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
