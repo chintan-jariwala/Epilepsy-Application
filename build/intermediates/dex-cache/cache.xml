@@ -138,20 +138,11 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.1"
-        sha1="c759f32efbc911e5c6772d3f9d0c50d1c5062440">
-        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_235aaa0ff40d3f539d891aa79905e1487c4a1ab8/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.1"
-        sha1="5dc60b4f3adf968e2784d8fa58087d0fbaf445f1">
+        sha1="4b72581cecfe1f0265a05dda8cf63da166405990">
         <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_51f544d56674fcde125f653b3310be9195681f58/classes.dex" />
     </item>
     <item
@@ -162,6 +153,15 @@
         revision="24.0.1"
         sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
         <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_b4909c6d611d2ccc5484b43a5df3b8085243104e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="e5a097881eee108774634327e1556482985bbe81">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_235aaa0ff40d3f539d891aa79905e1487c4a1ab8/classes.dex" />
     </item>
     <item
         is-multidex="true"
