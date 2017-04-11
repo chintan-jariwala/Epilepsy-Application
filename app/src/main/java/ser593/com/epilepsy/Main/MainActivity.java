@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnPromis = null;
     Button btnSpacialSpan = null;
     Button btnFlanker = null;
+    Button btnSettings = null;
     TextView tvActionBarTitle = null;
     ActivityDetails activityDetails = null;
     @Override
@@ -51,6 +52,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnSpacialSpan.setOnClickListener(this);
         btnFlanker = (Button) findViewById(R.id.btnFlanker);
         btnFlanker.setOnClickListener(this);
+        btnSettings = (Button) findViewById(R.id.btnSettings);
+        btnSettings.setOnClickListener(this);
 
         activityDetails = new ActivityDetails();
     }
@@ -102,6 +105,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 b.putParcelable("Class",activityDetails);
                 i.putExtras(b);
                 startActivity(i);
+                break;
+            case R.id.btnSettings:
+                Intent in = new Intent(this, SettingsActivity.class);
+                startActivity(in);
+                break;
         }
     }
 }
