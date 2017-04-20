@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import ser593.com.epilepsy.Main.MainActivity;
 import ser593.com.epilepsy.R;
+import ser593.com.epilepsy.apiCall.ServiceCall;
 
 
 public class ResultActivity extends AppCompatActivity {
@@ -43,7 +44,7 @@ public class ResultActivity extends AppCompatActivity {
         try {
             //create json obj for api
             JSONObject jsonForApi = new JSONObject();
-            jsonForApi.put("activityInstanceID", "3001"); //TODO: need to find out what this is
+            jsonForApi.put("activityInstanceID", "3004"); //TODO: need to find out what this is
             jsonForApi.put("timeStamp", System.currentTimeMillis());
 
             JSONObject jsonObj = new JSONObject(jsonStr);
@@ -79,7 +80,7 @@ public class ResultActivity extends AppCompatActivity {
                     //add to answersArr
                     JSONObject ans = new JSONObject();
                     ans.put("operatingHand", answers.getJSONObject(i).getString(getString(R.string.finger_tapping_json_side)));
-                    ans.put("tapNumber", answers.getJSONObject(i).getString(getString(R.string.finger_tapping_json_tap_count)));
+                    ans.put("tapNumber", Integer.parseInt(answers.getJSONObject(i).getString(getString(R.string.finger_tapping_json_tap_count))));
                     answersArr.put(ans);
 
                     //Log.v("looping", answers.getJSONObject(i).getString(getString(R.string.finger_tapping_json_side)) + ", " + answers.getJSONObject(i).getString(getString(R.string.finger_tapping_json_tap_count)));
@@ -97,17 +98,21 @@ public class ResultActivity extends AppCompatActivity {
                 }
 
                 //continue building json obj for api
+                JSONArray activityResultsArray = new JSONArray();
                 JSONObject activityResults = new JSONObject();
                 activityResults.put("activityBlockId", "FINGERTAPPING");
-                activityResults.put("timeToTap", jsonObj.getString("timer_length"));
+                activityResults.put("timeToTap", Integer.parseInt(jsonObj.getString("timer_length")));
                 activityResults.put("screenWidth", width);
                 activityResults.put("screenHeight", height);
-                activityResults.put("timeTakenToComplete", jsonObj.get("elapseTime"));
+                activityResults.put("timeTakenToComplete", Integer.parseInt(jsonObj.get("elapseTime").toString()));
                 activityResults.put("answers", answersArr);
-                jsonForApi.put("activityResults", activityResults);
+                activityResultsArray.put(activityResults);
+                jsonForApi.put("activityResults", activityResultsArray);
 
-                Log.e(LOG_TAG, jsonForApi.toString());
+                Log.d(LOG_TAG, jsonForApi.toString());
                 //TODO: push to API
+                ServiceCall serviceCall = new ServiceCall(getApplicationContext());
+                serviceCall.submitActivityInstance(jsonForApi);
             }
             else if (task.equals(getString(R.string.task_pattern_comparison_processing)) || task.equals(getString(R.string.task_flanker))) //pattern comparison and flanker has similar record format
             {

@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="lovely-dialog-1.0.4">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.yarolegovich/lovely-dialog/1.0.4/res" />
-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.yarolegovich/lovely-dialog/1.0.4/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/f6c2fb84d5a4f11d2b78e86750f49dd79561fd01/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/f6c2fb84d5a4f11d2b78e86750f49dd79561fd01/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

@@ -1,7 +1,10 @@
 package ser593.com.epilepsy.app;
 
 import android.app.Application;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -22,11 +25,14 @@ public class AppController extends Application {
     private ImageLoader mImageLoader;
 
     private static AppController mInstance;
+    private SharedPreferences mMyPreferences;
 
     @Override
     public void onCreate() {
         super.onCreate();
         mInstance = this;
+        mMyPreferences = PreferenceManager.getDefaultSharedPreferences(mInstance);
+
     }
 
     public static synchronized AppController getInstance() {
@@ -64,6 +70,23 @@ public class AppController extends Application {
     public void cancelPendingRequests(Object tag) {
         if (mRequestQueue != null) {
             mRequestQueue.cancelAll(tag);
+        }
+    }
+
+    public void writePreference(String key, String value){
+        Log.d(TAG, "writePreference: Saving Data to Shared Preferences");
+        SharedPreferences.Editor e = mMyPreferences.edit();
+        e.putString(key, value);
+        e.commit();
+        Log.d(TAG, "writePreference: Data saved");
+
+    }
+
+    public String readPreference(String key){
+        if(mMyPreferences.getString(key,null) != null){
+            return mMyPreferences.getString(key,null);
+        }else{
+            return null;
         }
     }
 
