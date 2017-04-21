@@ -1,6 +1,8 @@
 package ser593.com.epilepsy.Main;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.SyncStateContract;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar);
+        getSupportActionBar().hide();
 
         tvActionBarTitle = (TextView) findViewById(R.id.action_bar_title);
         tvActionBarTitle.setText("WELCOME");
@@ -56,6 +59,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnSettings.setOnClickListener(this);
 
         activityDetails = new ActivityDetails();
+
+        String colorHexCode = "#85248F"; //purple
+        TextView tvTitle = (TextView) findViewById(R.id.tvTitle);
+        TextView tvFlanker = (TextView) findViewById(R.id.tvFlanker);
+        TextView tvPattern = (TextView) findViewById(R.id.tvPattern);
+        TextView tvTapping = (TextView) findViewById(R.id.tvTapping);
+        TextView tvSpatial = (TextView) findViewById(R.id.tvSpatial);
+        TextView tvPromis = (TextView) findViewById(R.id.tvPromis);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/SourceSansPro-Regular.otf");
+        tvTitle.setTypeface(custom_font);
+        tvTitle.setTextColor(Color.parseColor(colorHexCode));
+        tvFlanker.setTypeface(custom_font);
+        tvFlanker.setTextColor(Color.parseColor(colorHexCode));
+        tvPattern.setTypeface(custom_font);
+        tvPattern.setTextColor(Color.parseColor(colorHexCode));
+        tvTapping.setTypeface(custom_font);
+        tvTapping.setTextColor(Color.parseColor(colorHexCode));
+        tvSpatial.setTypeface(custom_font);
+        tvSpatial.setTextColor(Color.parseColor(colorHexCode));
+        tvPromis.setTypeface(custom_font);
+        tvPromis.setTextColor(Color.parseColor(colorHexCode));
     }
 
     @Override
