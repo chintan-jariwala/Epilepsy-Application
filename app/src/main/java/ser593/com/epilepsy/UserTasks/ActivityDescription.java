@@ -39,7 +39,7 @@ public class ActivityDescription extends AppCompatActivity implements View.OnCli
         MediaController mediaController = new MediaController(this);
         mediaController.setMediaPlayer(videoView);
         videoView.setVideoURI(Uri.parse(path));
-        videoView.setMediaController(mediaController);
+        videoView.setMediaController(mediaController);getSupportActionBar().hide();
         videoView.requestFocus();
         videoView.start();
         mediaController.show();
