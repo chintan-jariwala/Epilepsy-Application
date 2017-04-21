@@ -1,6 +1,7 @@
 package ser593.com.epilepsy.UserTasks;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +19,7 @@ import ser593.com.epilepsy.pojo.ActivityDetails;
 
 public class ActivityDescription extends AppCompatActivity implements View.OnClickListener{
 
-    TextView tvDescTitle, tvActivityDesc, tvDemoTitle, tvDetailsTitle, tvDetailsDesc = null;
+    TextView tvDescTitle, tvActivityTitle, tvActivityDesc, tvDemoTitle, tvDetailsTitle, tvDetailsDesc = null;
     Button btnBack, btnStart = null;
     ActivityDetails activityDetails = null;
     TextView tvActionBarTitle = null;
@@ -29,6 +30,7 @@ public class ActivityDescription extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_description);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar);
+        getSupportActionBar().hide();
         initialize();
         populateInformation();
 
@@ -46,6 +48,7 @@ public class ActivityDescription extends AppCompatActivity implements View.OnCli
 
     private void populateInformation() {
         activityDetails = getIntent().getParcelableExtra("Class");
+        tvActivityTitle.setText(activityDetails.getTitle());
         tvActivityDesc.setText(activityDetails.getBreif());
         tvDetailsDesc.setText(activityDetails.getDetails());
         tvActionBarTitle.setText(activityDetails.getTitle());
@@ -53,6 +56,7 @@ public class ActivityDescription extends AppCompatActivity implements View.OnCli
 
     private void initialize() {
         tvActionBarTitle = (TextView) findViewById(R.id.action_bar_title);
+        tvActivityTitle = (TextView)findViewById(R.id.tvActivityTitle);
         tvDescTitle = (TextView)findViewById(R.id.tvDescTitle);
         tvActivityDesc = (TextView) findViewById(R.id.tvActivityDesc);
         tvDemoTitle = (TextView) findViewById(R.id.tvDemoTitle);
@@ -61,7 +65,8 @@ public class ActivityDescription extends AppCompatActivity implements View.OnCli
         btnBack = (Button) findViewById(R.id.btnBack);
         btnStart = (Button) findViewById(R.id.btnStart);
 
-        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/crayon_crumble.ttf");
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/SourceSansPro-Regular.otf");
+        tvActivityTitle.setTypeface(custom_font);
         tvDescTitle.setTypeface(custom_font);
         tvActivityDesc.setTypeface(custom_font);
         tvDemoTitle.setTypeface(custom_font);
