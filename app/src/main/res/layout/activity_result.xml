@@ -9,70 +9,86 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ser593.com.epilepsy.UserTasks.PatternComparisonProcessingActivity">
-    <TableLayout
-        android:id="@+id/tlResult"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_gravity="center_horizontal"
-        app:layout_widthPercent="70%">
-    </TableLayout>
+    tools:context="ser593.com.epilepsy.UserTasks.PatternComparisonProcessingActivity"
+    android:background="@drawable/background">
+
     <LinearLayout
-        android:id="@+id/llStats"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
-        app:layout_widthPercent="30%"
-        android:layout_toRightOf="@id/tlResult"
-        android:layout_toEndOf="@id/tlResult">
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#4085248F"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp">
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Accuracy:"
-            android:id="@+id/txtAccuracyLabel"
-            android:textAlignment="center"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtAccuracy"
+        <TableLayout
+            android:id="@+id/tlResult"
+            android:layout_width="387dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:textSize="20sp" />
+            app:layout_widthPercent="70%">
+        </TableLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtAccuracyPercentage"
-            android:layout_gravity="center_horizontal"
-            android:textSize="20sp" />
-
-        <TextView
+        <LinearLayout
+            android:id="@+id/llStats"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Avg. Time:"
-            android:id="@+id/txtAvgLabel"
-            android:textAlignment="center"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtAvgTime"
+            android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:textSize="20sp" />
+            app:layout_widthPercent="30%"
+            android:layout_toRightOf="@id/tlResult"
+            android:layout_toEndOf="@id/tlResult">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Return Home"
-            android:id="@+id/btnReturn"
-            android:layout_gravity="center_horizontal" />
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Accuracy:"
+                android:id="@+id/txtAccuracyLabel"
+                android:textAlignment="center"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtAccuracy"
+                android:layout_gravity="center_horizontal"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtAccuracyPercentage"
+                android:layout_gravity="center_horizontal"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Avg. Time:"
+                android:id="@+id/txtAvgLabel"
+                android:textAlignment="center"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtAvgTime"
+                android:layout_gravity="center_horizontal"
+                android:textSize="20sp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Return Home"
+                android:id="@+id/btnReturn"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+
     </LinearLayout>
+
 </android.support.percent.PercentRelativeLayout>
 
 
