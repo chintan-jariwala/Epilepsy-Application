@@ -2,175 +2,184 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="/home/chintan/.android/build-cache/5a1c0af67ba7cdac622d56c37b66e693ec08cff1/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_6265b4a8db9da75a2f7f7926eca6b01559bfcaf3/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/chintan/.android/build-cache/da3201a46d8cadf5b478085d688f4ce14cbb5f0d/output/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_b1a88ec12a4b21e8b4e5198119d14ae7061a9f47/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/chintan/.android/build-cache/71506e79328f9978efd39a2f5fcd28a7ad0da60c/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
-        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e60050ab8dcad0b8825b6155fde54288e649dcc5/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/chintan/.android/build-cache/569fd9c2b5f347eb01d405510c9bcb041eef76d8/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
-        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_22379280044192cc1b409240db717e39b8d2dd6f/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/chintan/.android/build-cache/67ac62a2a63c4d833a676895ef6b7c96b694f8e7/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_8dca0de34f817cf50bb9c0c829d354e60087eea1/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/chintan/.android/build-cache/4c17334b7a537568d27ec14ea9c619e38113249d/output/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_da6be779047c5526d8bcff7062d7123a6ce16ed4/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/chintan/.android/build-cache/09de603245035c4b8eec1b38fc82113ad046b69f/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5a35f20d9c0bd8a2416de4add498a7d17fc62930/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/chintan/.android/build-cache/5a1c0af67ba7cdac622d56c37b66e693ec08cff1/output/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_95f67d4a9fabeb46ac0a26ab148dab9be1c840f8/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/chintan/.android/build-cache/26f39fb2843157cb11d273baa28553d40abe7b89/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9bbb56add2a63fe6fa8453d240879865de9a6c9e/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/chintan/.android/build-cache/6d269c8761d39cb57217c573868d17de20edb3c0/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5e3a53822f82a5158a2b8afe162e6388306ff5b0/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/chintan/.android/build-cache/6d269c8761d39cb57217c573868d17de20edb3c0/output/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_b701436ec27ceb7058bcfadeb44450f928a3e38b/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/chintan/.android/build-cache/4c17334b7a537568d27ec14ea9c619e38113249d/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_32754b5a8e311682aada7c711eace3286120c70c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/chintan/.android/build-cache/79885c092659eb7dd7687f2ffb7c1fb6b22d4d06/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="c394e9a7e1552a4499c7d7d25e7eccd6a533b6df">
-        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e56ac5370cb4582b88af3e539069325948a1dbe4/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/chintan/.android/build-cache/b5d5a8e9c4fd3821250e940c1db899e03dbf18e4/output/jars/classes.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/Lin/.android/build-cache/de7f128ae5362bf55a0d3980cfcef6cc93c313a5/output/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="d5c731fc64c03dfe04d51134955b483551c35849">
-        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3da9dc2db1a7fe9e73a5e65eed5f8bfdfa922ee6/classes.dex" />
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/classes_8dc3594716ccdfbd2654c14cd60f4ad0b29c8978.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/home/chintan/.android/build-cache/da3201a46d8cadf5b478085d688f4ce14cbb5f0d/output/jars/classes.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/Lin/.android/build-cache/22972d8411f504e66d548671972e9d3d129f84a7/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_77c6b67662edf30ac6f756ef780f1efaec7390cc/classes.dex" />
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_1a1a0bc4538ce941dd5a9e79f79e116339a9ed74.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/home/chintan/.android/build-cache/babf98ee940291662101b0f5861a5b5404541299/output/jars/classes.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/Lin/.android/build-cache/ef888a505f1f23dbff727343438e6438a6372ffb/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/classes_c778f88e84e43d05522c1e30ac3a23d14d6c2b3b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/.android/build-cache/e945dfcb0625bf48f9b93bc634702b12c8f82cbe/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/classes_13236a03740e56fd7de6a4d67528182c6c0d7ce6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/.android/build-cache/6f2b2595f2fa76774fbfef88c43944732f6c1d01/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/classes_7e3b47e65544d3aad83ffef91114b766caf44f6e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/.android/build-cache/0e09c13d2c22d59c7c8af9e9a984d19909ac3fa9/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="736afb22391a31d5fb14d282179c06c5649c46fe">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/classes_cadb49d7ff2eee864d99577b25c5e065a83cfe6b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/support-annotations-24.2.1_9f2c374d8b4552292b5a688bfc133dc47ea5c9d2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/.android/build-cache/a6ef75917721d1058d330c2deb3ba76a1fe3944a/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/classes_615624ec1768bfd0e1873a7483fc9fb7b8db162e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/.android/build-cache/ec8411d0f7aea5def1883c0a923d8343da0b8c40/output/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_fae048cea70b5f58326801ac6a1effafd938d3dc/classes.dex" />
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/classes_a941ee1152bad59affea61fa68e58462d33dbcf1.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/home/chintan/.android/build-cache/26f39fb2843157cb11d273baa28553d40abe7b89/output/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/Lin/.android/build-cache/e497b0490b155f769452147204c956369b30b87a/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/classes_b491723a54ade4aeac88c52020a007a33d60171d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/.android/build-cache/e8ef10b38e6053cf0d60a94b77bceee40a7f03e3/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/classes_f6600608a382c1f74d5172283ae6fa7d053629d6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/.android/build-cache/140718bf2529bb40cd7f89de310f322d2a1f2c59/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_a756eea1b08fa5dcc4f71e6cafdca454854ff20f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/.android/build-cache/37c144b7f2772ee1c1a88d683c1f7467fcdf3435/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_8974884ea19ae7dadb01c4a0d5d2500a7c3c34cc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/.android/build-cache/22972d8411f504e66d548671972e9d3d129f84a7/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/classes_2c1f8a4117830b11241e3042fd8d9c431510db20.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/.android/build-cache/a095bb5048b5f912a7cbe1b0ac926279ad08fb38/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/classes_3d0cc9ced016664117771b09ce096e745deab4d5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/.android/build-cache/a095bb5048b5f912a7cbe1b0ac926279ad08fb38/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_5ffefbd747c999e4a3bb3c4c9947052e8ceef12f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/.android/build-cache/140718bf2529bb40cd7f89de310f322d2a1f2c59/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/classes_9465f83b577dff66280e45a6f2acfb5744eed100.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/.android/build-cache/0af72a62b6b1bcac446cd4dc7686be326978ff92/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c394e9a7e1552a4499c7d7d25e7eccd6a533b6df">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/classes_294da0a1047f642c74904215a9addc8852a2270d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/.android/build-cache/37c144b7f2772ee1c1a88d683c1f7467fcdf3435/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/classes_8cb029a49012cbf3d0f1bf170d5c2f059bc43c82.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/.android/build-cache/a6ef75917721d1058d330c2deb3ba76a1fe3944a/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_7e6fe7f952b9a76cc963844b1ea663f8db719308/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
-        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_3f2dacf269f59ab7780c9eb88ae80a1650656df6/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="152ed20e654ae39b2987856ee94b1de6a59eaa04">
-        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_858a9437f874b3712386909d515cfebd6dd4121a/classes.dex" />
+        <dex dex="/Users/Lin/Documents/GitHub/Epilepsy/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_72c7ae24f73906b961840732851334795d3bbd07.jar" />
     </item>
 
 </items>
