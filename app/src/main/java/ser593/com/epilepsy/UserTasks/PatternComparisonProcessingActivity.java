@@ -45,6 +45,9 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
     int questionIndex;
     boolean correctAnswer = true; //the correct answer for the question (true:yes, false:no)
     long questionStartTime;
+    long startTime;
+    long endTime;
+    String pattern;
     JSONObject record;
     JSONArray answers;
 
@@ -81,6 +84,8 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
         filter.addAction("ser593.com.epilepsy.NOTIFICATION_LISTENER");
         registerReceiver(nReceiver,filter);
         Log.i(LOG_TAG,"Notification Listener Created");
+
+        startTime = System.currentTimeMillis();
     }
 
     private void addListenerOnYesButton() {
@@ -119,6 +124,7 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
         }
         try {
             JSONObject ans = new JSONObject();
+            ans.put("pattern", pattern);
             ans.put(getString(R.string.pattern_comparison_processing_json_question_index), questionIndex);
             ans.put(getString(R.string.pattern_comparison_processing_json_correct), userAnswer);
             ans.put(getString(R.string.pattern_comparison_processing_json_elapsed_time), System.currentTimeMillis()-questionStartTime);
@@ -135,6 +141,8 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Test complete, redirect to result page", Toast.LENGTH_SHORT).show();
 
             try{
+                endTime = System.currentTimeMillis();
+                record.put("elapseTime", endTime-startTime);
                 record.put(getString(R.string.task_answer), answers);
             }catch (JSONException e)
             {
@@ -166,6 +174,7 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
                 int i = rand.nextInt(imageCollection.size());
                 int j1 = rand.nextInt(2);
                 int j2 = rand.nextInt(2);
+                pattern = String.format("%d%d", j1, j2);
                 ivLeft.setImageResource(imageCollection.get(i).get(j1));
                 ivRight.setImageResource(imageCollection.get(i).get(j2));
                 ivCenter.setImageResource(0); //clear the star in the center

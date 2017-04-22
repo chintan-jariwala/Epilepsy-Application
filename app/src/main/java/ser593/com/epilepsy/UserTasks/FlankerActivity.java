@@ -39,8 +39,11 @@ public class FlankerActivity extends AppCompatActivity {
     int questionIndex;
     boolean correctAnswer = true; //the correct answer for the question (true:left, false:right)
     long questionStartTime;
+    String pattern;
     JSONObject record;
     JSONArray answers;
+    long startTime;
+    long endTime;
 
     LovelyProgressDialog progressDialog;
 
@@ -75,6 +78,8 @@ public class FlankerActivity extends AppCompatActivity {
         addListenerOnLeftButton();
         addListenerOnRightButton();
         showQuestion();
+
+        startTime = System.currentTimeMillis();
     }
 
     private void addListenerOnLeftButton() {
@@ -152,6 +157,7 @@ public class FlankerActivity extends AppCompatActivity {
         }
         try {
             JSONObject ans = new JSONObject();
+            ans.put("pattern", pattern);
             ans.put(getString(R.string.flanker_json_question_index), questionIndex);
             ans.put(getString(R.string.flanker_json_correct), userAnswer);
             ans.put(getString(R.string.flanker_json_elapsed_time), System.currentTimeMillis()-questionStartTime);
@@ -168,6 +174,8 @@ public class FlankerActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Test complete, redirect to result page", Toast.LENGTH_SHORT).show();
 
             try{
+                endTime = System.currentTimeMillis();
+                record.put("elapseTime", endTime-startTime);
                 record.put(getString(R.string.task_answer), answers);
             }catch (JSONException e)
             {
@@ -200,6 +208,7 @@ public class FlankerActivity extends AppCompatActivity {
                 Random rand = new Random();
                 int j1 = rand.nextInt(2);
                 int j2 = rand.nextInt(2);
+                pattern = String.format("%d%d%d%d%d", j2, j2, j1, j2, j2);
                 ivTarget.setImageResource(imageCollection.get(j1));
                 iv1.setImageResource(imageCollection.get(j2));
                 iv2.setImageResource(imageCollection.get(j2));
