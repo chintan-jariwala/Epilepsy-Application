@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_3f2dacf269f59ab7780c9eb88ae80a1650656df6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0dabfd39055367bc96435461603de410660c7967">
+        <dex dex="/media/chintan/Primary/Epilepsy/Epilepsy-Application/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_858a9437f874b3712386909d515cfebd6dd4121a/classes.dex" />
+    </item>
+
+</items>

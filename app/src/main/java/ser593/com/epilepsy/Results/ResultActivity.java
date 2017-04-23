@@ -44,7 +44,7 @@ public class ResultActivity extends AppCompatActivity {
         try {
             //create json obj for api
             JSONObject jsonForApi = new JSONObject();
-            jsonForApi.put("activityInstanceID", "3004"); //TODO: need to find out what this is
+            jsonForApi.put("activityInstanceID", getIntent().getExtras().getString("activityInstanceID"));
             jsonForApi.put("timeStamp", System.currentTimeMillis());
 
             JSONObject jsonObj = new JSONObject(jsonStr);

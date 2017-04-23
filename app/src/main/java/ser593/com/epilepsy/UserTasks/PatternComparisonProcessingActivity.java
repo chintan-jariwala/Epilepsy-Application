@@ -151,6 +151,8 @@ public class PatternComparisonProcessingActivity extends AppCompatActivity {
             // pass solution to result page
             Intent intent = new Intent(this, ResultActivity.class);
             intent.putExtra(getString(R.string.task_result), record.toString());
+            intent.putExtra("activityInstanceID",getIntent().getExtras().getString("activityInstanceID"));
+
             startActivity(intent);
             finish();
         }

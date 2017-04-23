@@ -1,18 +1,37 @@
 package ser593.com.epilepsy.Main;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.SyncStateContract;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.yarolegovich.lovelydialog.LovelyStandardDialog;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import ser593.com.epilepsy.R;
 import ser593.com.epilepsy.UserTasks.ActivityDescription;
@@ -20,11 +39,16 @@ import ser593.com.epilepsy.UserTasks.FingerTappingActivity;
 import ser593.com.epilepsy.UserTasks.FlankerActivity;
 import ser593.com.epilepsy.UserTasks.PatternComparisonProcessingActivity;
 import ser593.com.epilepsy.UserTasks.SpatialSpanActivity;
+import ser593.com.epilepsy.apiCall.ServiceCall;
+import ser593.com.epilepsy.app.AppController;
 import ser593.com.epilepsy.painReport.PromisActivity;
 import ser593.com.epilepsy.pojo.ActivityDetails;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = MainActivity.class.getSimpleName();
+    private HashMap<String,String> activityInstanceIDMap = new HashMap<String,String>();
+    ArrayList<String> listActivities = new ArrayList<>();
     Button btnPatternComparison = null;
     Button btnFingerTapping = null;
     Button btnPromis = null;
@@ -33,10 +57,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnSettings = null;
     TextView tvActionBarTitle = null;
     ActivityDetails activityDetails = null;
+    private String patientPin = null;
+    private String URL = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar);
@@ -57,6 +85,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnFlanker.setOnClickListener(this);
         btnSettings = (Button) findViewById(R.id.btnSettings);
         btnSettings.setOnClickListener(this);
+
+        btnPatternComparison.setEnabled(false);
+
+        btnSpacialSpan.setEnabled(false);
+
+        btnFingerTapping.setEnabled(false);
+
+        btnFlanker.setEnabled(false);
+
+       getScheduledActivities();
 
         activityDetails = new ActivityDetails();
 
@@ -82,8 +120,107 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvPromis.setTextColor(Color.parseColor(colorHexCode));
     }
 
+    private void enableActivities(JSONObject scheduledActivities) {
+        Log.d(TAG, "enableActivities: " + scheduledActivities.toString());
+        try {
+
+            JSONArray activities = (JSONArray) scheduledActivities.get("activities");
+            for(int i=0; i<activities.length(); i++){
+                listActivities.clear();
+                JSONObject item = activities.getJSONObject(i);
+                JSONArray sequence  = (JSONArray) item.get("sequence");
+                for(int j=0; j<sequence.length(); j++){
+                    String activity = sequence.get(j).toString();
+                    listActivities.add(activity);
+                    if(activity.equalsIgnoreCase("FINGERTAPPING")){
+                        Log.d(TAG, "enableActivities: " + activity);
+                        btnFingerTapping.setEnabled(true);
+                    }else if(activity.equalsIgnoreCase("FLANKER")){
+                        Log.d(TAG, "enableActivities: " + activity);
+
+                        btnFlanker.setEnabled(true);
+                    }else if(activity.equalsIgnoreCase("PATTERNCOMPARISON")){
+                        Log.d(TAG, "enableActivities: " + activity);
+
+                        btnPatternComparison.setEnabled(true);
+                    }else if(activity.equalsIgnoreCase("SPATIALSPAN")){
+                        Log.d(TAG, "enableActivities: " + activity);
+
+                        btnSpacialSpan.setEnabled(true);
+                    }
+                }
+                Log.d(TAG, "enableActivities: " + sequence.toString());
+                activityInstanceIDMap.put(item.getString("activityInstanceID"), listActivities.toString());
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private JSONObject getScheduledActivities() {
+        patientPin = AppController.getInstance().readPreference("patientPin");
+        URL = AppController.getInstance().readPreference("url");
+
+        if(patientPin == null || URL == null){
+            new LovelyStandardDialog(this)
+                    .setTopColorRes(R.color.indigo)
+                    .setButtonsColorRes(R.color.darkDeepOrange)
+                    .setTitle("Error")
+                    .setMessage("For some reason, Application did not receive the patientPin or URL\n Please enter those details again.")
+                    .setPositiveButton("Ok", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            startActivity(new Intent(MainActivity.this , SettingsActivity.class));
+                        }
+                    })
+                    .show();
+            return null;
+        }else{
+            String link = null;
+
+            try {
+                link = constructGetScheduleActivitiesURL();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            //Call the API to get data
+           callAPI(link);
+        }
+        return null;
+    }
+
+    private void callAPI(String link){
+        if(isNetworkAvailable()){
+                Log.d(TAG, "callAPI: " + link );
+                JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, link, null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                Log.d(TAG, "onResponse: " + response.toString());
+                                Toast.makeText(getApplicationContext(),"Your Data Has been sent to the Server", Toast.LENGTH_LONG).show();
+                                enableActivities(response);
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e(TAG, "onErrorResponse: " + error.toString());
+                    }
+                });
+
+                AppController.getInstance().addToRequestQueue(getRequest);
+
+
+        }else{
+            //Alert User to get internet
+        }
+
+    }
+
     @Override
     public void onClick(View v) {
+
+
         Bundle b = new Bundle();
         Intent i = new Intent(getApplicationContext(),ActivityDescription.class);
         switch (v.getId()){
@@ -96,6 +233,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         "4. If the images are the same, tap on the green yes button; if the images are different, tap on the red no button.");
                 b.putParcelable("Class",activityDetails);
                 i.putExtras(b);
+                i.putExtra("activityInstanceID", addActivityInstID("PATTERNCOMPARISON"));
                 startActivity(i);
                 break;
             case R.id.btnFingerTapping:
@@ -106,6 +244,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         "3. Alternating between the two fingers and tap on the buttons while the timer is counting down.");
                 b.putParcelable("Class",activityDetails);
                 i.putExtras(b);
+                i.putExtra("activityInstanceID", addActivityInstID("FINGERTAPPING"));
+
                 startActivity(i);
                 break;
             case R.id.btnPromis:
@@ -118,6 +258,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         "2. Repeat the sequence by tapping the buttons in the same order.");
                 b.putParcelable("Class",activityDetails);
                 i.putExtras(b);
+                i.putExtra("activityInstanceID", addActivityInstID("SPATIALSPAN"));
+
                 startActivity(i);
                 break;
             case R.id.btnFlanker:
@@ -128,6 +270,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         "3. Identify the direction of the center arrow and tap on the button that's point the same direction.");
                 b.putParcelable("Class",activityDetails);
                 i.putExtras(b);
+                i.putExtra("activityInstanceID", addActivityInstID("FLANKER"));
+
                 startActivity(i);
                 break;
             case R.id.btnSettings:
@@ -135,5 +279,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(in);
                 break;
         }
+    }
+
+    private String constructGetScheduleActivitiesURL() throws JSONException {
+        String link = "http://" + URL + getString(R.string.getScheduledActivityURL) + "?pin=" + patientPin;
+
+        Log.d(TAG, "constructURL: " + link);
+        return link;
+
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    private String addActivityInstID(String btnName){
+        Iterator it = activityInstanceIDMap.keySet().iterator();
+        while (it.hasNext()){
+            String key = (String) it.next();
+            String val = activityInstanceIDMap.get(key);
+            if(val.contains(btnName)) {
+                return key;
+            }
+
+        }
+        return null;
     }
 }

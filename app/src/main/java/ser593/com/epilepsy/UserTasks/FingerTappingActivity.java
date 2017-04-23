@@ -175,6 +175,7 @@ public class FingerTappingActivity extends AppCompatActivity {
                     record.put(getString(R.string.task_answer), answers);
                     Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
                     intent.putExtra(getString(R.string.task_result), record.toString());
+                    intent.putExtra("activityInstanceID",getIntent().getExtras().getString("activityInstanceID"));
                     startActivity(intent);
                     finish();
                 } else //else start another round with different hand

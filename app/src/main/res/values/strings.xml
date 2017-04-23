@@ -8,6 +8,8 @@
     <string name="task_answer">answer</string>
     <string name="task_result">task_result</string>
 
+
+
     <string name="pattern_comparison_processing_left">Image to be shown on the left</string>
     <string name="pattern_comparison_processing_center">Image to be shown on the right</string>
     <string name="pattern_comparison_processing_right">Image to be shown in the center, should only be star or blank</string>
@@ -42,4 +44,12 @@
     <string name="title_activity_finger_tapping">FingerTappingActivity</string>
     <string name="title_activity_flanker">FlankerActivity</string>
     <string name="spatial_span">Spatial Span</string>
+
+    <!--API Call endpoints-->
+    <string name="postActivityURL">/rest/activities/activityinstanceresult/</string>
+    <string name="getActivityDetailsURL">/rest/activities/activityinstance/</string>
+    <string name="getScheduledActivityURL">/rest/activities/scheduledactivity</string>
+    <string name="getActivityInstanceURL">/rest/activities/activityinstance/</string>
+
+
 </resources>

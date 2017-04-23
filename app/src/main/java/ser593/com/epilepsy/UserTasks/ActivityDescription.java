@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
@@ -14,16 +15,25 @@ import android.widget.Toast;
 import android.widget.VideoView;
 import android.net.Uri;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONObject;
+
 import ser593.com.epilepsy.R;
+import ser593.com.epilepsy.app.AppController;
 import ser593.com.epilepsy.pojo.ActivityDetails;
 
 public class ActivityDescription extends AppCompatActivity implements View.OnClickListener{
 
+    private static final String TAG = ActivityDescription.class.getSimpleName();
     TextView tvDescTitle, tvActivityTitle, tvActivityDesc, tvDemoTitle, tvDetailsTitle, tvDetailsDesc = null;
     Button btnBack, btnStart = null;
     ActivityDetails activityDetails = null;
     TextView tvActionBarTitle = null;
-
+    private String activityInstanceID = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +62,7 @@ public class ActivityDescription extends AppCompatActivity implements View.OnCli
         tvActivityDesc.setText(activityDetails.getBreif());
         tvDetailsDesc.setText(activityDetails.getDetails());
         tvActionBarTitle.setText(activityDetails.getTitle());
+        activityInstanceID = getIntent().getExtras().getString("activityInstanceID");
     }
 
     private void initialize() {
@@ -85,24 +96,60 @@ public class ActivityDescription extends AppCompatActivity implements View.OnCli
                 break;
             case R.id.btnStart:
                 //Toast.makeText(this,"BC Shnati",Toast.LENGTH_LONG).show();
+                Intent i =null;
+                getActivityDetails();
                 switch (activityDetails.getTitle()){
                     case "Pattern Comparison":
-                        startActivity(new Intent(this,PatternComparisonProcessingActivity.class));
+                        i = new Intent(this,PatternComparisonProcessingActivity.class);
+                        i.putExtra("activityInstanceID",activityInstanceID);
+                        startActivity(i);
                         break;
                     case "Finger Tapping":
-                        startActivity(new Intent(this,FingerTappingActivity.class));
+                        i = new Intent(this,FingerTappingActivity.class);
+                        i.putExtra("activityInstanceID",activityInstanceID);
+                        startActivity(i);
                         break;
                     case "Spatial Span":
-                        startActivity(new Intent(this,SpatialSpanActivity.class));
+                        i = new Intent(this,SpatialSpanActivity.class);
+                        i.putExtra("activityInstanceID",activityInstanceID);
+                        startActivity(i);
                         break;
                     case "Flanker":
-                        startActivity(new Intent(this,FlankerActivity.class));
+                        i = new Intent(this,FlankerActivity.class);
+                        i.putExtra("activityInstanceID",activityInstanceID);
+                        startActivity(i);
                         break;
                 }
                 break;
             default:
                 break;
         }
+    }
+
+    private void getActivityDetails() {
+
+        String pin = AppController.getInstance().readPreference("patientPin");
+        String URL = AppController.getInstance().readPreference("url");
+
+        String link = "http://" + URL + getString(R.string.getActivityDetailsURL) + activityInstanceID + "?pin=" + pin;
+
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, link, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d(TAG, "onResponse: " + response.toString());
+                        Toast.makeText(getApplicationContext(),"Your Data Has been sent to the Server", Toast.LENGTH_LONG).show();
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "onErrorResponse: " + error.toString());
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(getRequest);
+
     }
 
 }

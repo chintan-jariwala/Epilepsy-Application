@@ -172,7 +172,6 @@ public class FlankerActivity extends AppCompatActivity {
         else
         {
             Toast.makeText(getApplicationContext(), "Test complete, redirect to result page", Toast.LENGTH_SHORT).show();
-
             try{
                 endTime = System.currentTimeMillis();
                 record.put("elapseTime", endTime-startTime);
@@ -184,6 +183,7 @@ public class FlankerActivity extends AppCompatActivity {
             // pass solution to result page
             Intent intent = new Intent(this, ResultActivity.class);
             intent.putExtra(getString(R.string.task_result), record.toString());
+            intent.putExtra("activityInstanceID",getIntent().getExtras().getString("activityInstanceID"));
             startActivity(intent);
             finish();
         }

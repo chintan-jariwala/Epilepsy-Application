@@ -14,6 +14,7 @@ import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import ser593.com.epilepsy.Main.MainActivity;
 import ser593.com.epilepsy.Main.SettingsActivity;
+import ser593.com.epilepsy.app.AppController;
 
 /**
  * Created by chint on 10/31/2016.
@@ -27,12 +28,11 @@ public class SplashActivity extends AppCompatActivity{
 
         if (Settings.Secure.getString(this.getContentResolver(),"enabled_notification_listeners").contains(getApplicationContext().getPackageName()))
         {
-            SharedPreferences sharedPref = getSharedPreferences("MySharedPreference", Context.MODE_PRIVATE);
-            String pinPref = sharedPref.getString("patientPin", "patientPin");
-            String urlPref = sharedPref.getString("url", "url");
+            String pinPref = AppController.getInstance().readPreference("patientPin");
+            String urlPref = AppController.getInstance().readPreference("url");
 
             //check if there is already stored patient info
-            if (pinPref == "patientPin" || urlPref == "url") {
+            if (pinPref == null && urlPref == null) {
                 Intent i = new Intent(this, SettingsActivity.class);
                 startActivity(i);
                 finish();
@@ -54,6 +54,7 @@ public class SplashActivity extends AppCompatActivity{
                         public void onClick(View v) {
                             Intent intent = new Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS");
                             startActivity(intent);
+                            finish();
                         }
                     })
                     .show();

@@ -328,6 +328,8 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
                                 // pass solution to result page
                                 Intent intent = new Intent(SpatialSpanActivity.this, ResultActivity.class);
                                 intent.putExtra(getString(R.string.task_result), recoJsonObject.toString());
+                                intent.putExtra("activityInstanceID",getIntent().getExtras().getString("activityInstanceID"));
+
                                 startActivity(intent);
                                 finish();
                             }
