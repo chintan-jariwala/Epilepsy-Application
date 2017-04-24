@@ -1,10 +1,12 @@
 package ser593.com.epilepsy.UserTasks;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
@@ -13,22 +15,32 @@ import android.widget.Toast;
 import android.widget.VideoView;
 import android.net.Uri;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONObject;
+
 import ser593.com.epilepsy.R;
+import ser593.com.epilepsy.app.AppController;
 import ser593.com.epilepsy.pojo.ActivityDetails;
 
 public class ActivityDescription extends AppCompatActivity implements View.OnClickListener{
 
-    TextView tvDescTitle, tvActivityDesc, tvDemoTitle, tvDetailsTitle, tvDetailsDesc = null;
+    private static final String TAG = ActivityDescription.class.getSimpleName();
+    TextView tvDescTitle, tvActivityTitle, tvActivityDesc, tvDemoTitle, tvDetailsTitle, tvDetailsDesc = null;
     Button btnBack, btnStart = null;
     ActivityDetails activityDetails = null;
     TextView tvActionBarTitle = null;
-
+    private String activityInstanceID = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar);
+        getSupportActionBar().hide();
         initialize();
         populateInformation();
 
@@ -37,7 +49,7 @@ public class ActivityDescription extends AppCompatActivity implements View.OnCli
         MediaController mediaController = new MediaController(this);
         mediaController.setMediaPlayer(videoView);
         videoView.setVideoURI(Uri.parse(path));
-        videoView.setMediaController(mediaController);
+        videoView.setMediaController(mediaController);getSupportActionBar().hide();
         videoView.requestFocus();
         videoView.start();
         mediaController.show();
@@ -46,13 +58,16 @@ public class ActivityDescription extends AppCompatActivity implements View.OnCli
 
     private void populateInformation() {
         activityDetails = getIntent().getParcelableExtra("Class");
+        tvActivityTitle.setText(activityDetails.getTitle());
         tvActivityDesc.setText(activityDetails.getBreif());
         tvDetailsDesc.setText(activityDetails.getDetails());
         tvActionBarTitle.setText(activityDetails.getTitle());
+        activityInstanceID = getIntent().getExtras().getString("activityInstanceID");
     }
 
     private void initialize() {
         tvActionBarTitle = (TextView) findViewById(R.id.action_bar_title);
+        tvActivityTitle = (TextView)findViewById(R.id.tvActivityTitle);
         tvDescTitle = (TextView)findViewById(R.id.tvDescTitle);
         tvActivityDesc = (TextView) findViewById(R.id.tvActivityDesc);
         tvDemoTitle = (TextView) findViewById(R.id.tvDemoTitle);
@@ -61,7 +76,8 @@ public class ActivityDescription extends AppCompatActivity implements View.OnCli
         btnBack = (Button) findViewById(R.id.btnBack);
         btnStart = (Button) findViewById(R.id.btnStart);
 
-        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/crayon_crumble.ttf");
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/SourceSansPro-Regular.otf");
+        tvActivityTitle.setTypeface(custom_font);
         tvDescTitle.setTypeface(custom_font);
         tvActivityDesc.setTypeface(custom_font);
         tvDemoTitle.setTypeface(custom_font);
@@ -80,24 +96,60 @@ public class ActivityDescription extends AppCompatActivity implements View.OnCli
                 break;
             case R.id.btnStart:
                 //Toast.makeText(this,"BC Shnati",Toast.LENGTH_LONG).show();
+                Intent i =null;
+                getActivityDetails();
                 switch (activityDetails.getTitle()){
                     case "Pattern Comparison":
-                        startActivity(new Intent(this,PatternComparisonProcessingActivity.class));
+                        i = new Intent(this,PatternComparisonProcessingActivity.class);
+                        i.putExtra("activityInstanceID",activityInstanceID);
+                        startActivity(i);
                         break;
                     case "Finger Tapping":
-                        startActivity(new Intent(this,FingerTappingActivity.class));
+                        i = new Intent(this,FingerTappingActivity.class);
+                        i.putExtra("activityInstanceID",activityInstanceID);
+                        startActivity(i);
                         break;
                     case "Spatial Span":
-                        startActivity(new Intent(this,SpatialSpanActivity.class));
+                        i = new Intent(this,SpatialSpanActivity.class);
+                        i.putExtra("activityInstanceID",activityInstanceID);
+                        startActivity(i);
                         break;
                     case "Flanker":
-                        startActivity(new Intent(this,FlankerActivity.class));
+                        i = new Intent(this,FlankerActivity.class);
+                        i.putExtra("activityInstanceID",activityInstanceID);
+                        startActivity(i);
                         break;
                 }
                 break;
             default:
                 break;
         }
+    }
+
+    private void getActivityDetails() {
+
+        String pin = AppController.getInstance().readPreference("patientPin");
+        String URL = AppController.getInstance().readPreference("url");
+
+        String link = "http://" + URL + getString(R.string.getActivityDetailsURL) + activityInstanceID + "?pin=" + pin;
+
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, link, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d(TAG, "onResponse: " + response.toString());
+                        Toast.makeText(getApplicationContext(),"Your Data Has been sent to the Server", Toast.LENGTH_LONG).show();
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "onErrorResponse: " + error.toString());
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(getRequest);
+
     }
 
 }

@@ -1,12 +1,12 @@
 <component name="libraryTable">
   <library name="support-media-compat-24.2.1">
     <ANNOTATIONS>
-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/a6ef75917721d1058d330c2deb3ba76a1fe3944a/output/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.android/build-cache/f4110c103abd8d847235a7bb0d498e4faa22f0bd/output/jars/libs/internal_impl-24.2.1.jar!/" />
-      <root url="jar://$USER_HOME$/.android/build-cache/f4110c103abd8d847235a7bb0d498e4faa22f0bd/output/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.android/build-cache/f4110c103abd8d847235a7bb0d498e4faa22f0bd/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/26f39fb2843157cb11d273baa28553d40abe7b89/output/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/26f39fb2843157cb11d273baa28553d40abe7b89/output/jars/libs/internal_impl-24.2.1.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/26f39fb2843157cb11d273baa28553d40abe7b89/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

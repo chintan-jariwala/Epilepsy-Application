@@ -1,6 +1,7 @@
 package ser593.com.epilepsy.app;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
@@ -27,10 +28,11 @@ public class AppController extends Application {
     private static AppController mInstance;
     private SharedPreferences mMyPreferences;
 
+
     @Override
     public void onCreate() {
         super.onCreate();
-        mInstance = this;
+        mInstance = (AppController) getApplicationContext();
         mMyPreferences = PreferenceManager.getDefaultSharedPreferences(mInstance);
 
     }
@@ -41,9 +43,8 @@ public class AppController extends Application {
 
     public RequestQueue getRequestQueue() {
         if (mRequestQueue == null) {
-            mRequestQueue = Volley.newRequestQueue(getApplicationContext());
+            mRequestQueue = Volley.newRequestQueue(mInstance);
         }
-
         return mRequestQueue;
     }
 
@@ -64,6 +65,7 @@ public class AppController extends Application {
 
     public <T> void addToRequestQueue(Request<T> req) {
         req.setTag(TAG);
+        Log.d(TAG, "addToRequestQueue: " + req.getUrl() + " " + req.getMethod());
         getRequestQueue().add(req);
     }
 

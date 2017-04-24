@@ -10,59 +10,73 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/chalkboard">
-    <TextView
-        android:text="Description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:id="@+id/tvDescTitle"
-        android:textStyle="normal|bold"
-        android:textSize="30dp"
-        android:textColor="@color/white" />
+        android:background="@drawable/background">
 
-        <TextView
-        android:text="Demo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvActivityDesc"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:id="@+id/tvDemoTitle"
-        android:textStyle="normal|bold"
-        android:textSize="30dp"
-            android:textColor="@color/white" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/llDescription"
+            android:id="@+id/llDemo"
+            android:background="#6085248F"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp">
 
-    <VideoView
-        android:layout_width="wrap_content"
-        android:id="@+id/vvDemo"
-        android:layout_below="@+id/tvDemoTitle"
-        android:layout_height="200sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp" />
+            <TextView
+            android:text="Demo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvActivityDesc"
+            android:layout_centerHorizontal="true"
+                android:id="@+id/tvDemoTitle"
+            android:textStyle="normal|bold"
+            android:textSize="30dp"
+                android:textColor="@color/black"
+                android:textAlignment="center" />
 
-    <TextView
-        android:text="Instruction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/vvDemo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:id="@+id/tvDetailsTitle"
-        android:textStyle="normal|bold"
-        android:textSize="30dp"
-        android:textColor="@color/white" />
+            <VideoView
+            android:layout_width="match_parent"
+            android:id="@+id/vvDemo"
+            android:layout_below="@+id/tvDemoTitle"
+            android:layout_height="200sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp" />
+
+            <TextView
+            android:text="Instruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/vvDemo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:id="@+id/tvDetailsTitle"
+            android:textStyle="normal|bold"
+            android:textSize="30dp"
+            android:textColor="@color/black"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum is simply dummy text of the printing and typesetting industry."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDetailsDesc"
+                android:textSize="20dp"
+                android:layout_below="@+id/tvDetailsTitle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:textColor="@color/black" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_below="@+id/tvDetailsDesc"
+            android:layout_below="@+id/llDemo"
             android:gravity="center"
-            android:layout_marginBottom="80dp">
+            android:id="@+id/llButtons">
                 <Button
                     android:text="Back"
                     android:layout_width="150dp"
@@ -82,29 +96,65 @@
 
         </LinearLayout>
 
-        <TextView
-            android:text='"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." '
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvActivityDesc"
-            android:textSize="20dp"
-            android:layout_below="@+id/tvDescTitle"
+            android:layout_height="match_parent"
+            android:id="@+id/llDescription"
+            android:background="#6085248F"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:textColor="@color/white" />
+            android:layout_below="@+id/llTitle">
 
-        <TextView
-            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum is simply dummy text of the printing and typesetting industry."
+            <TextView
+            android:text="Description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tvDetailsDesc"
-            android:textSize="20dp"
-            android:layout_below="@+id/tvDetailsTitle"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:textColor="@color/white" />
+                android:id="@+id/tvDescTitle"
+            android:textStyle="normal|bold"
+            android:textSize="30dp"
+            android:textColor="@color/black"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text='"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." '
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvActivityDesc"
+                android:textSize="20dp"
+                android:layout_below="@+id/tvDescTitle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/llTitle"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:text="Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvActivityTitle"
+                android:textSize="36sp"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:textStyle="bold"
+                android:textColor="#85248F" />
+        </LinearLayout>
+
     </RelativeLayout>
 
 </ScrollView>

@@ -48,7 +48,12 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
     AnimatorSet set;
     Animator[] anim;
     private static int pattern_id = 0;
-
+    private long timeForOneTask = 0;
+    private long startPerTask = 0;
+    private long endPerTask = 0;
+    private long timeTakenToComplete = 0;
+    private long startTime = 0;
+    private long endTime = 0;
     //To implement delays after a button light
     LovelyProgressDialog progressDialog;
 
@@ -92,6 +97,7 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
             public void onClick(View v) {
                 //driver Function which will drive the module
                 try {
+                    startTime = System.currentTimeMillis();
                     spacialSpanDriver();
                     btnStartSS.setEnabled(false);
                 } catch (InterruptedException e) {
@@ -138,22 +144,22 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
 
         int difficulty = Integer.parseInt(tvDifficulty.getText().toString());
         switch (difficulty) {
-            case 0:
+            case 2:
                 //lowest difficulty
                 currentPattern = randomGenerator(2);
                 lightThemUp(currentPattern);
                 break;
-            case 1:
+            case 3:
                 //Average difficulty
                 currentPattern = randomGenerator(3);
                 lightThemUp(currentPattern);
                 break;
-            case 2:
+            case 4:
                 //Above average difficulty
                 currentPattern = randomGenerator(4);
                 lightThemUp(currentPattern);
                 break;
-            case 3:
+            case 5:
                 //Highest difficulty
                 currentPattern = randomGenerator(5);
                 lightThemUp(currentPattern);
@@ -173,7 +179,7 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
         anim = null;
         set = new AnimatorSet();
         anim = new Animator[numbers.length];
-//      Snackbar.make(parent, Arrays.toString(currentPattern),Snackbar.LENGTH_LONG).show();
+
         for (int i = 0; i < numbers.length; i++) {
             Log.d(TAG, "lightThemUp: " + i + "th execution" );
             Log.d(TAG, "lightThemUp: " + anim[i] );
@@ -195,6 +201,7 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void onAnimationEnd(Animator animation) {
                 enableAllButtons();
+                startPerTask = System.currentTimeMillis();
             }
 
             @Override
@@ -242,7 +249,7 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
         tvDifficulty = (TextView) findViewById(R.id.tvDifficulty);
         btnStartSS = (Button) findViewById(R.id.btnStartSS);
         tvScore.setText("0");
-        tvDifficulty.setText("0");
+        tvDifficulty.setText("2");
         tvLives.setText("3");
         btnGrid = new Button[25];
         btnGrid[0] = (Button) findViewById(R.id.btn0);
@@ -310,7 +317,7 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
                 currentNumber++;
                 if(currentPattern.length == currentNumber){
                     int score = Integer.parseInt(tvScore.getText().toString());
-                    if(score >= 4){
+                    if(score >= 3){
                         Log.d(TAG, "onClick: activity completed");
                         progressDialog.setTitle("Awesome, You are done").show();
                         final Handler handler = new Handler();
@@ -320,6 +327,9 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
                                 // Do something after 5s = 5000ms
                                 progressDialog.dismiss();
                                 try{
+                                    endTime = System.currentTimeMillis();
+                                    timeTakenToComplete = endTime - startTime;
+                                    recoJsonObject.put("timeTakenToComplete", timeTakenToComplete);
                                     recoJsonObject.put(getString(R.string.task_answer), answerJsonArray);
                                 }catch (JSONException e)
                                 {
@@ -328,12 +338,17 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
                                 // pass solution to result page
                                 Intent intent = new Intent(SpatialSpanActivity.this, ResultActivity.class);
                                 intent.putExtra(getString(R.string.task_result), recoJsonObject.toString());
+                                intent.putExtra("activityInstanceID",getIntent().getExtras().getString("activityInstanceID"));
                                 startActivity(intent);
                                 finish();
                             }
                         }, 2000);
                     }else{
                         try {
+                            endPerTask = System.currentTimeMillis();
+                            timeForOneTask = endPerTask - startPerTask;
+                            ans.put("timeTaken",timeForOneTask);
+
                             ans.put("pattern_id",pattern_id);
                             ans.put("difficulty",tvDifficulty.getText().toString());
                             ans.put("user_answer",true);
@@ -367,6 +382,9 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
                 if(Integer.parseInt(tvDifficulty.getText().toString()) != 0)
 
                 try {
+                    endPerTask = System.currentTimeMillis();
+                    timeForOneTask = endPerTask - startPerTask;
+                    ans.put("timeTaken",timeForOneTask);
                     ans.put("pattern_id",pattern_id);
                     ans.put("difficulty",tvDifficulty.getText().toString());
                     ans.put("user_answer",false);
@@ -374,7 +392,14 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                tvDifficulty.setText(((Integer.parseInt(tvDifficulty.getText().toString()))-1)+"");
+                //Decrease difficulty and make sure it does not go below 2
+                int dif = Integer.parseInt(tvDifficulty.getText().toString());
+                if(dif >2)
+                    dif = dif - 1;
+                else
+                    dif = 2;
+
+                tvDifficulty.setText(dif +"");
                 if(Integer.parseInt(tvLives.getText().toString()) != 0){
                     tvLives.setText((Integer.parseInt(tvLives.getText().toString()))-1+"");
                     progressDialog.setTitle("Wrong answer, Let's try again").show();
@@ -402,12 +427,17 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
                                 @Override
                                 public void onClick(View v) {
                                     try{
+                                        endTime = System.currentTimeMillis();
+                                        timeTakenToComplete = endTime - startTime;
+                                        recoJsonObject.put("timeTakenToComplete", timeTakenToComplete);
+
                                         recoJsonObject.put(getString(R.string.task_answer), answerJsonArray);
                                     }catch (JSONException e)
                                     {
                                         Log.e(TAG, "Json parsing error: " + e.getMessage());
                                     }
                                     // pass solution to result page
+
                                     Intent intent = new Intent(SpatialSpanActivity.this, ResultActivity.class);
                                     intent.putExtra(getString(R.string.task_result), recoJsonObject.toString());
                                     startActivity(intent);
