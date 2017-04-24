@@ -16,6 +16,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import ser593.com.epilepsy.app.AppController;
+
 /**
  * Created by aniPC on 2/10/2015.
  */
@@ -33,6 +35,24 @@ public class jsHandler {
         webView = _webView;
     }
 
+    @JavascriptInterface
+    public String getPatientPin(){
+        String pin = AppController.getInstance().readPreference("patientPin");
+        if(pin != null)
+            return pin;
+        else
+            return "Not Found";
+    }
+
+    @JavascriptInterface
+    public String getServerAddress(){
+        String serverAdd = AppController.getInstance().readPreference("url");
+        if(serverAdd != null){
+            return serverAdd;
+        }
+        else
+            return "Not Found";
+    }
 
 //    @JavascriptInterface
 //    public void killApp(){

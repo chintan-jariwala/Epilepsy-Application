@@ -17,6 +17,14 @@
         $scope.debugInformation = "";
         $scope.statusReturned = "";
         $scope.troubleshootOptions = [];
+        $scope.detailedDueSurveys = [];
+        $scope.detailedDue = {
+            "activityTitle": "",
+            "nextDueAt": "",
+            "description": "",
+            "activityInstanceID": "",
+            "state": ""
+        };
         $scope.populateDebugInformation = function() {
             $scope.debugInformation = "";
             var platform = $scope.getMobileOperatingSystem();
@@ -27,27 +35,24 @@
                 "Server Status Returned: - " + $scope.statusReturned + "\n" +
                 "User Agent: - " + platform + "\n" +
                 "Browser Version : - " + navigator.appVersion + "\n";
-
-
-
         };
 
-        $scope.clearAll = function(){
-         console.log("Clearing localStorage");
-         var questions = activeData.getSurveyQuestions();
-         if(questions !== undefined){
-            $.each(questions,function(index,val){
-              console.log($scope.surveyID+ ":" +val.quesID + ":" + val.activityBlockId);
-              localStorage.removeItem($scope.surveyID+ ":" +val.quesID + ":" + val.activityBlockId);
-            });
-         }
-         localStorage.removeItem("surveyInProgress");
-         localStorage.removeItem("reloadBackupSurveyID");
-         localStorage.removeItem("reloadBackupSurveyName");
-         localStorage.removeItem("reloadBackupSurveyQuestions");
-         $(".modal-backdrop").hide();
-         $scope.changePage("/home");
-      };
+        $scope.clearAll = function() {
+            console.log("Clearing localStorage");
+            var questions = activeData.getSurveyQuestions();
+            if (questions !== undefined) {
+                $.each(questions, function(index, val) {
+                    console.log($scope.surveyID + ":" + val.quesID + ":" + val.activityBlockId);
+                    localStorage.removeItem($scope.surveyID + ":" + val.quesID + ":" + val.activityBlockId);
+                });
+            }
+            localStorage.removeItem("surveyInProgress");
+            localStorage.removeItem("reloadBackupSurveyID");
+            localStorage.removeItem("reloadBackupSurveyName");
+            localStorage.removeItem("reloadBackupSurveyQuestions");
+            $(".modal-backdrop").hide();
+            $scope.changePage("/home");
+        };
 
         $scope.getMobileOperatingSystem = function() {
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -60,14 +65,28 @@
             }
         };
 
+        $scope.checkIfPromisBlock = function(activity) {
+            var sequence = activity.sequence;
+            if (!sequence.includes("FLANKER") && !sequence.includes("PATTERNCOMPARISON") && !sequence.includes("SPATIALSPAN") && !sequence.includes("FINGERTAPPING")) {
+                return true;
+            } else {
+                return false;;
+            }
+        };
+
         $scope.controllerInit = function() {
             $("#loader").hide();
             $("#troubleshoot").hide();
 
             $scope.questions = [];
             activeData.setSurveyCompleted(false);
+            localStorage.surveyAppPin = jsHandler.getPatientPin();
+            localStorage.surveyAppServerSettings = "http://" + jsHandler.getServerAddress();
+            console.log("PIN = " + localStorage.surveyAppPin);
+            console.log("Address = " + localStorage.surveyAppServerSettings);
 
             if (localStorage.surveyInProgress) {
+                console.log(localStorage.surveyInProgress);
                 console.log("survey in progress exists");
                 $scope.surveyInProgress = JSON.parse(localStorage.surveyInProgress);
                 console.log($scope.surveyInProgress);
@@ -109,12 +128,9 @@
                 localStorage.setItem("uiLogger", jsonString);
 
                 $('#loader').modal('show');
-                if (localStorage.dataSource == "remote") {
-                    surveyIDCall.call(payloadForService, $scope.surveyIDsuccess, $scope.serviceError);
-                }
-                if (localStorage.dataSource == "local") {
-                    surveyIDCall.call(payloadForService, $scope.surveyIDsuccess, $scope.serviceError, "json/getSurveyID.json");
-                }
+                console.log("API call made");
+                surveyIDCall.call(payloadForService, $scope.surveyIDsuccess, $scope.serviceError);
+
             }
         };
 
@@ -131,107 +147,130 @@
             $scope.button2text = "";
             $scope.button3text = "";
             $scope.FirstActivityDescription = "";
-
+            console.log(data);
             ////console.log("Message forn server : "+status);
             ////console.log("Message from server : "+data.message);
             if (status === 200 && data.activities.length !== 0) {
                 ////console.log(data.activities);
+                var promisBlocks = false;
+                for (var temp = 0; temp < data.activities.length; temp++) {
+                    if ($scope.checkIfPromisBlock(data.activities[temp])) {
+                        $scope.detailedDue.activityTitle = data.activities[temp].activityTitle;
+                        $scope.detailedDue.nextDueAt = data.activities[temp].nextDueAt;
+                        $scope.detailedDue.description = data.activities[temp].description;
+                        $scope.detailedDue.activityInstanceID = data.activities[temp].activityInstanceID;
+                        $scope.detailedDue.state = data.activities[temp].state;
+                        $scope.detailedDueSurveys.push($scope.detailedDue);
+                        promisBlocks = true;
+                    }
+                }
+                console.log($scope.detailedDueSurveys);
                 var date;
-                for (var i = 0; i < 3; i++) {
-                    if(data.activities[i] !== undefined){
-                        $scope.isSurveyDue = true;
-                        okayToStartCount++;
-                        $scope.allSurveyData[data.activities[i].activityInstanceID] = {};
-                        $scope.allSurveyData[data.activities[i].activityInstanceID].id = data.activities[i].activityInstanceID;
-                        if (i === 0) {
-                            surveyDueMessageOne = data.activities[i].activityTitle;
-                            $scope.button1text = "Start " + surveyDueMessageOne;
-                            $scope.FirstActivityDescription = data.activities[i].description + "<id = " + data.activities[i].activityInstanceID + ">";
-                        } else if (i === 1) {
-                            surveyDueMessageTwo = data.activities[i].activityTitle;
-                            $scope.button2text = "Start " + surveyDueMessageTwo;
-                            $scope.SecondActivityDescription = data.activities[i].description + "<id = " + data.activities[i].activityInstanceID + ">";
-                        } else if (i === 2) {
-                            surveyDueMessageThree = data.activities[i].activityTitle;
-                            $scope.button3text = "Start " + surveyDueMessageThree;
-                            $scope.ThirdActivityDescription = data.activities[i].description + "<id = " + data.activities[i].activityInstanceID + ">";
-                        }
-
-                        $scope.dueSurveys.push(data.activities[i].activityInstanceID);
-                        $scope.dueSurveyNames.push(data.activities[i].activityTitle);
-                        date = $scope.formatDate(data.activities[i].nextDueAt);
-
-                        console.log($scope.allSurveyData);
-                        $scope.allSurveyData[data.activities[i].activityInstanceID].date = date;
-                    }
-                }
-                if (okayToStartCount === 2) {
-                    okayToStart = true;
-                    $scope.areMultipleSurveysDue = true;
-                    $("#startFirstSurvey").removeClass("disabled");
-                    $("#startSecondSurvey").removeClass("disabled");
-                } else if (okayToStartCount === 1) {
-                    okayToStart = true;
-                    $("#startFirstSurvey").removeClass("disabled");
-                } else if (okayToStartCount === 3) {
-                    ////console.log("There are three surveys");
-                    okayToStart = true;
-                    $scope.areMultipleSurveysDue = true;
-                    $scope.isThirdSurveyDue = true;
-                    $("#startFirstSurvey").removeClass("disabled");
-                    $("#startSecondSurvey").removeClass("disabled");
-                    $("#startThirdSurvey").removeClass("disabled");
-                }
-                ////console.log(okayToStartCount);
-                ////console.log("Survey in progress");
-                ////console.log($scope.surveyInProgress);
-
-                for (i = 0; i < 3; i++) {
-                    if(data.activities[i] !== undefined){
-                        if (i === 0) {
-                            if ($scope.surveyInProgress.length > 0 && $scope.surveyInProgress.indexOf($scope.dueSurveys[i]) != -1) {
-                                $scope.surveyDueMessageOne = "You have a " + surveyDueMessageOne + " in progress, due on " + $scope.allSurveyData[data.activities[i].activityInstanceID].date + ". To begin survey, please click on the Start Survey button.";
-                                ////console.log($scope.surveyDueMessageOne);
-                            } else {
-                                if (okayToStart) {
-                                    $scope.surveyDueMessageOne = "You have a " + surveyDueMessageOne + " due on " + $scope.allSurveyData[data.activities[i].activityInstanceID].date + ". To begin survey, please click on the Start button.";
-                                    ////console.log($scope.surveyDueMessageOne);
-                                } else {
-                                    $scope.surveyDueMessageOne = "You have a " + surveyDueMessageOne + " due on " + $scope.allSurveyData[data.activities[i].activityInstanceID].date + ". ";
-                                    ////console.log($scope.surveyDueMessageOne);
-                                }
+                if (promisBlocks) {
+                    for (var i = 0; i < 3; i++) {
+                        if ($scope.detailedDueSurveys[i] !== undefined) {
+                            console.log($scope.detailedDueSurveys[i].activityInstanceID);
+                            $scope.isSurveyDue = true;
+                            okayToStartCount++;
+                            $scope.allSurveyData[$scope.detailedDueSurveys[i].activityInstanceID] = {};
+                            $scope.allSurveyData[$scope.detailedDueSurveys[i].activityInstanceID].id = $scope.detailedDueSurveys[i].activityInstanceID;
+                            if (i === 0) {
+                                console.log("Activate First one");
+                                surveyDueMessageOne = $scope.detailedDueSurveys[i].activityTitle;
+                                $scope.button1text = "Start " + surveyDueMessageOne;
+                                $scope.FirstActivityDescription = $scope.detailedDueSurveys[i].description + "<id = " + $scope.detailedDueSurveys[i].activityInstanceID + ">";
+                            } else if (i === 1) {
+                                console.log("Activate Second one");
+                                surveyDueMessageTwo = $scope.detailedDueSurveys[i].activityTitle;
+                                $scope.button2text = "Start " + surveyDueMessageTwo;
+                                $scope.SecondActivityDescription = $scope.detailedDueSurveys[i].description + "<id = " + $scope.detailedDueSurveys[i].activityInstanceID + ">";
+                            } else if (i === 2) {
+                                console.log("Activate thrid one");
+                                surveyDueMessageThree = $scope.detailedDueSurveys[i].activityTitle;
+                                $scope.button3text = "Start " + surveyDueMessageThree;
+                                $scope.ThirdActivityDescription =$scope.detailedDueSurveys[i].description + "<id = " + $scope.detailedDueSurveys[i].activityInstanceID + ">";
                             }
-                        } else if (i === 1) {
-                            if ($scope.surveyInProgress.length > 0 && $scope.surveyInProgress.indexOf($scope.dueSurveys[i]) != -1) {
-                                $scope.surveyDueMessageTwo = "You have a " + surveyDueMessageTwo + " in progress, due on " + $scope.allSurveyData[data.activities[i].activityInstanceID].date + ". To begin survey, please click on the Start Survey button.";
-                                ////console.log($scope.surveyDueMessageTwo);
-                            } else {
-                                if (okayToStart) {
-                                    $scope.surveyDueMessageTwo = "You have a " + surveyDueMessageTwo + " due on " + $scope.allSurveyData[data.activities[i].activityInstanceID].date + ". To begin survey, please click on the Start button.";
-                                    ////console.log($scope.surveyDueMessageTwo);
-                                } else {
-                                    $scope.surveyDueMessageTwo = "You have a " + surveyDueMessageTwo + " due on " + $scope.allSurveyData[data.activities[i].activityInstanceID].date + ". ";
-                                    ////console.log($scope.surveyDueMessageTwo);
-                                }
-                            }
-                        } else if (i === 2) {
-                            if ($scope.surveyInProgress.length > 0 && $scope.surveyInProgress.indexOf($scope.dueSurveys[i]) != -1) {
-                                $scope.surveyDueMessageThree = "You have a " + surveyDueMessageThree + " in progress, due on " + $scope.allSurveyData[data.activities[i].activityInstanceID].date + ". To begin survey, please click on the Start Survey button.";
-                                ////console.log($scope.surveyDueMessageThree);
-                            } else {
-                                if (okayToStart) {
-                                    $scope.surveyDueMessageThree = "You have a " + surveyDueMessageThree + " due on " + $scope.allSurveyData[data.activities[i].activityInstanceID].date + ". To begin survey, please click on the Start button.";
-                                    ////console.log($scope.surveyDueMessageThree);
-                                } else {
-                                    $scope.surveyDueMessageThree = "You have a " + surveyDueMessageThree + " due on " + $scope.allSurveyData[data.activities[i].activityInstanceID].date + ". ";
-                                    ////console.log($scope.surveyDueMessageThree);
-                                }
-                            }
+
+                            $scope.dueSurveys.push($scope.detailedDueSurveys[i].activityInstanceID);
+                            $scope.dueSurveyNames.push($scope.detailedDueSurveys[i].activityTitle);
+                            date = $scope.formatDate($scope.detailedDueSurveys[i].nextDueAt);
+
+                            console.log($scope.allSurveyData);
+                            $scope.allSurveyData[$scope.detailedDueSurveys[i].activityInstanceID].date = date;
                         }
                     }
+                    if (okayToStartCount === 2) {
+                        okayToStart = true;
+                        $scope.areMultipleSurveysDue = true;
+                        // $("#startFirstSurvey").removeClass("disabled");
+                        $("#startSecondSurvey").removeClass("disabled");
+                    } else if (okayToStartCount === 1) {
+                        okayToStart = true;
+                        $("#startFirstSurvey").removeClass("disabled");
+                    } else if (okayToStartCount === 3) {
+                        ////console.log("There are three surveys");
+                        okayToStart = true;
+                        $scope.areMultipleSurveysDue = true;
+                        $scope.isThirdSurveyDue = true;
+                        $("#startFirstSurvey").removeClass("disabled");
+                        $("#startSecondSurvey").removeClass("disabled");
+                        $("#startThirdSurvey").removeClass("disabled");
+                    }
+                    ////console.log(okayToStartCount);
+                    ////console.log("Survey in progress");
+                    ////console.log($scope.surveyInProgress);
 
+                    for (i = 0; i < 3; i++) {
+                        if ($scope.detailedDueSurveys[i] !== undefined) {
+                            if (i === 0) {
+                                if ($scope.surveyInProgress.length > 0 && $scope.surveyInProgress.indexOf($scope.dueSurveys[i]) != -1) {
+                                    $scope.surveyDueMessageOne = "You have a " + surveyDueMessageOne + " in progress, due on " + $scope.allSurveyData[$scope.detailedDueSurveys[i].activityInstanceID].date + ". To begin survey, please click on the Start Survey button.";
+                                    ////console.log($scope.surveyDueMessageOne);
+                                } else {
+                                    if (okayToStart) {
+                                        $scope.surveyDueMessageOne = "You have a " + surveyDueMessageOne + " due on " + $scope.allSurveyData[$scope.detailedDueSurveys[i].activityInstanceID].date + ". To begin survey, please click on the Start button.";
+                                        ////console.log($scope.surveyDueMessageOne);
+                                    } else {
+                                        $scope.surveyDueMessageOne = "You have a " + surveyDueMessageOne + " due on " + $scope.allSurveyData[$scope.detailedDueSurveys[i].activityInstanceID].date + ". ";
+                                        ////console.log($scope.surveyDueMessageOne);
+                                    }
+                                }
+                            } else if (i === 1) {
+                                if ($scope.surveyInProgress.length > 0 && $scope.surveyInProgress.indexOf($scope.dueSurveys[i]) != -1) {
+                                    $scope.surveyDueMessageTwo = "You have a " + surveyDueMessageTwo + " in progress, due on " + $scope.allSurveyData[$scope.detailedDueSurveys[i].activityInstanceID].date + ". To begin survey, please click on the Start Survey button.";
+                                    ////console.log($scope.surveyDueMessageTwo);
+                                } else {
+                                    if (okayToStart) {
+                                        $scope.surveyDueMessageTwo = "You have a " + surveyDueMessageTwo + " due on " + $scope.allSurveyData[$scope.detailedDueSurveys[i].activityInstanceID].date + ". To begin survey, please click on the Start button.";
+                                        ////console.log($scope.surveyDueMessageTwo);
+                                    } else {
+                                        $scope.surveyDueMessageTwo = "You have a " + surveyDueMessageTwo + " due on " + $scope.allSurveyData[$scope.detailedDueSurveys[i].activityInstanceID].date + ". ";
+                                        ////console.log($scope.surveyDueMessageTwo);
+                                    }
+                                }
+                            } else if (i === 2) {
+                                if ($scope.surveyInProgress.length > 0 && $scope.surveyInProgress.indexOf($scope.dueSurveys[i]) != -1) {
+                                    $scope.surveyDueMessageThree = "You have a " + surveyDueMessageThree + " in progress, due on " + $scope.allSurveyData[$scope.detailedDueSurveys[i].activityInstanceID].date + ". To begin survey, please click on the Start Survey button.";
+                                    ////console.log($scope.surveyDueMessageThree);
+                                } else {
+                                    if (okayToStart) {
+                                        $scope.surveyDueMessageThree = "You have a " + surveyDueMessageThree + " due on " + $scope.allSurveyData[$scope.detailedDueSurveys[i].activityInstanceID].date + ". To begin survey, please click on the Start button.";
+                                        ////console.log($scope.surveyDueMessageThree);
+                                    } else {
+                                        $scope.surveyDueMessageThree = "You have a " + surveyDueMessageThree + " due on " + $scope.allSurveyData[$scope.detailedDueSurveys[i].activityInstanceID].date + ". ";
+                                        ////console.log($scope.surveyDueMessageThree);
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+
+
+                } else {
+                    $scope.surveyCommonMessage = "You have no activities due. Please check in again later.";
+                    $("#surveyCommonMessage").addClass("help-block alert alert-info");
                 }
-
 
             } else if (status === 204) {
                 $scope.surveyCommonMessage = "You have no activities due. Please check in again later.";
@@ -368,6 +407,7 @@
         $scope.callGetSurveyAPI = function() {
             var userPIN = localStorage.surveyAppPin;
             var payloadForService = '{"surveyInstanceID":' + $scope.nextDueSurveyID + ',' + '"userPIN":' + userPIN + '}';
+            console.log(payloadForService);
             ////console.log(payloadForService);
             /*jshint newcap: false */
             $('#loader').modal('show');
@@ -390,12 +430,9 @@
             var jsonString = JSON.stringify(logEvent);
             localStorage.setItem("uiLogger", jsonString);
             /* logging event ends */
-            if (localStorage.dataSource == "remote") {
+
                 getSurveyCall.call(payloadForService, $scope.getSurveySuccess, $scope.serviceError);
-            }
-            if (localStorage.dataSource == "local") {
-                getSurveyCall.call(payloadForService, $scope.getSurveySuccess, $scope.serviceError, "json/getSurvey.json");
-            }
+            
         };
 
         $scope.getSurveySuccess = function(data, status, headers, config) {
@@ -554,6 +591,8 @@
             // return yyyy + "-" +(mm[1]?mm:"0"+mm[0]) + "-" + (dd[1]?dd:"0"+dd[0]) + " " + hh + ":" + (mi[1]?mi:"0"+mi[0]) + ":" + (ss[1]?ss:"0"+ss[0]); // padding
             return yyyy + "-" + (mm[1] ? mm : "0" + mm[0]) + "-" + (dd[1] ? dd : "0" + dd[0]); // padding
         };
+
+
 
         $scope.controllerInit();
 

@@ -35,7 +35,7 @@
           console.log(" I am here ");
          //serviceURL = mockURL || this.url.domain + "/" + "rest/promis" + "/" + this.url.name + "/" + params.surveyInstanceID;
         }else if(params.userPIN){
-        serviceURL = mockURL || this.url.domain +"/rest/activities/" + this.url.name + "/" + "?pin=" +params.userPIN;
+        serviceURL = mockURL || this.url.domain +"/rest/activities/" + this.url.name + "" + "?pin=" +params.userPIN;
         }
         var version  = "";
         console.log(serviceURL);

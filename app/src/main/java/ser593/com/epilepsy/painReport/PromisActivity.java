@@ -98,7 +98,7 @@ public class PromisActivity extends Activity {
 
         //add javascript interface
         _jsHandler = new jsHandler(this, webView);
-//        webView.addJavascriptInterface(_jsHandler, "jsHandler");
+        webView.addJavascriptInterface(_jsHandler, "jsHandler");
         webView.addJavascriptInterface(this, "mainActivity");
         //In kitkat if hardware acceleration is not turned off
         //we get a blank screen on start of the app

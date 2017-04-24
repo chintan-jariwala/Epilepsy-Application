@@ -259,9 +259,9 @@
 
             var surveySubmitCall = new serviceCall("activityinstanceresult", "POST");
 
-            if (localStorage.dataSource == "remote") {
+
                 surveySubmitCall.call($scope.payloadForService, $scope.submitCallSuccess, $scope.submitCallError);
-            }
+            
             // if(localStorage.dataSource == "local"){
             //   surveySubmitCall.call($scope.payloadForService,$scope.submitCallSuccess,$scope.submitCallError,"json/submitSurvey.json");
             // }
