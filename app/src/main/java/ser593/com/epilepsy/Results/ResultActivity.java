@@ -79,7 +79,7 @@ public class ResultActivity extends AppCompatActivity {
                 {
                     //add to answersArr
                     JSONObject ans = new JSONObject();
-                    ans.put("operatingHand", answers.getJSONObject(i).getString(getString(R.string.finger_tapping_json_side)));
+                    ans.put("operatingHand", answers.getJSONObject(i).getString(getString(R.string.finger_tapping_json_side)).toLowerCase());
                     ans.put("tapNumber", Integer.parseInt(answers.getJSONObject(i).getString(getString(R.string.finger_tapping_json_tap_count))));
                     answersArr.put(ans);
 

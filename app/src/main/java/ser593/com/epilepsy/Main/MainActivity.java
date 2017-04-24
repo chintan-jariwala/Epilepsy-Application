@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar);
         getSupportActionBar().hide();
@@ -86,15 +85,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnSettings = (Button) findViewById(R.id.btnSettings);
         btnSettings.setOnClickListener(this);
 
+        //disable all buttons
         btnPatternComparison.setEnabled(false);
+//        btnPatternComparison.setBackground();
 
         btnSpacialSpan.setEnabled(false);
+//        btnSpacialSpan.setBackground();
 
         btnFingerTapping.setEnabled(false);
+//        btnFingerTapping.setBackground();
 
         btnFlanker.setEnabled(false);
+//        btnFlanker.setBackground();
 
-       getScheduledActivities();
+        getScheduledActivities();
 
         activityDetails = new ActivityDetails();
 
@@ -134,7 +138,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     listActivities.add(activity);
                     if(activity.equalsIgnoreCase("FINGERTAPPING")){
                         Log.d(TAG, "enableActivities: " + activity);
+                        //change image
                         btnFingerTapping.setEnabled(true);
+
                     }else if(activity.equalsIgnoreCase("FLANKER")){
                         Log.d(TAG, "enableActivities: " + activity);
 

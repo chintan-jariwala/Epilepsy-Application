@@ -21,45 +21,45 @@
     <Button
         android:id="@+id/btnPromis"
         style="@style/customButton"
-        android:background="@drawable/ic_promis1"
+        android:layout_width="100dp"
 
         android:layout_height="100dp"
-        android:layout_width="100dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="111dp" />
+        android:layout_marginBottom="111dp"
+        android:background="@drawable/btn_promis_normal" />
 
     <Button
         android:id="@+id/btnFingerTapping"
+        style="@style/customButton"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        style="@style/customButton"
-        android:background="@drawable/ic_fingertapping1"
+        android:layout_alignStart="@+id/btnFlanker"
         android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/btnFlanker" />
+        android:background="@drawable/btn_spatial_normal" />
 
     <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
         android:id="@+id/btnFlanker"
         style="@style/customButton"
-        android:background="@drawable/ic_flanker1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignBottom="@+id/btnPatternComparison"
 
-        android:layout_toStartOf="@+id/btnPatternComparison"
         android:layout_marginEnd="63dp"
-        android:layout_alignBottom="@+id/btnPatternComparison" />
+        android:layout_toStartOf="@+id/btnPatternComparison"
+        android:background="@drawable/btn_flankered_normal" />
 
     <Button
         android:id="@+id/btnPatternComparison"
+        style="@style/customButton"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        style="@style/customButton"
-        android:background="@drawable/ic_patterncomparison1"
+        android:layout_alignParentEnd="true"
 
+        android:layout_below="@+id/btnSettings"
         android:layout_marginEnd="55dp"
         android:layout_marginTop="48dp"
-        android:layout_below="@+id/btnSettings"
-        android:layout_alignParentEnd="true" />
+        android:background="@drawable/btn_pattern_normal" />
 
     <TextView
         android:text="Welcome"
@@ -81,13 +81,13 @@
         android:textAlignment="center" />
 
     <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
         android:id="@+id/btnSpacialSpan"
         style="@style/customButton"
-        android:background="@drawable/ic_spatialspan1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_above="@+id/tvSpatial"
-        android:layout_alignStart="@+id/tvPattern" />
+        android:layout_alignStart="@+id/tvPattern"
+        android:background="@drawable/btn_span_normal" />
 
     <TextView
         android:text="Flanker"
