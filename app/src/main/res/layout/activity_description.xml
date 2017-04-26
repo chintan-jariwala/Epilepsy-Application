@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background">
+        android:background="@drawable/background_noboarder">
 
         <LinearLayout
             android:orientation="vertical"
@@ -83,7 +83,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/btnBack"
                     android:layout_margin="5dp"
-                    />
+                    android:background="@drawable/btn_back"
+                    android:textColor="#85248F" />
 
                 <Button
                     android:text="Start"
@@ -92,7 +93,8 @@
                     android:id="@+id/btnStart"
                     android:layout_margin="5dp"
 
-                    />
+                    android:background="@drawable/btn_start"
+                    android:textColor="#85248F" />
 
         </LinearLayout>
 
