@@ -87,41 +87,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //disable all buttons
         btnPatternComparison.setEnabled(false);
-//        btnPatternComparison.setBackground();
+        btnPatternComparison.setBackgroundResource(R.drawable.btn_pattern_grey);
 
         btnSpacialSpan.setEnabled(false);
-//        btnSpacialSpan.setBackground();
+        btnSpacialSpan.setBackgroundResource(R.drawable.btn_span_grey);
 
         btnFingerTapping.setEnabled(false);
-//        btnFingerTapping.setBackground();
+        btnFingerTapping.setBackgroundResource(R.drawable.btn_tapping_grey);
 
         btnFlanker.setEnabled(false);
-//        btnFlanker.setBackground();
+        btnFlanker.setBackgroundResource(R.drawable.btn_flankered_grey);
 
         getScheduledActivities();
 
         activityDetails = new ActivityDetails();
 
-        String colorHexCode = "#85248F"; //purple
         TextView tvTitle = (TextView) findViewById(R.id.tvTitle);
         TextView tvFlanker = (TextView) findViewById(R.id.tvFlanker);
         TextView tvPattern = (TextView) findViewById(R.id.tvPattern);
         TextView tvTapping = (TextView) findViewById(R.id.tvTapping);
         TextView tvSpatial = (TextView) findViewById(R.id.tvSpatial);
         TextView tvPromis = (TextView) findViewById(R.id.tvPromis);
+        TextView tvSettings = (TextView) findViewById(R.id.tvSettings);
         Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/SourceSansPro-Regular.otf");
         tvTitle.setTypeface(custom_font);
-        tvTitle.setTextColor(Color.parseColor(colorHexCode));
         tvFlanker.setTypeface(custom_font);
-        tvFlanker.setTextColor(Color.parseColor(colorHexCode));
         tvPattern.setTypeface(custom_font);
-        tvPattern.setTextColor(Color.parseColor(colorHexCode));
         tvTapping.setTypeface(custom_font);
-        tvTapping.setTextColor(Color.parseColor(colorHexCode));
         tvSpatial.setTypeface(custom_font);
-        tvSpatial.setTextColor(Color.parseColor(colorHexCode));
         tvPromis.setTypeface(custom_font);
-        tvPromis.setTextColor(Color.parseColor(colorHexCode));
+        tvSettings.setTypeface(custom_font);
     }
 
     private void enableActivities(JSONObject scheduledActivities) {
@@ -140,19 +135,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Log.d(TAG, "enableActivities: " + activity);
                         //change image
                         btnFingerTapping.setEnabled(true);
+                        btnFingerTapping.setBackgroundResource(R.drawable.btn_tapping_normal);
 
                     }else if(activity.equalsIgnoreCase("FLANKER")){
                         Log.d(TAG, "enableActivities: " + activity);
 
                         btnFlanker.setEnabled(true);
+                        btnFlanker.setBackgroundResource(R.drawable.btn_flankered_normal);
                     }else if(activity.equalsIgnoreCase("PATTERNCOMPARISON")){
                         Log.d(TAG, "enableActivities: " + activity);
 
                         btnPatternComparison.setEnabled(true);
+                        btnPatternComparison.setBackgroundResource(R.drawable.btn_pattern_normal);
                     }else if(activity.equalsIgnoreCase("SPATIALSPAN")){
                         Log.d(TAG, "enableActivities: " + activity);
 
                         btnSpacialSpan.setEnabled(true);
+                        btnSpacialSpan.setBackgroundResource(R.drawable.btn_span_normal);
                     }
                 }
                 Log.d(TAG, "enableActivities: " + sequence.toString());
