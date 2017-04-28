@@ -2,21 +2,31 @@ package ser593.com.epilepsy.apiCall;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Handler;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import ser593.com.epilepsy.Main.MainActivity;
+import ser593.com.epilepsy.R;
 import ser593.com.epilepsy.app.AppController;
 
 /**
@@ -25,11 +35,12 @@ import ser593.com.epilepsy.app.AppController;
 
 public class ServiceCall {
 
+    private RelativeLayout resultsLayout = null;
     private boolean flag = false;
     private Context context = null;
     private String pin = null;
     private String URL = null;
-    private String httpMethod = "http://";
+    private String httpMethod = AppController.getInstance().readPreference("httpMethod");
     private static final String TAG = ServiceCall.class.getSimpleName();
     private static String receivedData = null;
     private String postActivityURL =
@@ -49,35 +60,19 @@ public class ServiceCall {
     public ServiceCall(Context context) {
         this.context = context;
     }
+    public ServiceCall(Context context, RelativeLayout resultsLayout) {
+        this.context = context;
+        this.resultsLayout = resultsLayout;
+    }
 
     public JSONObject submitActivityInstance(JSONObject data) throws JSONException {
         String link = constructURL("submitActivity", data);
         callAPI(link,"POST",data);
-
-//        return new JSONObject(callAPI(link,"POST",data));
-
-            return null;
-    }
-
-    public JSONObject getScheduledActivities() throws JSONException {
-        String link = constructURL("scheduleActivity",null);
-        callAPI(link,"GET",null);
-        int i= 2;
-        while(!flag){
-            try {
-                Log.d(TAG, "getScheduledActivities: Flag = "+ flag);
-                Log.d(TAG, "getScheduledActivities: " + i);
-                TimeUnit.SECONDS.sleep(1 + i);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            i++;
-        }
-        return new JSONObject(receivedData);
+        return null;
     }
 
     private void callAPI(String link, String method, JSONObject data){
-        if(isNetworkAvailable()){
+        if(CheckForInternet.isNetworkAvailable(context)){
             if(method.equalsIgnoreCase("GET")){
                 Log.d(TAG, "callAPI: " + link + " data " + data);
                 JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, link, null,
@@ -85,7 +80,10 @@ public class ServiceCall {
                             @Override
                             public void onResponse(JSONObject response) {
                                 Log.d(TAG, "onResponse: " + response.toString());
-                                Toast.makeText(context,"Your Data Has been sent to the Server", Toast.LENGTH_LONG).show();
+                                if(resultsLayout != null){
+                                    Snackbar.make(resultsLayout,"Results have been sent to the server", Toast.LENGTH_LONG).show();
+                                }
+
                                 populateReceivedData(response.toString());
                             }
                         }, new Response.ErrorListener() {
@@ -93,7 +91,6 @@ public class ServiceCall {
                     public void onErrorResponse(VolleyError error) {
                         Log.e(TAG, "onErrorResponse: " + error.toString());
                         receivedData = error.toString();
-
                     }
                 });
 
@@ -104,7 +101,9 @@ public class ServiceCall {
                             @Override
                             public void onResponse(JSONObject response) {
                                 Log.d(TAG, "onResponse: " + response.toString());
-                                Toast.makeText(context,"Your Data Has been sent to the API", Toast.LENGTH_LONG).show();
+                                if(resultsLayout != null){
+                                    Snackbar.make(resultsLayout,"Results have been sent to the server", Toast.LENGTH_LONG).show();
+                                }
                             }
                         }, new Response.ErrorListener() {
                     @Override
@@ -116,12 +115,9 @@ public class ServiceCall {
                 AppController.getInstance().addToRequestQueue(postRequest);
             }
 
-//            return dataFromAPI[0];
         }else{
-            //Network not available
-            Log.d(TAG, "submitActivityInstance: Network not available" );
-//            AppController.getInstance().writePreference("activityInstanceID",data.toString());
-//            return null;
+
+
         }
 
     }
@@ -134,16 +130,15 @@ public class ServiceCall {
 
 
     private String constructURL(String urlToCall, JSONObject data) throws JSONException {
-
         pin = AppController.getInstance().readPreference("patientPin");
         URL = AppController.getInstance().readPreference("url");
         String link = null;
         switch (urlToCall){
             case "scheduleActivity":
-                link = httpMethod + URL + getScheduledActivityURL + "?pin=" + pin;
+                link = httpMethod + ":\\\\" + URL + getScheduledActivityURL + "?pin=" + pin;
                 break;
             case "submitActivity":
-                link = httpMethod + URL + postActivityURL + data.get("activityInstanceID") + "?pin=" + pin;
+                link = httpMethod + ":\\\\" +  URL + postActivityURL + data.get("activityInstanceID") + "?pin=" + pin;
                 break;
         }
         Log.d(TAG, "constructURL: " + link);
@@ -151,10 +146,4 @@ public class ServiceCall {
 
     }
 
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
 }

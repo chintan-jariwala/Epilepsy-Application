@@ -19,10 +19,12 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import org.json.JSONObject;
 
 import ser593.com.epilepsy.R;
+import ser593.com.epilepsy.apiCall.CheckForInternet;
 import ser593.com.epilepsy.app.AppController;
 import ser593.com.epilepsy.pojo.ActivityDetails;
 
@@ -34,6 +36,14 @@ public class ActivityDescription extends AppCompatActivity implements View.OnCli
     ActivityDetails activityDetails = null;
     TextView tvActionBarTitle = null;
     private String activityInstanceID = null;
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,30 +105,31 @@ public class ActivityDescription extends AppCompatActivity implements View.OnCli
                 finish();
                 break;
             case R.id.btnStart:
-                //Toast.makeText(this,"BC Shnati",Toast.LENGTH_LONG).show();
-                Intent i =null;
-                getActivityDetails();
-                switch (activityDetails.getTitle()){
-                    case "Pattern Comparison":
-                        i = new Intent(this,PatternComparisonProcessingActivity.class);
-                        i.putExtra("activityInstanceID",activityInstanceID);
-                        startActivity(i);
-                        break;
-                    case "Finger Tapping":
-                        i = new Intent(this,FingerTappingActivity.class);
-                        i.putExtra("activityInstanceID",activityInstanceID);
-                        startActivity(i);
-                        break;
-                    case "Spatial Span":
-                        i = new Intent(this,SpatialSpanActivity.class);
-                        i.putExtra("activityInstanceID",activityInstanceID);
-                        startActivity(i);
-                        break;
-                    case "Flanker":
-                        i = new Intent(this,FlankerActivity.class);
-                        i.putExtra("activityInstanceID",activityInstanceID);
-                        startActivity(i);
-                        break;
+
+                Intent i;
+                if(getActivityDetails()){
+                    switch (activityDetails.getTitle()){
+                        case "Pattern Comparison":
+                            i = new Intent(this,PatternComparisonProcessingActivity.class);
+                            i.putExtra("activityInstanceID",activityInstanceID);
+                            startActivity(i);
+                            break;
+                        case "Finger Tapping":
+                            i = new Intent(this,FingerTappingActivity.class);
+                            i.putExtra("activityInstanceID",activityInstanceID);
+                            startActivity(i);
+                            break;
+                        case "Spatial Span":
+                            i = new Intent(this,SpatialSpanActivity.class);
+                            i.putExtra("activityInstanceID",activityInstanceID);
+                            startActivity(i);
+                            break;
+                        case "Flanker":
+                            i = new Intent(this,FlankerActivity.class);
+                            i.putExtra("activityInstanceID",activityInstanceID);
+                            startActivity(i);
+                            break;
+                    }
                 }
                 break;
             default:
@@ -126,29 +137,54 @@ public class ActivityDescription extends AppCompatActivity implements View.OnCli
         }
     }
 
-    private void getActivityDetails() {
+    private boolean getActivityDetails() {
 
         String pin = AppController.getInstance().readPreference("patientPin");
         String URL = AppController.getInstance().readPreference("url");
+        String httpMethod = AppController.getInstance().readPreference("httpMethod");
 
-        String link = "http://" + URL + getString(R.string.getActivityDetailsURL) + activityInstanceID + "?pin=" + pin;
+        String link = httpMethod + "://" + URL + getString(R.string.getActivityDetailsURL) + activityInstanceID + "?pin=" + pin;
 
-        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, link, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.d(TAG, "onResponse: " + response.toString());
-                        Toast.makeText(getApplicationContext(),"Your Data Has been sent to the Server", Toast.LENGTH_LONG).show();
+        if(CheckForInternet.isNetworkAvailable(this)){
+            JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, link, null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Log.d(TAG, "onResponse: " + response.toString());
+                            Toast.makeText(getApplicationContext(),"Your Data Has been sent to the Server", Toast.LENGTH_LONG).show();
 
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "onErrorResponse: " + error.toString());
-            }
-        });
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e(TAG, "onErrorResponse: " + error.toString());
+                }
+            });
 
-        AppController.getInstance().addToRequestQueue(getRequest);
+            AppController.getInstance().addToRequestQueue(getRequest);
+            return true;
+        }else{
+            new LovelyStandardDialog(this)
+                    .setTopColorRes(R.color.indigo)
+                    .setButtonsColorRes(R.color.darkDeepOrange)
+                    .setTitle("No Internet")
+                    .setMessage("You will need internet to get the details of the Activity")
+                    .setPositiveButton("Ok", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    })
+                    .setNegativeButton("Exit Application", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            finishAffinity();
+                        }
+                    })
+                    .show();
+            return false;
+        }
+
 
     }
 

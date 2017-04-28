@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
@@ -21,7 +22,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     private Button btnSave = null;
     private EditText txtPatientPin;
     private EditText txtUrl;
-
+    private Spinner spinner_method;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,10 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         btnSave.setOnClickListener(this);
 
         //show stored shared preference value on screen
+        txtPatientPin = (EditText)findViewById(R.id.txtPatientPin);
+        txtUrl = (EditText)findViewById(R.id.txtUrl);
 
+        spinner_method = (Spinner) findViewById(R.id.spinner_method);
         String pinPref = AppController.getInstance().readPreference("patientPin");
         if(pinPref == null){
             pinPref = "";
@@ -41,9 +45,15 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         if(urlPref == null){
             urlPref = "";
         }
-
-        txtPatientPin = (EditText)findViewById(R.id.txtPatientPin);
-        txtUrl = (EditText)findViewById(R.id.txtUrl);
+        String method = AppController.getInstance().readPreference("httpMethod");
+        if(method == null){
+            method = "";
+        }else{
+            if(method.equalsIgnoreCase("http"))
+                spinner_method.setSelection(1);
+            else
+                spinner_method.setSelection(0);
+        }
         txtPatientPin.setText(pinPref);
         txtUrl.setText(urlPref);
     }
@@ -56,10 +66,13 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             case R.id.btnSave:
                 String patientPin = txtPatientPin.getText().toString();
                 String url = txtUrl.getText().toString();
+                String method = spinner_method.getSelectedItem().toString();
                 if(validatePatientPin(patientPin) && validateURL(url)){
                     AppController.getInstance().writePreference("patientPin", patientPin);
                     AppController.getInstance().writePreference("url", url);
+                    AppController.getInstance().writePreference("httpMethod", method);
                     startActivity(i);
+                    finish();
                     break;
                 }
 

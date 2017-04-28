@@ -3,31 +3,45 @@ package ser593.com.epilepsy.Results;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.util.DisplayMetrics;
+
+import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import ser593.com.epilepsy.Main.MainActivity;
 import ser593.com.epilepsy.R;
+import ser593.com.epilepsy.apiCall.CheckForInternet;
 import ser593.com.epilepsy.apiCall.ServiceCall;
+import ser593.com.epilepsy.app.AppController;
 
 
 public class ResultActivity extends AppCompatActivity {
     String LOG_TAG = ResultActivity.class.getSimpleName();
+    private RelativeLayout resultsLayout = null;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
+        resultsLayout = (RelativeLayout) findViewById(R.id.resultsContainerLayout);
         addListenerOnReturnButton();
 
         Intent intent =this.getIntent();
@@ -343,9 +357,41 @@ public class ResultActivity extends AppCompatActivity {
 
             }
 
-            //push to API
-            ServiceCall serviceCall = new ServiceCall(getApplicationContext());
-            serviceCall.submitActivityInstance(jsonForApi);
+            if(CheckForInternet.isNetworkAvailable(this)){
+                ServiceCall serviceCall = new ServiceCall(getApplicationContext(),resultsLayout);
+                serviceCall.submitActivityInstance(jsonForApi);
+            }else{
+                //Alert User to get internet
+                new LovelyStandardDialog(this)
+                        .setTopColorRes(R.color.indigo)
+                        .setButtonsColorRes(R.color.darkDeepOrange)
+                        .setTitle("No Network")
+                        .setMessage("Your results have been recorded successfully.\n\nThe application will try to submit the results when the wifi will be made available.")
+                        .setPositiveButton("Ok", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            }
+                        })
+                        .show();
+                String pendingSurveys = AppController.getInstance().readPreference("pendingSurveys");
+                ArrayList<String> pendingSurveysList = new ArrayList<>();
+                if(pendingSurveys == null){
+                    pendingSurveysList.add(jsonForApi.toString());
+                    AppController.getInstance().writePreference("pendingSurveys",pendingSurveysList.toString());
+                    Log.d(LOG_TAG, "onCreate: " + pendingSurveysList.toString());
+                }else{
+                    JSONArray arr = new JSONArray(pendingSurveys);
+                    JSONObject obj;
+                    for(int i=0; i<arr.length();i++){
+                        obj = (JSONObject) arr.get(i);
+                        pendingSurveysList.add(obj.toString());
+                    }
+                    pendingSurveysList.add(jsonForApi.toString());
+                    AppController.getInstance().writePreference("pendingSurveys",pendingSurveysList.toString());
+                }
+
+            }
         }
         catch (JSONException e)
         {

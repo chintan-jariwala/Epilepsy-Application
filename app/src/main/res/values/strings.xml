@@ -51,5 +51,12 @@
     <string name="getScheduledActivityURL">/rest/activities/scheduledactivity</string>
     <string name="getActivityInstanceURL">/rest/activities/activityinstance/</string>
 
+    <string name="method_prompt">Choose a method</string>
+    <string name="no_internet">There is a problem connecting to the Internet.  Please make sure you have stable internet connection before proceeding.</string>
+
+    <string-array name="method_arrays">
+        <item>https</item>
+        <item>http</item>
+    </string-array>
 
 </resources>
