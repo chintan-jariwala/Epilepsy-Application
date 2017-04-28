@@ -109,6 +109,9 @@ public class ServiceCall {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e(TAG, "onErrorResponse: " + error.toString());
+                        //data loss... We need to handle that.
+                        Log.e(TAG, "onErrorResponse: Data lost");
+
                     }
                 });
 
@@ -135,10 +138,10 @@ public class ServiceCall {
         String link = null;
         switch (urlToCall){
             case "scheduleActivity":
-                link = httpMethod + ":\\\\" + URL + getScheduledActivityURL + "?pin=" + pin;
+                link = httpMethod + "://" + URL + getScheduledActivityURL + "?pin=" + pin;
                 break;
             case "submitActivity":
-                link = httpMethod + ":\\\\" +  URL + postActivityURL + data.get("activityInstanceID") + "?pin=" + pin;
+                link = httpMethod + "://" +  URL + postActivityURL + data.get("activityInstanceID") + "?pin=" + pin;
                 break;
         }
         Log.d(TAG, "constructURL: " + link);

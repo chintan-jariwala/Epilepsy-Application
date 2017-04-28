@@ -213,6 +213,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setTopColorRes(R.color.indigo)
                 .setButtonsColorRes(R.color.darkDeepOrange)
                 .setTitle("Exit")
+                .setCancelable(false)
                 .setMessage("Are you sure ?")
                 .setPositiveButton("Yes", new View.OnClickListener() {
                     @Override
@@ -293,6 +294,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .setTopColorRes(R.color.indigo)
                     .setButtonsColorRes(R.color.darkDeepOrange)
                     .setTitle("No Network")
+                    .setCancelable(false)
                     .setMessage(R.string.no_internet)
                     .setPositiveButton("Try Again", new View.OnClickListener() {
                         @Override
@@ -337,6 +339,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .setTopColorRes(R.color.indigo)
                         .setButtonsColorRes(R.color.darkDeepOrange)
                         .setTitle("Request Timeout")
+                        .setCancelable(false)
                         .setMessage("I am sorry, the request timed out")
                         .setPositiveButton("Try Again", new View.OnClickListener() {
                             @Override
@@ -350,7 +353,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
                         })
                         .show();
+            }else if(error.toString().contains("SSLHandshakeException")){
+                new LovelyStandardDialog(this)
+                        .setTopColorRes(R.color.indigo)
+                        .setButtonsColorRes(R.color.darkDeepOrange)
+                        .setTitle("Secure Connection Not Allowed")
+                        .setMessage("There seems to be an issue connecting to the server\n\nPlease check the HTTP method and change it to \"http\" from \"https\"")
+                        .setPositiveButton("Settings", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                startActivity(new Intent(getApplicationContext(),SettingsActivity.class));
+                                finish();
+                            }
+                        })
+                        .setCancelable(false)
+                        .show();
+            }else if(error.toString().contains("Connection reset")){
+                new LovelyStandardDialog(this)
+                        .setTopColorRes(R.color.indigo)
+                        .setButtonsColorRes(R.color.darkDeepOrange)
+                        .setTitle("Error")
+                        .setMessage("There is an error connecting to the Server.\n\nWe apologise for the inconvenience\n\nPlease come back later")
+                        .setCancelable(false)
+                        .setPositiveButton("Settings", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                startActivity(new Intent(getApplicationContext(),SettingsActivity.class));
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("Exit", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                finishAffinity();
+                            }
+                        })
+                        .show();
             }
+
             if(error.networkResponse != null){
                 int status = error.networkResponse.statusCode;
                 String error_message = "";
@@ -373,6 +413,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .setButtonsColorRes(R.color.darkDeepOrange)
                         .setTitle("Error Connecting")
                         .setMessage(error_message)
+                        .setCancelable(false)
                         .setPositiveButton("Try Again", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {

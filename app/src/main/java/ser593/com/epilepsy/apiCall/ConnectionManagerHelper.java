@@ -29,13 +29,13 @@ public class ConnectionManagerHelper extends BroadcastReceiver {
 
         boolean isConnected = wifi != null && wifi.isConnectedOrConnecting() ||
                 mobile != null && mobile.isConnectedOrConnecting();
-
-        if(isConnected){
+        Log.d(TAG, "onReceive: "+CheckForInternet.isNetworkAvailable(AppController.getInstance()));
+        if(CheckForInternet.isNetworkAvailable(AppController.getInstance()) || isConnected){
             String pending = AppController.getInstance().readPreference("pendingSurveys");
             if(pending != null){
                 Log.d(TAG, "onReceive: " + pending);
 
-                JSONArray arr = null;
+                JSONArray arr ;
                 try {
                     arr = new JSONArray(pending);
                     JSONObject obj;

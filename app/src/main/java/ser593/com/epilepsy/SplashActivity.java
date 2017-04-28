@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -14,6 +16,7 @@ import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import ser593.com.epilepsy.Main.MainActivity;
 import ser593.com.epilepsy.Main.SettingsActivity;
+import ser593.com.epilepsy.UserTasks.SpatialSpanActivity;
 import ser593.com.epilepsy.app.AppController;
 
 /**
@@ -22,11 +25,13 @@ import ser593.com.epilepsy.app.AppController;
 
 public class SplashActivity extends AppCompatActivity{
 
+    private static final String TAG = SplashActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (Settings.Secure.getString(this.getContentResolver(),"enabled_notification_listeners").contains(getApplicationContext().getPackageName()))
+        Log.d(TAG, "onCreate: " + NotificationManagerCompat.from(this).areNotificationsEnabled());
+        if (NotificationManagerCompat.from(this).areNotificationsEnabled() || Settings.Secure.getString(this.getContentResolver(),"enabled_notification_listeners").contains(getApplicationContext().getPackageName()))
         {
             String pinPref = AppController.getInstance().readPreference("patientPin");
             String urlPref = AppController.getInstance().readPreference("url");
