@@ -8,7 +8,7 @@
     tools:context="ser593.com.epilepsy.Main.SettingsActivity">
 
     <TextView
-        android:text="Welcome to Epilepsy App"
+        android:text="Welcome to BrainTracker!"
         android:layout_width="match_parent"
         android:id="@+id/textView"
         android:textSize="30sp"
