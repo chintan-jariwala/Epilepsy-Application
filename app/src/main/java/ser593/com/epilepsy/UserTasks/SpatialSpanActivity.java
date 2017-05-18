@@ -31,6 +31,7 @@ import org.json.JSONObject;
 import java.util.Random;
 
 import ser593.com.epilepsy.R;
+import ser593.com.epilepsy.Results.EndActivity;
 import ser593.com.epilepsy.Results.ResultActivity;
 
 public class SpatialSpanActivity extends AppCompatActivity implements View.OnClickListener{
@@ -438,7 +439,8 @@ public class SpatialSpanActivity extends AppCompatActivity implements View.OnCli
                                     }
                                     // pass solution to result page
 
-                                    Intent intent = new Intent(SpatialSpanActivity.this, ResultActivity.class);
+                                    //Intent intent = new Intent(SpatialSpanActivity.this, ResultActivity.class);
+                                    Intent intent = new Intent(getApplicationContext(), EndActivity.class);
                                     intent.putExtra(getString(R.string.task_result), recoJsonObject.toString());
                                     startActivity(intent);
                                     finish();

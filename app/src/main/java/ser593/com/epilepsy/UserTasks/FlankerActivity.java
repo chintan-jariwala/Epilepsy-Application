@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Random;
 
 import ser593.com.epilepsy.R;
+import ser593.com.epilepsy.Results.EndActivity;
 import ser593.com.epilepsy.Results.ResultActivity;
 
 public class FlankerActivity extends AppCompatActivity {
@@ -164,7 +165,8 @@ public class FlankerActivity extends AppCompatActivity {
                 Log.e(LOG_TAG, "Json parsing error: " + e.getMessage());
             }
             // pass solution to result page
-            Intent intent = new Intent(this, ResultActivity.class);
+            //Intent intent = new Intent(this, ResultActivity.class);
+            Intent intent = new Intent(getApplicationContext(), EndActivity.class);
             intent.putExtra(getString(R.string.task_result), record.toString());
             intent.putExtra("activityInstanceID",getIntent().getExtras().getString("activityInstanceID"));
             startActivity(intent);

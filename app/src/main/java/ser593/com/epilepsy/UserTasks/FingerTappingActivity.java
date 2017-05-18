@@ -20,6 +20,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import ser593.com.epilepsy.R;
+import ser593.com.epilepsy.Results.EndActivity;
 import ser593.com.epilepsy.Results.ResultActivity;
 
 public class FingerTappingActivity extends AppCompatActivity {
@@ -173,7 +174,8 @@ public class FingerTappingActivity extends AppCompatActivity {
                     record.put("elapseTime", endTime-startTime);
                     // pass solution to result page
                     record.put(getString(R.string.task_answer), answers);
-                    Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+                    //Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), EndActivity.class);
                     intent.putExtra(getString(R.string.task_result), record.toString());
                     intent.putExtra("activityInstanceID",getIntent().getExtras().getString("activityInstanceID"));
                     startActivity(intent);
