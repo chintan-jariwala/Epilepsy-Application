@@ -36,6 +36,7 @@ public class EndActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end);
+        Log.e(LOG_TAG, "EndACTIVITY");
 
         //hide action bar
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
@@ -244,7 +245,7 @@ public class EndActivity extends AppCompatActivity {
     }
 
     private void addListenerOnReturnButton() {
-        Button btnReturn = (Button) findViewById(R.id.btnReturn);
+        Button btnReturn = (Button) findViewById(R.id.btn_return);
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
